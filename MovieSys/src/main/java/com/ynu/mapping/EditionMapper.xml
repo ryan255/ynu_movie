@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ynu.mapper.EditionMapper">
+  <resultMap id="BaseResultMap" type="com.ynu.dto.Edition">
+    <id column="idEdition" jdbcType="INTEGER" property="idedition" />
+    <result column="edition_name" jdbcType="VARCHAR" property="editionName" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    idEdition, edition_name
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from edition
+    where idEdition = #{idedition,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from edition
+    where idEdition = #{idedition,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.ynu.dto.Edition">
+    insert into edition (idEdition, edition_name)
+    values (#{idedition,jdbcType=INTEGER}, #{editionName,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ynu.dto.Edition">
+    insert into edition
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="idedition != null">
+        idEdition,
+      </if>
+      <if test="editionName != null">
+        edition_name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="idedition != null">
+        #{idedition,jdbcType=INTEGER},
+      </if>
+      <if test="editionName != null">
+        #{editionName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ynu.dto.Edition">
+    update edition
+    <set>
+      <if test="editionName != null">
+        edition_name = #{editionName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where idEdition = #{idedition,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ynu.dto.Edition">
+    update edition
+    set edition_name = #{editionName,jdbcType=VARCHAR}
+    where idEdition = #{idedition,jdbcType=INTEGER}
+  </update>
+</mapper>

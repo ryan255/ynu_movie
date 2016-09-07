@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ynu.mapper.StateMapper">
+  <resultMap id="BaseResultMap" type="com.ynu.dto.State">
+    <id column="idState" jdbcType="INTEGER" property="idstate" />
+    <result column="state_name" jdbcType="VARCHAR" property="stateName" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    idState, state_name
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from state
+    where idState = #{idstate,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from state
+    where idState = #{idstate,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.ynu.dto.State">
+    insert into state (idState, state_name)
+    values (#{idstate,jdbcType=INTEGER}, #{stateName,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ynu.dto.State">
+    insert into state
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="idstate != null">
+        idState,
+      </if>
+      <if test="stateName != null">
+        state_name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="idstate != null">
+        #{idstate,jdbcType=INTEGER},
+      </if>
+      <if test="stateName != null">
+        #{stateName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ynu.dto.State">
+    update state
+    <set>
+      <if test="stateName != null">
+        state_name = #{stateName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where idState = #{idstate,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ynu.dto.State">
+    update state
+    set state_name = #{stateName,jdbcType=VARCHAR}
+    where idState = #{idstate,jdbcType=INTEGER}
+  </update>
+</mapper>
