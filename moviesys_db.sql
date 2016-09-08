@@ -1,10 +1,8 @@
-CREATE DATABASE  IF NOT EXISTS `moviesys_db` /*!40100 DEFAULT CHARACTER SET utf8 */;
-USE `moviesys_db`;
--- MySQL dump 10.13  Distrib 5.7.9, for Win32 (AMD64)
+-- MySQL dump 10.13  Distrib 5.7.9, for osx10.9 (x86_64)
 --
 -- Host: localhost    Database: moviesys_db
 -- ------------------------------------------------------
--- Server version	5.7.12-log
+-- Server version	5.7.14
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -56,6 +54,9 @@ DROP TABLE IF EXISTS `auditorium`;
 CREATE TABLE `auditorium` (
   `idAuditorium` int(11) NOT NULL AUTO_INCREMENT,
   `idStudio` int(11) NOT NULL,
+  `auditorium_num` int(11) DEFAULT NULL,
+  `auditorium_col` int(11) DEFAULT NULL,
+  `auditorium_row` int(11) DEFAULT NULL,
   PRIMARY KEY (`idAuditorium`),
   KEY `idStudio_idx` (`idStudio`),
   CONSTRAINT `fk_auditorium_idStudio` FOREIGN KEY (`idStudio`) REFERENCES `studio` (`idStudio`) ON DELETE CASCADE ON UPDATE CASCADE
@@ -299,6 +300,34 @@ LOCK TABLES `price` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `seat`
+--
+
+DROP TABLE IF EXISTS `seat`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `seat` (
+  `idSeat` int(11) NOT NULL,
+  `seat_num` int(11) DEFAULT NULL,
+  `seat_state` varchar(45) DEFAULT NULL,
+  `seat_order` varchar(45) DEFAULT NULL,
+  `fk_seat_idAuditorium` int(11) DEFAULT NULL,
+  PRIMARY KEY (`idSeat`),
+  KEY `idAuditorium_idx` (`fk_seat_idAuditorium`),
+  CONSTRAINT `idAuditorium` FOREIGN KEY (`fk_seat_idAuditorium`) REFERENCES `auditorium` (`idAuditorium`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `seat`
+--
+
+LOCK TABLES `seat` WRITE;
+/*!40000 ALTER TABLE `seat` DISABLE KEYS */;
+/*!40000 ALTER TABLE `seat` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `state`
 --
 
@@ -389,4 +418,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-09-07 17:11:41
+-- Dump completed on 2016-09-08 15:15:32
