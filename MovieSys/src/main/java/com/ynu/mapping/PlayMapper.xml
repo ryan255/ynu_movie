@@ -103,4 +103,106 @@
       play_uptime = #{playUptime,jdbcType=TIMESTAMP}
     where idPlay = #{idplay,jdbcType=INTEGER}
   </update>
+  <resultMap id="BaseResultMap" type="com.ynu.dto.Play">
+    <id column="idPlay" jdbcType="INTEGER" property="idplay" />
+    <result column="idStudio" jdbcType="INTEGER" property="idstudio" />
+    <result column="idFilm" jdbcType="INTEGER" property="idfilm" />
+    <result column="play_on" jdbcType="VARCHAR" property="playOn" />
+    <result column="play_ontime" jdbcType="TIMESTAMP" property="playOntime" />
+    <result column="play_uptime" jdbcType="TIMESTAMP" property="playUptime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    idPlay, idStudio, idFilm, play_on, play_ontime, play_uptime
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from play
+    where idPlay = #{idplay,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from play
+    where idPlay = #{idplay,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.ynu.dto.Play">
+    insert into play (idPlay, idStudio, idFilm, 
+      play_on, play_ontime, play_uptime
+      )
+    values (#{idplay,jdbcType=INTEGER}, #{idstudio,jdbcType=INTEGER}, #{idfilm,jdbcType=INTEGER}, 
+      #{playOn,jdbcType=VARCHAR}, #{playOntime,jdbcType=TIMESTAMP}, #{playUptime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ynu.dto.Play">
+    insert into play
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="idplay != null">
+        idPlay,
+      </if>
+      <if test="idstudio != null">
+        idStudio,
+      </if>
+      <if test="idfilm != null">
+        idFilm,
+      </if>
+      <if test="playOn != null">
+        play_on,
+      </if>
+      <if test="playOntime != null">
+        play_ontime,
+      </if>
+      <if test="playUptime != null">
+        play_uptime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="idplay != null">
+        #{idplay,jdbcType=INTEGER},
+      </if>
+      <if test="idstudio != null">
+        #{idstudio,jdbcType=INTEGER},
+      </if>
+      <if test="idfilm != null">
+        #{idfilm,jdbcType=INTEGER},
+      </if>
+      <if test="playOn != null">
+        #{playOn,jdbcType=VARCHAR},
+      </if>
+      <if test="playOntime != null">
+        #{playOntime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="playUptime != null">
+        #{playUptime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ynu.dto.Play">
+    update play
+    <set>
+      <if test="idstudio != null">
+        idStudio = #{idstudio,jdbcType=INTEGER},
+      </if>
+      <if test="idfilm != null">
+        idFilm = #{idfilm,jdbcType=INTEGER},
+      </if>
+      <if test="playOn != null">
+        play_on = #{playOn,jdbcType=VARCHAR},
+      </if>
+      <if test="playOntime != null">
+        play_ontime = #{playOntime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="playUptime != null">
+        play_uptime = #{playUptime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where idPlay = #{idplay,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ynu.dto.Play">
+    update play
+    set idStudio = #{idstudio,jdbcType=INTEGER},
+      idFilm = #{idfilm,jdbcType=INTEGER},
+      play_on = #{playOn,jdbcType=VARCHAR},
+      play_ontime = #{playOntime,jdbcType=TIMESTAMP},
+      play_uptime = #{playUptime,jdbcType=TIMESTAMP}
+    where idPlay = #{idplay,jdbcType=INTEGER}
+  </update>
 </mapper>

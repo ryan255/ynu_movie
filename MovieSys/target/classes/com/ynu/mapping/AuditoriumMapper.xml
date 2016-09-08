@@ -4,6 +4,95 @@
   <resultMap id="BaseResultMap" type="com.ynu.dto.Auditorium">
     <id column="idAuditorium" jdbcType="INTEGER" property="idauditorium" />
     <result column="idStudio" jdbcType="INTEGER" property="idstudio" />
+    <result column="auditorium_num" jdbcType="INTEGER" property="auditoriumNum" />
+    <result column="auditorium_col" jdbcType="INTEGER" property="auditoriumCol" />
+    <result column="auditorium_row" jdbcType="INTEGER" property="auditoriumRow" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    idAuditorium, idStudio, auditorium_num, auditorium_col, auditorium_row
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from auditorium
+    where idAuditorium = #{idauditorium,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from auditorium
+    where idAuditorium = #{idauditorium,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.ynu.dto.Auditorium">
+    insert into auditorium (idAuditorium, idStudio, auditorium_num, 
+      auditorium_col, auditorium_row)
+    values (#{idauditorium,jdbcType=INTEGER}, #{idstudio,jdbcType=INTEGER}, #{auditoriumNum,jdbcType=INTEGER}, 
+      #{auditoriumCol,jdbcType=INTEGER}, #{auditoriumRow,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ynu.dto.Auditorium">
+    insert into auditorium
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="idauditorium != null">
+        idAuditorium,
+      </if>
+      <if test="idstudio != null">
+        idStudio,
+      </if>
+      <if test="auditoriumNum != null">
+        auditorium_num,
+      </if>
+      <if test="auditoriumCol != null">
+        auditorium_col,
+      </if>
+      <if test="auditoriumRow != null">
+        auditorium_row,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="idauditorium != null">
+        #{idauditorium,jdbcType=INTEGER},
+      </if>
+      <if test="idstudio != null">
+        #{idstudio,jdbcType=INTEGER},
+      </if>
+      <if test="auditoriumNum != null">
+        #{auditoriumNum,jdbcType=INTEGER},
+      </if>
+      <if test="auditoriumCol != null">
+        #{auditoriumCol,jdbcType=INTEGER},
+      </if>
+      <if test="auditoriumRow != null">
+        #{auditoriumRow,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ynu.dto.Auditorium">
+    update auditorium
+    <set>
+      <if test="idstudio != null">
+        idStudio = #{idstudio,jdbcType=INTEGER},
+      </if>
+      <if test="auditoriumNum != null">
+        auditorium_num = #{auditoriumNum,jdbcType=INTEGER},
+      </if>
+      <if test="auditoriumCol != null">
+        auditorium_col = #{auditoriumCol,jdbcType=INTEGER},
+      </if>
+      <if test="auditoriumRow != null">
+        auditorium_row = #{auditoriumRow,jdbcType=INTEGER},
+      </if>
+    </set>
+    where idAuditorium = #{idauditorium,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ynu.dto.Auditorium">
+    update auditorium
+    set idStudio = #{idstudio,jdbcType=INTEGER},
+      auditorium_num = #{auditoriumNum,jdbcType=INTEGER},
+      auditorium_col = #{auditoriumCol,jdbcType=INTEGER},
+      auditorium_row = #{auditoriumRow,jdbcType=INTEGER}
+    where idAuditorium = #{idauditorium,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="com.ynu.dto.Auditorium">
+    <id column="idAuditorium" jdbcType="INTEGER" property="idauditorium" />
+    <result column="idStudio" jdbcType="INTEGER" property="idstudio" />
   </resultMap>
   <sql id="Base_Column_List">
     idAuditorium, idStudio

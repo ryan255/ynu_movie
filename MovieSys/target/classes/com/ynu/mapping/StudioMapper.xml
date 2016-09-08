@@ -103,4 +103,106 @@
       studio_text = #{studioText,jdbcType=VARCHAR}
     where idStudio = #{idstudio,jdbcType=INTEGER}
   </update>
+  <resultMap id="BaseResultMap" type="com.ynu.dto.Studio">
+    <id column="idStudio" jdbcType="INTEGER" property="idstudio" />
+    <result column="studio_name" jdbcType="VARCHAR" property="studioName" />
+    <result column="studio_online" jdbcType="VARCHAR" property="studioOnline" />
+    <result column="studio_address" jdbcType="VARCHAR" property="studioAddress" />
+    <result column="studio_phone" jdbcType="VARCHAR" property="studioPhone" />
+    <result column="studio_text" jdbcType="VARCHAR" property="studioText" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    idStudio, studio_name, studio_online, studio_address, studio_phone, studio_text
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from studio
+    where idStudio = #{idstudio,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from studio
+    where idStudio = #{idstudio,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.ynu.dto.Studio">
+    insert into studio (idStudio, studio_name, studio_online, 
+      studio_address, studio_phone, studio_text
+      )
+    values (#{idstudio,jdbcType=INTEGER}, #{studioName,jdbcType=VARCHAR}, #{studioOnline,jdbcType=VARCHAR}, 
+      #{studioAddress,jdbcType=VARCHAR}, #{studioPhone,jdbcType=VARCHAR}, #{studioText,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ynu.dto.Studio">
+    insert into studio
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="idstudio != null">
+        idStudio,
+      </if>
+      <if test="studioName != null">
+        studio_name,
+      </if>
+      <if test="studioOnline != null">
+        studio_online,
+      </if>
+      <if test="studioAddress != null">
+        studio_address,
+      </if>
+      <if test="studioPhone != null">
+        studio_phone,
+      </if>
+      <if test="studioText != null">
+        studio_text,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="idstudio != null">
+        #{idstudio,jdbcType=INTEGER},
+      </if>
+      <if test="studioName != null">
+        #{studioName,jdbcType=VARCHAR},
+      </if>
+      <if test="studioOnline != null">
+        #{studioOnline,jdbcType=VARCHAR},
+      </if>
+      <if test="studioAddress != null">
+        #{studioAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="studioPhone != null">
+        #{studioPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="studioText != null">
+        #{studioText,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ynu.dto.Studio">
+    update studio
+    <set>
+      <if test="studioName != null">
+        studio_name = #{studioName,jdbcType=VARCHAR},
+      </if>
+      <if test="studioOnline != null">
+        studio_online = #{studioOnline,jdbcType=VARCHAR},
+      </if>
+      <if test="studioAddress != null">
+        studio_address = #{studioAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="studioPhone != null">
+        studio_phone = #{studioPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="studioText != null">
+        studio_text = #{studioText,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where idStudio = #{idstudio,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ynu.dto.Studio">
+    update studio
+    set studio_name = #{studioName,jdbcType=VARCHAR},
+      studio_online = #{studioOnline,jdbcType=VARCHAR},
+      studio_address = #{studioAddress,jdbcType=VARCHAR},
+      studio_phone = #{studioPhone,jdbcType=VARCHAR},
+      studio_text = #{studioText,jdbcType=VARCHAR}
+    where idStudio = #{idstudio,jdbcType=INTEGER}
+  </update>
 </mapper>
