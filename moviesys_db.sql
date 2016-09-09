@@ -220,9 +220,9 @@ CREATE TABLE `order` (
   KEY `fk_order_idUser_idx` (`idUser`),
   KEY `fk_order_state_idx` (`order_state`),
   KEY `fk_order_idPrice` (`idprice`),
-  CONSTRAINT `fk_order_idPrice` FOREIGN KEY (`idprice`) REFERENCES `price` (`idPrice`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_order_idUser` FOREIGN KEY (`idUser`) REFERENCES `user` (`idUser`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_order_state` FOREIGN KEY (`order_state`) REFERENCES `state` (`idState`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `fk_order_idPrice` FOREIGN KEY (`idprice`) REFERENCES `price` (`idPrice`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `fk_order_idUser` FOREIGN KEY (`idUser`) REFERENCES `user` (`idUser`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `fk_order_state` FOREIGN KEY (`order_state`) REFERENCES `state` (`idState`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -233,6 +233,34 @@ CREATE TABLE `order` (
 LOCK TABLES `order` WRITE;
 /*!40000 ALTER TABLE `order` DISABLE KEYS */;
 /*!40000 ALTER TABLE `order` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `orderSeat`
+--
+
+DROP TABLE IF EXISTS `orderSeat`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `orderSeat` (
+  `idorderSeat` int(11) NOT NULL,
+  `fk_orderSeat_idOrder` int(11) DEFAULT NULL,
+  `fk_orderSeat_idSeat` int(11) DEFAULT NULL,
+  PRIMARY KEY (`idorderSeat`),
+  KEY `fk_orderSeat_idSeat_idx` (`fk_orderSeat_idSeat`),
+  KEY `fk_orderSeat_idOrder_idx` (`fk_orderSeat_idOrder`),
+  CONSTRAINT `fk_orderSeat_idOrder` FOREIGN KEY (`fk_orderSeat_idOrder`) REFERENCES `order` (`idOrder`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_orderSeat_idSeat` FOREIGN KEY (`fk_orderSeat_idSeat`) REFERENCES `seat` (`idSeat`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `orderSeat`
+--
+
+LOCK TABLES `orderSeat` WRITE;
+/*!40000 ALTER TABLE `orderSeat` DISABLE KEYS */;
+/*!40000 ALTER TABLE `orderSeat` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -252,8 +280,8 @@ CREATE TABLE `play` (
   PRIMARY KEY (`idPlay`),
   KEY `fk_play_idFilm_idx` (`idFilm`),
   KEY `fk_play_idStudio_idx` (`idStudio`),
-  CONSTRAINT `fk_play_idFilm` FOREIGN KEY (`idFilm`) REFERENCES `film_infor` (`idFilm`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_play_idStudio` FOREIGN KEY (`idStudio`) REFERENCES `studio` (`idStudio`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `fk_play_idFilm` FOREIGN KEY (`idFilm`) REFERENCES `film_infor` (`idFilm`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `fk_play_idStudio` FOREIGN KEY (`idStudio`) REFERENCES `studio` (`idStudio`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -284,9 +312,9 @@ CREATE TABLE `price` (
   KEY `fk_price_idPlay_idx` (`idPlay1`),
   KEY `fk_price_idAuditorium_idx` (`idAuditorium1`),
   KEY `fk_price_idEdition_idx` (`idEdition1`),
-  CONSTRAINT `fk_price_idAuditorium` FOREIGN KEY (`idAuditorium1`) REFERENCES `auditorium` (`idAuditorium`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_price_idEdition` FOREIGN KEY (`idEdition1`) REFERENCES `edition` (`idEdition`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_price_idPlay` FOREIGN KEY (`idPlay1`) REFERENCES `play` (`idPlay`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `fk_price_idAuditorium` FOREIGN KEY (`idAuditorium1`) REFERENCES `auditorium` (`idAuditorium`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `fk_price_idEdition` FOREIGN KEY (`idEdition1`) REFERENCES `edition` (`idEdition`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `fk_price_idPlay` FOREIGN KEY (`idPlay1`) REFERENCES `play` (`idPlay`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -418,4 +446,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-09-08 15:15:32
+-- Dump completed on 2016-09-09  8:38:43
