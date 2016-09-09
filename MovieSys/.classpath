@@ -11,7 +11,7 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="var" path="M2_REPO/junit/junit/3.8.1/junit-3.8.1.jar" sourcepath="M2_REPO/junit/junit/3.8.1/junit-3.8.1-sources.jar"/>
-	<classpathentry kind="src" output="target/classes" path="src/main/java">
+	<classpathentry including="**/*.java" kind="src" output="target/classes" path="src/main/java">
 		<attributes>
 			<attribute name="optional" value="true"/>
 			<attribute name="maven.pomderived" value="true"/>

@@ -737,4 +737,188 @@
       f_cover_b = #{fCoverB,jdbcType=VARCHAR}
     where idFilm = #{idfilm,jdbcType=INTEGER}
   </update>
+  <resultMap id="BaseResultMap" type="com.ynu.dto.Film_infor">
+    <id column="idFilm" jdbcType="INTEGER" property="idfilm" />
+    <result column="f_name" jdbcType="VARCHAR" property="fName" />
+    <result column="f_director" jdbcType="VARCHAR" property="fDirector" />
+    <result column="f_star" jdbcType="VARCHAR" property="fStar" />
+    <result column="idClass" jdbcType="INTEGER" property="idclass" />
+    <result column="f_country" jdbcType="VARCHAR" property="fCountry" />
+    <result column="f_time" jdbcType="VARCHAR" property="fTime" />
+    <result column="f_level" jdbcType="INTEGER" property="fLevel" />
+    <result column="f_click" jdbcType="INTEGER" property="fClick" />
+    <result column="f_comment" jdbcType="VARCHAR" property="fComment" />
+    <result column="f_introduce" jdbcType="VARCHAR" property="fIntroduce" />
+    <result column="f_cover_s" jdbcType="VARCHAR" property="fCoverS" />
+    <result column="f_cover_b" jdbcType="VARCHAR" property="fCoverB" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    idFilm, f_name, f_director, f_star, idClass, f_country, f_time, f_level, f_click, 
+    f_comment, f_introduce, f_cover_s, f_cover_b
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from film_infor
+    where idFilm = #{idfilm,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from film_infor
+    where idFilm = #{idfilm,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.ynu.dto.Film_infor">
+    insert into film_infor (idFilm, f_name, f_director, 
+      f_star, idClass, f_country, 
+      f_time, f_level, f_click, 
+      f_comment, f_introduce, f_cover_s, 
+      f_cover_b)
+    values (#{idfilm,jdbcType=INTEGER}, #{fName,jdbcType=VARCHAR}, #{fDirector,jdbcType=VARCHAR}, 
+      #{fStar,jdbcType=VARCHAR}, #{idclass,jdbcType=INTEGER}, #{fCountry,jdbcType=VARCHAR}, 
+      #{fTime,jdbcType=VARCHAR}, #{fLevel,jdbcType=INTEGER}, #{fClick,jdbcType=INTEGER}, 
+      #{fComment,jdbcType=VARCHAR}, #{fIntroduce,jdbcType=VARCHAR}, #{fCoverS,jdbcType=VARCHAR}, 
+      #{fCoverB,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ynu.dto.Film_infor">
+    insert into film_infor
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="idfilm != null">
+        idFilm,
+      </if>
+      <if test="fName != null">
+        f_name,
+      </if>
+      <if test="fDirector != null">
+        f_director,
+      </if>
+      <if test="fStar != null">
+        f_star,
+      </if>
+      <if test="idclass != null">
+        idClass,
+      </if>
+      <if test="fCountry != null">
+        f_country,
+      </if>
+      <if test="fTime != null">
+        f_time,
+      </if>
+      <if test="fLevel != null">
+        f_level,
+      </if>
+      <if test="fClick != null">
+        f_click,
+      </if>
+      <if test="fComment != null">
+        f_comment,
+      </if>
+      <if test="fIntroduce != null">
+        f_introduce,
+      </if>
+      <if test="fCoverS != null">
+        f_cover_s,
+      </if>
+      <if test="fCoverB != null">
+        f_cover_b,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="idfilm != null">
+        #{idfilm,jdbcType=INTEGER},
+      </if>
+      <if test="fName != null">
+        #{fName,jdbcType=VARCHAR},
+      </if>
+      <if test="fDirector != null">
+        #{fDirector,jdbcType=VARCHAR},
+      </if>
+      <if test="fStar != null">
+        #{fStar,jdbcType=VARCHAR},
+      </if>
+      <if test="idclass != null">
+        #{idclass,jdbcType=INTEGER},
+      </if>
+      <if test="fCountry != null">
+        #{fCountry,jdbcType=VARCHAR},
+      </if>
+      <if test="fTime != null">
+        #{fTime,jdbcType=VARCHAR},
+      </if>
+      <if test="fLevel != null">
+        #{fLevel,jdbcType=INTEGER},
+      </if>
+      <if test="fClick != null">
+        #{fClick,jdbcType=INTEGER},
+      </if>
+      <if test="fComment != null">
+        #{fComment,jdbcType=VARCHAR},
+      </if>
+      <if test="fIntroduce != null">
+        #{fIntroduce,jdbcType=VARCHAR},
+      </if>
+      <if test="fCoverS != null">
+        #{fCoverS,jdbcType=VARCHAR},
+      </if>
+      <if test="fCoverB != null">
+        #{fCoverB,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ynu.dto.Film_infor">
+    update film_infor
+    <set>
+      <if test="fName != null">
+        f_name = #{fName,jdbcType=VARCHAR},
+      </if>
+      <if test="fDirector != null">
+        f_director = #{fDirector,jdbcType=VARCHAR},
+      </if>
+      <if test="fStar != null">
+        f_star = #{fStar,jdbcType=VARCHAR},
+      </if>
+      <if test="idclass != null">
+        idClass = #{idclass,jdbcType=INTEGER},
+      </if>
+      <if test="fCountry != null">
+        f_country = #{fCountry,jdbcType=VARCHAR},
+      </if>
+      <if test="fTime != null">
+        f_time = #{fTime,jdbcType=VARCHAR},
+      </if>
+      <if test="fLevel != null">
+        f_level = #{fLevel,jdbcType=INTEGER},
+      </if>
+      <if test="fClick != null">
+        f_click = #{fClick,jdbcType=INTEGER},
+      </if>
+      <if test="fComment != null">
+        f_comment = #{fComment,jdbcType=VARCHAR},
+      </if>
+      <if test="fIntroduce != null">
+        f_introduce = #{fIntroduce,jdbcType=VARCHAR},
+      </if>
+      <if test="fCoverS != null">
+        f_cover_s = #{fCoverS,jdbcType=VARCHAR},
+      </if>
+      <if test="fCoverB != null">
+        f_cover_b = #{fCoverB,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where idFilm = #{idfilm,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ynu.dto.Film_infor">
+    update film_infor
+    set f_name = #{fName,jdbcType=VARCHAR},
+      f_director = #{fDirector,jdbcType=VARCHAR},
+      f_star = #{fStar,jdbcType=VARCHAR},
+      idClass = #{idclass,jdbcType=INTEGER},
+      f_country = #{fCountry,jdbcType=VARCHAR},
+      f_time = #{fTime,jdbcType=VARCHAR},
+      f_level = #{fLevel,jdbcType=INTEGER},
+      f_click = #{fClick,jdbcType=INTEGER},
+      f_comment = #{fComment,jdbcType=VARCHAR},
+      f_introduce = #{fIntroduce,jdbcType=VARCHAR},
+      f_cover_s = #{fCoverS,jdbcType=VARCHAR},
+      f_cover_b = #{fCoverB,jdbcType=VARCHAR}
+    where idFilm = #{idfilm,jdbcType=INTEGER}
+  </update>
 </mapper>
