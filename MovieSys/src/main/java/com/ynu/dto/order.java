@@ -1,6 +1,6 @@
 package com.ynu.dto;
 
-public class order {
+public class Order {
     private Integer idorder;
 
     private Integer iduser;

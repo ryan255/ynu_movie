@@ -179,4 +179,182 @@
       fk_seat_idAuditorium = #{fkSeatIdauditorium,jdbcType=INTEGER}
     where idSeat = #{idseat,jdbcType=INTEGER}
   </update>
+  <resultMap id="BaseResultMap" type="com.ynu.dto.Seat">
+    <id column="idSeat" jdbcType="INTEGER" property="idseat" />
+    <result column="seat_num" jdbcType="INTEGER" property="seatNum" />
+    <result column="seat_state" jdbcType="VARCHAR" property="seatState" />
+    <result column="seat_order" jdbcType="VARCHAR" property="seatOrder" />
+    <result column="fk_seat_idAuditorium" jdbcType="INTEGER" property="fkSeatIdauditorium" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    idSeat, seat_num, seat_state, seat_order, fk_seat_idAuditorium
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from seat
+    where idSeat = #{idseat,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from seat
+    where idSeat = #{idseat,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.ynu.dto.Seat">
+    insert into seat (idSeat, seat_num, seat_state, 
+      seat_order, fk_seat_idAuditorium)
+    values (#{idseat,jdbcType=INTEGER}, #{seatNum,jdbcType=INTEGER}, #{seatState,jdbcType=VARCHAR}, 
+      #{seatOrder,jdbcType=VARCHAR}, #{fkSeatIdauditorium,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ynu.dto.Seat">
+    insert into seat
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="idseat != null">
+        idSeat,
+      </if>
+      <if test="seatNum != null">
+        seat_num,
+      </if>
+      <if test="seatState != null">
+        seat_state,
+      </if>
+      <if test="seatOrder != null">
+        seat_order,
+      </if>
+      <if test="fkSeatIdauditorium != null">
+        fk_seat_idAuditorium,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="idseat != null">
+        #{idseat,jdbcType=INTEGER},
+      </if>
+      <if test="seatNum != null">
+        #{seatNum,jdbcType=INTEGER},
+      </if>
+      <if test="seatState != null">
+        #{seatState,jdbcType=VARCHAR},
+      </if>
+      <if test="seatOrder != null">
+        #{seatOrder,jdbcType=VARCHAR},
+      </if>
+      <if test="fkSeatIdauditorium != null">
+        #{fkSeatIdauditorium,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ynu.dto.Seat">
+    update seat
+    <set>
+      <if test="seatNum != null">
+        seat_num = #{seatNum,jdbcType=INTEGER},
+      </if>
+      <if test="seatState != null">
+        seat_state = #{seatState,jdbcType=VARCHAR},
+      </if>
+      <if test="seatOrder != null">
+        seat_order = #{seatOrder,jdbcType=VARCHAR},
+      </if>
+      <if test="fkSeatIdauditorium != null">
+        fk_seat_idAuditorium = #{fkSeatIdauditorium,jdbcType=INTEGER},
+      </if>
+    </set>
+    where idSeat = #{idseat,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ynu.dto.Seat">
+    update seat
+    set seat_num = #{seatNum,jdbcType=INTEGER},
+      seat_state = #{seatState,jdbcType=VARCHAR},
+      seat_order = #{seatOrder,jdbcType=VARCHAR},
+      fk_seat_idAuditorium = #{fkSeatIdauditorium,jdbcType=INTEGER}
+    where idSeat = #{idseat,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="com.ynu.dto.Seat">
+    <id column="idSeat" jdbcType="INTEGER" property="idseat" />
+    <result column="seat_num" jdbcType="INTEGER" property="seatNum" />
+    <result column="seat_state" jdbcType="VARCHAR" property="seatState" />
+    <result column="seat_order" jdbcType="VARCHAR" property="seatOrder" />
+    <result column="fk_seat_idAuditorium" jdbcType="INTEGER" property="fkSeatIdauditorium" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    idSeat, seat_num, seat_state, seat_order, fk_seat_idAuditorium
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from seat
+    where idSeat = #{idseat,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from seat
+    where idSeat = #{idseat,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.ynu.dto.Seat">
+    insert into seat (idSeat, seat_num, seat_state, 
+      seat_order, fk_seat_idAuditorium)
+    values (#{idseat,jdbcType=INTEGER}, #{seatNum,jdbcType=INTEGER}, #{seatState,jdbcType=VARCHAR}, 
+      #{seatOrder,jdbcType=VARCHAR}, #{fkSeatIdauditorium,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ynu.dto.Seat">
+    insert into seat
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="idseat != null">
+        idSeat,
+      </if>
+      <if test="seatNum != null">
+        seat_num,
+      </if>
+      <if test="seatState != null">
+        seat_state,
+      </if>
+      <if test="seatOrder != null">
+        seat_order,
+      </if>
+      <if test="fkSeatIdauditorium != null">
+        fk_seat_idAuditorium,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="idseat != null">
+        #{idseat,jdbcType=INTEGER},
+      </if>
+      <if test="seatNum != null">
+        #{seatNum,jdbcType=INTEGER},
+      </if>
+      <if test="seatState != null">
+        #{seatState,jdbcType=VARCHAR},
+      </if>
+      <if test="seatOrder != null">
+        #{seatOrder,jdbcType=VARCHAR},
+      </if>
+      <if test="fkSeatIdauditorium != null">
+        #{fkSeatIdauditorium,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ynu.dto.Seat">
+    update seat
+    <set>
+      <if test="seatNum != null">
+        seat_num = #{seatNum,jdbcType=INTEGER},
+      </if>
+      <if test="seatState != null">
+        seat_state = #{seatState,jdbcType=VARCHAR},
+      </if>
+      <if test="seatOrder != null">
+        seat_order = #{seatOrder,jdbcType=VARCHAR},
+      </if>
+      <if test="fkSeatIdauditorium != null">
+        fk_seat_idAuditorium = #{fkSeatIdauditorium,jdbcType=INTEGER},
+      </if>
+    </set>
+    where idSeat = #{idseat,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ynu.dto.Seat">
+    update seat
+    set seat_num = #{seatNum,jdbcType=INTEGER},
+      seat_state = #{seatState,jdbcType=VARCHAR},
+      seat_order = #{seatOrder,jdbcType=VARCHAR},
+      fk_seat_idAuditorium = #{fkSeatIdauditorium,jdbcType=INTEGER}
+    where idSeat = #{idseat,jdbcType=INTEGER}
+  </update>
 </mapper>

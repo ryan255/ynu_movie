@@ -511,4 +511,208 @@
       admin_identity = #{adminIdentity,jdbcType=VARCHAR}
     where idAdmin = #{idadmin,jdbcType=INTEGER}
   </update>
+  <resultMap id="BaseResultMap" type="com.ynu.dto.Admin">
+    <id column="idAdmin" jdbcType="INTEGER" property="idadmin" />
+    <result column="idStudio" jdbcType="INTEGER" property="idstudio" />
+    <result column="admin_name" jdbcType="VARCHAR" property="adminName" />
+    <result column="admin_pw" jdbcType="VARCHAR" property="adminPw" />
+    <result column="admin_phone" jdbcType="VARCHAR" property="adminPhone" />
+    <result column="admin_identity" jdbcType="VARCHAR" property="adminIdentity" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    idAdmin, idStudio, admin_name, admin_pw, admin_phone, admin_identity
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from admin
+    where idAdmin = #{idadmin,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from admin
+    where idAdmin = #{idadmin,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.ynu.dto.Admin">
+    insert into admin (idAdmin, idStudio, admin_name, 
+      admin_pw, admin_phone, admin_identity
+      )
+    values (#{idadmin,jdbcType=INTEGER}, #{idstudio,jdbcType=INTEGER}, #{adminName,jdbcType=VARCHAR}, 
+      #{adminPw,jdbcType=VARCHAR}, #{adminPhone,jdbcType=VARCHAR}, #{adminIdentity,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ynu.dto.Admin">
+    insert into admin
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="idadmin != null">
+        idAdmin,
+      </if>
+      <if test="idstudio != null">
+        idStudio,
+      </if>
+      <if test="adminName != null">
+        admin_name,
+      </if>
+      <if test="adminPw != null">
+        admin_pw,
+      </if>
+      <if test="adminPhone != null">
+        admin_phone,
+      </if>
+      <if test="adminIdentity != null">
+        admin_identity,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="idadmin != null">
+        #{idadmin,jdbcType=INTEGER},
+      </if>
+      <if test="idstudio != null">
+        #{idstudio,jdbcType=INTEGER},
+      </if>
+      <if test="adminName != null">
+        #{adminName,jdbcType=VARCHAR},
+      </if>
+      <if test="adminPw != null">
+        #{adminPw,jdbcType=VARCHAR},
+      </if>
+      <if test="adminPhone != null">
+        #{adminPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="adminIdentity != null">
+        #{adminIdentity,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ynu.dto.Admin">
+    update admin
+    <set>
+      <if test="idstudio != null">
+        idStudio = #{idstudio,jdbcType=INTEGER},
+      </if>
+      <if test="adminName != null">
+        admin_name = #{adminName,jdbcType=VARCHAR},
+      </if>
+      <if test="adminPw != null">
+        admin_pw = #{adminPw,jdbcType=VARCHAR},
+      </if>
+      <if test="adminPhone != null">
+        admin_phone = #{adminPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="adminIdentity != null">
+        admin_identity = #{adminIdentity,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where idAdmin = #{idadmin,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ynu.dto.Admin">
+    update admin
+    set idStudio = #{idstudio,jdbcType=INTEGER},
+      admin_name = #{adminName,jdbcType=VARCHAR},
+      admin_pw = #{adminPw,jdbcType=VARCHAR},
+      admin_phone = #{adminPhone,jdbcType=VARCHAR},
+      admin_identity = #{adminIdentity,jdbcType=VARCHAR}
+    where idAdmin = #{idadmin,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="com.ynu.dto.Admin">
+    <id column="idAdmin" jdbcType="INTEGER" property="idadmin" />
+    <result column="idStudio" jdbcType="INTEGER" property="idstudio" />
+    <result column="admin_name" jdbcType="VARCHAR" property="adminName" />
+    <result column="admin_pw" jdbcType="VARCHAR" property="adminPw" />
+    <result column="admin_phone" jdbcType="VARCHAR" property="adminPhone" />
+    <result column="admin_identity" jdbcType="VARCHAR" property="adminIdentity" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    idAdmin, idStudio, admin_name, admin_pw, admin_phone, admin_identity
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from admin
+    where idAdmin = #{idadmin,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from admin
+    where idAdmin = #{idadmin,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.ynu.dto.Admin">
+    insert into admin (idAdmin, idStudio, admin_name, 
+      admin_pw, admin_phone, admin_identity
+      )
+    values (#{idadmin,jdbcType=INTEGER}, #{idstudio,jdbcType=INTEGER}, #{adminName,jdbcType=VARCHAR}, 
+      #{adminPw,jdbcType=VARCHAR}, #{adminPhone,jdbcType=VARCHAR}, #{adminIdentity,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ynu.dto.Admin">
+    insert into admin
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="idadmin != null">
+        idAdmin,
+      </if>
+      <if test="idstudio != null">
+        idStudio,
+      </if>
+      <if test="adminName != null">
+        admin_name,
+      </if>
+      <if test="adminPw != null">
+        admin_pw,
+      </if>
+      <if test="adminPhone != null">
+        admin_phone,
+      </if>
+      <if test="adminIdentity != null">
+        admin_identity,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="idadmin != null">
+        #{idadmin,jdbcType=INTEGER},
+      </if>
+      <if test="idstudio != null">
+        #{idstudio,jdbcType=INTEGER},
+      </if>
+      <if test="adminName != null">
+        #{adminName,jdbcType=VARCHAR},
+      </if>
+      <if test="adminPw != null">
+        #{adminPw,jdbcType=VARCHAR},
+      </if>
+      <if test="adminPhone != null">
+        #{adminPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="adminIdentity != null">
+        #{adminIdentity,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ynu.dto.Admin">
+    update admin
+    <set>
+      <if test="idstudio != null">
+        idStudio = #{idstudio,jdbcType=INTEGER},
+      </if>
+      <if test="adminName != null">
+        admin_name = #{adminName,jdbcType=VARCHAR},
+      </if>
+      <if test="adminPw != null">
+        admin_pw = #{adminPw,jdbcType=VARCHAR},
+      </if>
+      <if test="adminPhone != null">
+        admin_phone = #{adminPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="adminIdentity != null">
+        admin_identity = #{adminIdentity,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where idAdmin = #{idadmin,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ynu.dto.Admin">
+    update admin
+    set idStudio = #{idstudio,jdbcType=INTEGER},
+      admin_name = #{adminName,jdbcType=VARCHAR},
+      admin_pw = #{adminPw,jdbcType=VARCHAR},
+      admin_phone = #{adminPhone,jdbcType=VARCHAR},
+      admin_identity = #{adminIdentity,jdbcType=VARCHAR}
+    where idAdmin = #{idadmin,jdbcType=INTEGER}
+  </update>
 </mapper>
