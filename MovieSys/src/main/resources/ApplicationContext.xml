@@ -16,7 +16,7 @@
 
 	<bean id="propertyConfigurer"
 		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
-		<property name="location" value="classpath:com/hand/dbconfig.properties" />
+		<property name="location" value="classpath:com/ynu/dbconfig.properties" />
 	</bean>
 
 	<!-- 配置数据源 -->
