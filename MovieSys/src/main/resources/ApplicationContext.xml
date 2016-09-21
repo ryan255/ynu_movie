@@ -31,17 +31,15 @@
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
 		<property name="mapperLocations">
-			
-				<value>classpath*:com/ynu/mapping/*_Mapper.xml</value>
-			
+			<value>classpath*:com/ynu/mapper/*.xml</value>
 		</property>
 	</bean>
-	
+
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <property name="basePackage" value="com.ynu.mapper" />
-        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
-    </bean>
-	
+		<property name="basePackage" value="com.ynu.mapper" />
+		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
+	</bean>
+
 
 
 </beans>
