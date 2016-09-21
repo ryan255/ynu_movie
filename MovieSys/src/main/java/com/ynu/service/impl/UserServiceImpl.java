@@ -13,8 +13,7 @@ public class UserServiceImpl implements UserService{
 	@Autowired
 	private UserMapper userMapper;
 
-	public User find(String userName) {
-		return userMapper.findUser(userName);
+	public User find(String user_name) {
+		return userMapper.findUser(user_name);
 	}
-
 }

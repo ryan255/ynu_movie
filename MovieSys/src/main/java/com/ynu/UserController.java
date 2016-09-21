@@ -19,20 +19,23 @@ public class UserController {
 	private UserService userService;
 	
 	@RequestMapping(value="/logins",method = RequestMethod.POST)
-	public String loginCheck(@RequestParam("userName")String name,@RequestParam("userPw")String password,Model model,HttpSession session){
-		System.out.println(name+"..."+password);
+	public String loginCheck(@RequestParam("user_name")String name,@RequestParam("user_pw")String password,Model model,HttpSession session){
+		System.out.println("用户填写的账号和密码是："+name+"和"+password);
 		if (name.equals("")||password.equals("")) {
 			model.addAttribute("msg","用户名或密码不能为空");
 			return "login";
 		}else {
-			User user = userService.find(name);
-			System.out.println("user");
+			User user = userService.find(name);			
+			
+			System.out.println("成功调用finduser");
+			
 			if (user==null) {
 				System.out.println("用户名错误");
 				model.addAttribute("msg","用户名或密码错误");
 				return "login";
 			}else{
-				if (user.getUserPw().equals(password)) {
+				System.out.println("取出的用户"+user.getUser_name());
+				if (user.getUser_pw().equals(password)) {
 //					model.addAttribute("name",name);
 					session.setAttribute("sessionname", name);
 					return "success";

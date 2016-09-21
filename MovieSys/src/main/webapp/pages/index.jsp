@@ -52,13 +52,13 @@ body {
             
                 <label for="inputEmail3">用户名</label>
                 <div>
-                    <input  name="userName" type="text" id="inputEmail3">
+                    <input  name="user_name" type="text" id="inputEmail3">
                 </div>
             </div>
             <div>
                 <label for="inputPassword3" >密码</label>
                 <div>
-                    <input  name="userPw" type="password" id="inputPassword3">
+                    <input  name="user_pw" type="password" id="inputPassword3">
                 </div>
             </div>
             <div>

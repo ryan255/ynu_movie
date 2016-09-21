@@ -1,93 +1,94 @@
 package com.ynu.dto;
 
 public class User {
-    private Integer iduser;
+	private Integer idUser;
 
-    private String userName;
+	private String user_name;
 
-    private String userPw;
+	private String user_pw;
 
-    private String usersex;
+	private String usersex;
 
-    private String userBirth;
+	private String user_birth;
 
-    private String userPhone;
+	private String user_phone;
 
-    private String userMail;
+	private String user_mail;
 
-    private Integer userPoint;
+	private Integer user_point;
 
-    private Integer idlevel;
+	private Integer idLevel;
 
-    public Integer getIduser() {
-        return iduser;
-    }
+	public Integer getIdUser() {
+		return idUser;
+	}
 
-    public void setIduser(Integer iduser) {
-        this.iduser = iduser;
-    }
+	public void setIdUser(Integer idUser) {
+		this.idUser = idUser;
+	}
 
-    public String getUserName() {
-        return userName;
-    }
+	public String getUser_name() {
+		return user_name;
+	}
 
-    public void setUserName(String userName) {
-        this.userName = userName == null ? null : userName.trim();
-    }
+	public void setUser_name(String user_name) {
+		this.user_name = user_name;
+	}
 
-    public String getUserPw() {
-        return userPw;
-    }
+	public String getUser_pw() {
+		return user_pw;
+	}
 
-    public void setUserPw(String userPw) {
-        this.userPw = userPw == null ? null : userPw.trim();
-    }
+	public void setUser_pw(String user_pw) {
+		this.user_pw = user_pw;
+	}
 
-    public String getUsersex() {
-        return usersex;
-    }
+	public String getUsersex() {
+		return usersex;
+	}
 
-    public void setUsersex(String usersex) {
-        this.usersex = usersex == null ? null : usersex.trim();
-    }
+	public void setUsersex(String usersex) {
+		this.usersex = usersex;
+	}
 
-    public String getUserBirth() {
-        return userBirth;
-    }
+	public String getUser_birth() {
+		return user_birth;
+	}
 
-    public void setUserBirth(String userBirth) {
-        this.userBirth = userBirth == null ? null : userBirth.trim();
-    }
+	public void setUser_birth(String user_birth) {
+		this.user_birth = user_birth;
+	}
 
-    public String getUserPhone() {
-        return userPhone;
-    }
+	public String getUser_phone() {
+		return user_phone;
+	}
 
-    public void setUserPhone(String userPhone) {
-        this.userPhone = userPhone == null ? null : userPhone.trim();
-    }
+	public void setUser_phone(String user_phone) {
+		this.user_phone = user_phone;
+	}
 
-    public String getUserMail() {
-        return userMail;
-    }
+	public String getUser_mail() {
+		return user_mail;
+	}
 
-    public void setUserMail(String userMail) {
-        this.userMail = userMail == null ? null : userMail.trim();
-    }
+	public void setUser_mail(String user_mail) {
+		this.user_mail = user_mail;
+	}
 
-    public Integer getUserPoint() {
-        return userPoint;
-    }
+	public Integer getUser_point() {
+		return user_point;
+	}
 
-    public void setUserPoint(Integer userPoint) {
-        this.userPoint = userPoint;
-    }
+	public void setUser_point(Integer user_point) {
+		this.user_point = user_point;
+	}
 
-    public Integer getIdlevel() {
-        return idlevel;
-    }
+	public Integer getIdLevel() {
+		return idLevel;
+	}
 
-    public void setIdlevel(Integer idlevel) {
-        this.idlevel = idlevel;
-    }
+	public void setIdLevel(Integer idLevel) {
+		this.idLevel = idLevel;
+	}
+
 }

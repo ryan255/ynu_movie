@@ -45,29 +45,8 @@ body {
 <!--登录面板-->
 <div>
     <div>电影订票系统</div>
-    <div>
-        <form action="/MovieSys/logins" method="POST" id="slick-login">
-       <div>${msg}</div> 
-            <div>
-            
-                <label for="inputEmail3">用户名</label>
-                <div>
-                    <input  name="userName" type="text" id="inputEmail3">
-                </div>
-            </div>
-            <div>
-                <label for="inputPassword3" >密码</label>
-                <div>
-                    <input  name="userPw" type="password" id="inputPassword3">
-                </div>
-            </div>
-            <div>
-                <div>
-                    <button type="submit">登录</button>
-                </div>
-            </div>
-        </form>
-    </div>
+    登录成功
+    
 </div>
 
 </body>
