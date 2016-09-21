@@ -13,7 +13,11 @@
 
 	<context:component-scan base-package="com.ynu" />
 	
+	<mvc:annotation-driven/>  
 	<mvc:resources location="resource/images/" mapping="resource/images/**"/>
+	<mvc:resources location="/WEB-INF/resource/css/" mapping="/css/**"/>
+	<mvc:resources location="/WEB-INF/resource/js/" mapping="/js/**"/>
+	<mvc:default-servlet-handler/>
 	
 	<bean id="propertyConfigurer"
 		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">

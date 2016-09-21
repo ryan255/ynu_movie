@@ -12,30 +12,30 @@
 
     <title>Title</title>
 
-    <!--css-->
-    <link href="<%=request.getContextPath() %>/bootstrap.css" rel='stylesheet' type='text/css'/>
-    <link href="<%=request.getContextPath() %>/style.css" rel="stylesheet" type="text/css" media="all"/>
-    <link href="<%=request.getContextPath() %>/style.css" rel="stylesheet" type="text/css" media="all"/>
-    <link href="<%=request.getContextPath() %>/megamenu.css" rel="stylesheet" type="text/css" media="all"/>
-    <link rel="stylesheet" href="<%=request.getContextPath() %>/font-awesome.min.css"/>
-    <link rel="stylesheet" href="<%=request.getContextPath() %>/menu.css"/>
+ <!--css-->
+    <link href="resource/css/bootstrap.css" rel='stylesheet' type='text/css'/>
+    <link href="resource/css/style.css" rel="stylesheet" type="text/css" media="all"/>
+    <link href="resource/css/style.css" rel="stylesheet" type="text/css" media="all"/>
+    <link href="resource/css/megamenu.css" rel="stylesheet" type="text/css" media="all"/>
+    <link rel="stylesheet" href="resource/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="resource/css/menu.css"/>
 
     <!--js-->
-    <script src="<%=request.getContextPath() %>/jquery.min.js"></script>
-    <script src="<%=request.getContextPath() %>/bootstrap.min.js"></script>
+    <script src="resource/js/jquery.min.js"></script>
+    <script src="resource/js/bootstrap.min.js"></script>
     <script type="application/x-javascript"> addEventListener("load", function () {
         setTimeout(hideURLbar, 0);
     }, false);
     function hideURLbar() {
         window.scrollTo(0, 1);
     } </script>
-    <script type="text/javascript" src="<%=request.getContextPath() %>/megamenu.js"></script>
+    <script type="text/javascript" src="resource/js/megamenu.js"></script>
     <script>$(document).ready(function () {
         $(".megamenu").megamenu();
     });</script>
-    <script type="text/javascript" src="<%=request.getContextPath() %>/jquery.leanModal.min.js"></script>
-    <script type="text/javascript" src="<%=request.getContextPath() %>/move-top.js"></script>
-    <script type="text/javascript" src="<%=request.getContextPath() %>/easing.js"></script>
+    <script type="text/javascript" src="resource/resource/js/jquery.leanModal.min.js"></script>
+    <script type="text/javascript" src="resource/js/move-top.js"></script>
+    <script type="text/javascript" src="resource/js/easing.js"></script>
     <script type="text/javascript">
         jQuery(document).ready(function ($) {
             $(".scroll").click(function (event) {
@@ -44,7 +44,6 @@
             });
         });
     </script>
-
 </head>
 <body>
 <!--网页顶部-->
@@ -252,41 +251,41 @@
         <!--展示及快捷购票-->
         <div class="main-banner">
             <div class="banner col-md-8">
-                <section class="slider">
-                    <div class="flexslider">
-                        <ul class="slides">
-                            <li>
-                                <img class="img-responsive" src="<c:url value='/images/pic1.jpg' />" alt="">
-                            </li>
-                            <li>
-                                <img src="<%=request.getContextPath() %>/resource/images/pic2.jpg" class="img-responsive" alt="">
-                            </li>
-                            <li>
-                                <img src="/resource/images/pic3.jpg" class="img-responsive" alt="">
-                            </li>
-                            <li>
-                                <img src="resource/images/pic4.jpg" class="img-responsive" alt="">
-                            </li>
-                        </ul>
-                    </div>
-                </section>
-
-
-                <script defer src="<%=request.getContextPath() %>/jquery.flexslider.js"></script>
-                <script type="text/javascript">
-                    $(function () {
-                        SyntaxHighlighter.all();
-                    });
-                    $(window).load(function () {
-                        $('.flexslider').flexslider({
-                            animation: "slide",
-                            start: function (slider) {
-                                $('body').removeClass('loading');
-                            }
-                        });
-                    });
-                </script>
-            </div>
+			<section class="slider">
+				<div class="flexslider">
+						<ul class="slides">
+						<li>
+							<img src="resource/images/pic1.jpg" class="img-responsive" alt="" />
+						</li>
+						<li>
+							<img src="resource/images/pic2.jpg" class="img-responsive" alt="" />
+						</li>
+						<li>
+							<img src="resource/images/pic3.jpg" class="img-responsive" alt="" />
+						</li>
+						<li>
+							<img src="resource/images/pic4.jpg" class="img-responsive" alt="" />
+						</li>
+				  </ul>
+				</div>
+					</section>
+				 <!-- FlexSlider -->
+				 <script defer src="resource//resource/js/jquery.flexslider.js"></script>
+				 <link rel="stylesheet" href="/resource/css/flexslider.css" type="text/css" media="screen" />
+					<script type="text/javascript">
+				$(function(){
+				 SyntaxHighlighter.all();
+				});
+				$(window).load(function(){
+				  $('.flexslider').flexslider({
+					animation: "slide",
+					start: function(slider){
+					  $('body').removeClass('loading');
+					}
+				 });
+				});
+			 </script>
+         </div>
 
             <div class="col-md-4 banner-right">
                 <h4 style="color: #5e5e5e">马上购票</h4>
@@ -434,7 +433,7 @@
                     });
                 });
             </script>
-            <script type="text/javascript" src="<%=request.getContextPath() %>/jquery.flexisel.js"></script>
+            <script type="text/javascript" src="resource/js/jquery.flexisel.js"></script>
         </div>
         <!--向左滑动展示结束-->
 
