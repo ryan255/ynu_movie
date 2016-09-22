@@ -20,6 +20,6 @@ http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 
 
 
-	<mvc:resources mapping="/pages/**" location="pages/" />
+	<mvc:resources mapping="/**" location="pages/" />
 	<mvc:annotation-driven />
 </beans>
