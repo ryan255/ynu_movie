@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@page isELIgnored="false"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,36 +13,38 @@
 <title>Title</title>
 
 <!--css-->
-<link href="resource/css/bootstrap.css" rel='stylesheet' type='text/css' />
-<link href="resource/css/style.css" rel="stylesheet" type="text/css"
+<link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
+<link href="css/style.css" rel="stylesheet" type="text/css"
 	media="all" />
-<link href="resource/css/style.css" rel="stylesheet" type="text/css"
+<link href="css/style.css" rel="stylesheet" type="text/css"
 	media="all" />
-<link href="resource/css/megamenu.css" rel="stylesheet" type="text/css"
+<link href="css/megamenu.css" rel="stylesheet" type="text/css"
 	media="all" />
-<link rel="stylesheet" href="resource/css/font-awesome.min.css" />
-<link rel="stylesheet" href="resource/css/menu.css" />
+<link rel="stylesheet" href="css/font-awesome.min.css" />
+<link rel="stylesheet" href="css/menu.css" />
 
 <!--js-->
-<script src="resource/js/jquery.min.js"></script>
-<script src="resource/js/bootstrap.min.js"></script>
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
 <script type="application/x-javascript">
+	
 	 addEventListener("load", function () {
         setTimeout(hideURLbar, 0);
     }, false);
     function hideURLbar() {
         window.scrollTo(0, 1);
     } 
+
 </script>
-<script type="text/javascript" src="resource/js/megamenu.js"></script>
+<script type="text/javascript" src="js/megamenu.js"></script>
 <script>
 	$(document).ready(function() {
 		$(".megamenu").megamenu();
 	});
 </script>
-<script type="text/javascript" src="resource/js/jquery.leanModal.min.js"></script>
-<script type="text/javascript" src="resource/js/move-top.js"></script>
-<script type="text/javascript" src="resource/js/easing.js"></script>
+<script type="text/javascript" src="js/jquery.leanModal.min.js"></script>
+<script type="text/javascript" src="js/move-top.js"></script>
+<script type="text/javascript" src="js/easing.js"></script>
 <script type="text/javascript">
 	jQuery(document).ready(function($) {
 		$(".scroll").click(function(event) {
@@ -53,7 +56,7 @@
 	});
 </script>
 
-<script src="resource/js/easyResponsiveTabs.js" type="text/javascript"></script>
+<script src="js/easyResponsiveTabs.js" type="text/javascript"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
 		$('#horizontalTab').easyResponsiveTabs({
@@ -75,8 +78,19 @@
 			</div>
 			<div class="header-top-right">
 				<a href="login.html">我是商家</a>
-				<button class="btn btn-primary" data-toggle="modal"
+				<%
+					if (request.getSession().getAttribute("success") == null) {
+				%>
+				<button id="login-btn" class="btn btn-primary" data-toggle="modal"
 					data-target="#myModal">登录</button>
+
+				<%
+					} else {
+				%>
+				<%=request.getSession().getAttribute("success")%>
+				<%
+					}
+				%>
 
 
 				<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
@@ -275,8 +289,8 @@
 						</div>
 					</section>
 					<!-- FlexSlider -->
-					<script defer src="resource/js/jquery.flexslider.js"></script>
-					<link rel="stylesheet" href="resource/css/flexslider.css"
+					<script defer src="js/jquery.flexslider.js"></script>
+					<link rel="stylesheet" href="css/flexslider.css"
 						type="text/css" media="screen" />
 					<script type="text/javascript">
 						$(function() {
@@ -312,10 +326,25 @@
 
 			</div>
 			<!--end of show&buy-->
+			
+			
+			<c:forEach var="filmOnline" items="${filmOnline}">
+							<h4>${filmOnline.f_name}</h4>
+							<h5>${filmOnline.f_time}</h5>
+							<h6>${filmOnline.f_country}</h6>
+					</c:forEach>
+			
 
 			<!--向左滑动展示-->
 			<div class="review-slider col-md-12">
 				<ul id="flexiselDemo1">
+
+				
+
+					
+
+
+
 					<li><a href="movies,html"> <img
 							src="resource/images/r1.jpg" alt="">
 					</a>
@@ -427,7 +456,7 @@
 						});
 					});
 				</script>
-				<script type="text/javascript" src="resource/js/jquery.flexisel.js"></script>
+				<script type="text/javascript" src="js/jquery.flexisel.js"></script>
 			</div>
 			<!--向左滑动展示结束-->
 

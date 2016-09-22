@@ -37,8 +37,8 @@ public class UserController {
 				System.out.println("取出的用户"+user.getUser_name());
 				if (user.getUser_pw().equals(password)) {
 //					model.addAttribute("name",name);
-					session.setAttribute("sessionname", name);
-					return "success";
+					session.setAttribute("success", name);
+					return "index";
 				}else{
 					model.addAttribute("msg","用户名或密码错误");
 					return "login";

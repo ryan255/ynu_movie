@@ -1,133 +1,145 @@
 package com.ynu.dto;
 
 public class Film_infor {
-    private Integer idfilm;
+    private Integer idFilm;
 
-    private String fName;
+    private String f_name;
 
-    private String fDirector;
+    private String f_director;
 
-    private String fStar;
+    private String f_star;
 
-    private Integer idclass;
+    private Integer idClass;
 
-    private String fCountry;
+    private String f_country;
 
-    private String fTime;
+    private Integer f_time;
 
-    private Integer fLevel;
+    private Integer f_level;
 
-    private Integer fClick;
+    private Integer f_click;
 
-    private String fComment;
+    private String f_comment;
 
-    private String fIntroduce;
+    private String f_introduce;
 
-    private String fCoverS;
+    private String f_cover_s;
 
-    private String fCoverB;
+    private String f_cover_b;
+    
+    private Integer f_online;
 
-    public Integer getIdfilm() {
-        return idfilm;
-    }
+	public Integer getF_online() {
+		return f_online;
+	}
 
-    public void setIdfilm(Integer idfilm) {
-        this.idfilm = idfilm;
-    }
+	public void setF_online(Integer f_online) {
+		this.f_online = f_online;
+	}
 
-    public String getfName() {
-        return fName;
-    }
+	public Integer getIdFilm() {
+		return idFilm;
+	}
 
-    public void setfName(String fName) {
-        this.fName = fName == null ? null : fName.trim();
-    }
+	public void setIdFilm(Integer idFilm) {
+		this.idFilm = idFilm;
+	}
 
-    public String getfDirector() {
-        return fDirector;
-    }
+	public String getF_name() {
+		return f_name;
+	}
 
-    public void setfDirector(String fDirector) {
-        this.fDirector = fDirector == null ? null : fDirector.trim();
-    }
+	public void setF_name(String f_name) {
+		this.f_name = f_name;
+	}
 
-    public String getfStar() {
-        return fStar;
-    }
+	public String getF_director() {
+		return f_director;
+	}
 
-    public void setfStar(String fStar) {
-        this.fStar = fStar == null ? null : fStar.trim();
-    }
+	public void setF_director(String f_director) {
+		this.f_director = f_director;
+	}
 
-    public Integer getIdclass() {
-        return idclass;
-    }
+	public String getF_star() {
+		return f_star;
+	}
 
-    public void setIdclass(Integer idclass) {
-        this.idclass = idclass;
-    }
+	public void setF_star(String f_star) {
+		this.f_star = f_star;
+	}
 
-    public String getfCountry() {
-        return fCountry;
-    }
+	public Integer getIdClass() {
+		return idClass;
+	}
 
-    public void setfCountry(String fCountry) {
-        this.fCountry = fCountry == null ? null : fCountry.trim();
-    }
+	public void setIdClass(Integer idClass) {
+		this.idClass = idClass;
+	}
 
-    public String getfTime() {
-        return fTime;
-    }
+	public String getF_country() {
+		return f_country;
+	}
 
-    public void setfTime(String fTime) {
-        this.fTime = fTime == null ? null : fTime.trim();
-    }
+	public void setF_country(String f_country) {
+		this.f_country = f_country;
+	}
 
-    public Integer getfLevel() {
-        return fLevel;
-    }
+	public Integer getF_time() {
+		return f_time;
+	}
 
-    public void setfLevel(Integer fLevel) {
-        this.fLevel = fLevel;
-    }
+	public void setF_time(Integer f_time) {
+		this.f_time = f_time;
+	}
 
-    public Integer getfClick() {
-        return fClick;
-    }
+	public Integer getF_level() {
+		return f_level;
+	}
 
-    public void setfClick(Integer fClick) {
-        this.fClick = fClick;
-    }
+	public void setF_level(Integer f_level) {
+		this.f_level = f_level;
+	}
 
-    public String getfComment() {
-        return fComment;
-    }
+	public Integer getF_click() {
+		return f_click;
+	}
 
-    public void setfComment(String fComment) {
-        this.fComment = fComment == null ? null : fComment.trim();
-    }
+	public void setF_click(Integer f_click) {
+		this.f_click = f_click;
+	}
 
-    public String getfIntroduce() {
-        return fIntroduce;
-    }
+	public String getF_comment() {
+		return f_comment;
+	}
 
-    public void setfIntroduce(String fIntroduce) {
-        this.fIntroduce = fIntroduce == null ? null : fIntroduce.trim();
-    }
+	public void setF_comment(String f_comment) {
+		this.f_comment = f_comment;
+	}
 
-    public String getfCoverS() {
-        return fCoverS;
-    }
+	public String getF_introduce() {
+		return f_introduce;
+	}
 
-    public void setfCoverS(String fCoverS) {
-        this.fCoverS = fCoverS == null ? null : fCoverS.trim();
-    }
+	public void setF_introduce(String f_introduce) {
+		this.f_introduce = f_introduce;
+	}
 
-    public String getfCoverB() {
-        return fCoverB;
-    }
+	public String getF_cover_s() {
+		return f_cover_s;
+	}
 
-    public void setfCoverB(String fCoverB) {
-        this.fCoverB = fCoverB == null ? null : fCoverB.trim();
-    }
+	public void setF_cover_s(String f_cover_s) {
+		this.f_cover_s = f_cover_s;
+	}
+
+	public String getF_cover_b() {
+		return f_cover_b;
+	}
+
+	public void setF_cover_b(String f_cover_b) {
+		this.f_cover_b = f_cover_b;
+	}
+
+   
 }

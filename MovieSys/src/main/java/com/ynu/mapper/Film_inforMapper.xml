@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ynu.mapper.Film_inforMapper">
+	<select id="selectAllFilmOnline" resultType="com.ynu.dto.Film_infor">
+		select * from film_infor where
+		f_online=1;
+	</select>
+	<select id="selectFilmComing" resultType="com.ynu.dto.Film_infor">
+		select * from film_infor where
+		f_online=2;
+	</select>
+</mapper>
