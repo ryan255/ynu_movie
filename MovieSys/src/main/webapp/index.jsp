@@ -256,7 +256,7 @@
 							<li class="active" style="margin-left: 60px;"><a href="#">首页</a>
 							</li>
 
-							<li class="w3_megamenu-fw"><a href="movies.html">电影排期<b
+							<li class="w3_megamenu-fw"><a href="movies.jsp">电影排期<b
 									class="caret"></b></a></li>
 
 							<li class="w3_megamenu-fw"><a href="activities.html">促销活动<b

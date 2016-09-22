@@ -1,10 +1,9 @@
-package com.ynu.service;
+package com.ynu.mapper;
 
 import java.util.List;
 
 import com.ynu.dto.Studio;
 
-public interface StudioService {
+public interface StudioMapper {
 	public List<Studio> selectAllStudio();
-
 }

@@ -16,4 +16,8 @@ public class UserServiceImpl implements UserService{
 	public User find(String user_name) {
 		return userMapper.findUser(user_name);
 	}
+
+	public void insertUser(User user) {
+		userMapper.insertUser(user);
+	}
 }

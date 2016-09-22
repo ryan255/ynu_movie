@@ -8,4 +8,7 @@
 		select * from user where
 		user_name = #{user_name}
 	</select>
+	<insert id="insertUser" parameterType="com.ynu.dto.User">
+		INSERT INTO user(user_name,user_pw,user_phone) values(#{user_name},#{user_pw},#{user_phone})
+	</insert>
 </mapper>

@@ -44,6 +44,6 @@
 	</servlet-mapping>
 
 	<welcome-file-list>
-		<welcome-file>pages/index2.jsp</welcome-file>
+		<welcome-file>pages/home.jsp</welcome-file>
 	</welcome-file-list>
 </web-app>

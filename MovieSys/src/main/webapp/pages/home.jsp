@@ -3,6 +3,7 @@
 <%@page isELIgnored="false"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@page isELIgnored="false"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,9 +23,16 @@
 <link rel="stylesheet" href="css/menu.css" />
 
 <!--js-->
+<script type="text/javascript">
+	window.
+</script>
 <script src="js/jquery.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script type="application/x-javascript">
+	
+	
+	
+	
 	
 	
 	 addEventListener("load", function () {
@@ -33,6 +41,10 @@
     function hideURLbar() {
         window.scrollTo(0, 1);
     } 
+
+
+
+
 
 
 </script>
@@ -88,6 +100,7 @@
 					} else {
 				%>
 				<%=request.getSession().getAttribute("success")%>
+				<button class="btn btn-primary">退出</button>
 				<%
 					}
 				%>
@@ -143,56 +156,38 @@
 												</form>
 											</div>
 											<div class="tab-pane" id="Registration">
-												<form role="form" class="form-horizontal">
-													<div class="form-group">
-														<label for="email" class="col-sm-2 control-label">
-															用户名</label>
-														<div class="col-sm-10">
-															<div class="row">
-																<div class="col-md-3">
-																	<select class="form-control">
-																		<option>Mr.</option>
-																		<option>Ms.</option>
-																		<option>Mrs.</option>
-																	</select>
-																</div>
-																<div class="col-md-9">
-																	<input type="text" class="form-control"
-																		placeholder="Name" />
-																</div>
-															</div>
-														</div>
-													</div>
-													<div class="form-group">
-														<label for="email" class="col-sm-2 control-label">
-															邮箱</label>
-														<div class="col-sm-10">
-															<input type="email" class="form-control" id="email"
-																placeholder="Email" />
-														</div>
-													</div>
+
+
+
+
+
+
+												<form action="register" method="post" role="form"
+													class="form-horizontal">
+
+
 													<div class="form-group">
 														<label for="mobile" class="col-sm-2 control-label">
 															手机</label>
 														<div class="col-sm-10">
-															<input type="email" class="form-control" id="mobile"
-																placeholder="Mobile" />
+															<input name="user_phone" class="form-control" id="mobile"
+																placeholder="手机号" />
 														</div>
 													</div>
 													<div class="form-group">
 														<label for="password" class="col-sm-2 control-label">
 															密码</label>
 														<div class="col-sm-10">
-															<input type="password" class="form-control" id="password"
-																placeholder="Password" />
+															<input name="user_pw" type="password"
+																class="form-control" id="password" placeholder="密码" />
 														</div>
 													</div>
 													<div class="row">
 														<div class="col-sm-2"></div>
 														<div class="col-sm-10">
-															<button type="button" class="btn btn-primary btn-sm">
+															<button type="submit" class="btn btn-primary btn-sm">
 																确定</button>
-															<button type="button" class="btn btn-default btn-sm">
+															<button type="reset" class="btn btn-default btn-sm">
 																取消</button>
 														</div>
 													</div>
@@ -256,13 +251,13 @@
 							<li class="active" style="margin-left: 60px;"><a href="#">首页</a>
 							</li>
 
-							<li class="w3_megamenu-fw"><a href="movies.html">电影排期<b
+							<li class="w3_megamenu-fw"><a href="movies">电影排期<b
 									class="caret"></b></a></li>
 
-							<li class="w3_megamenu-fw"><a href="activities.html">促销活动<b
+							<li class="w3_megamenu-fw"><a href="activities.jsp">促销活动<b
 									class="caret"></b></a></li>
 
-							<li class="w3_megamenu-fw"><a href="message.html">电影影评<b
+							<li class="w3_megamenu-fw"><a href="message.jsp">电影影评<b
 									class="caret"></b></a></li>
 						</ul>
 					</div>
@@ -310,16 +305,32 @@
 				<div class="col-md-4 banner-right">
 					<h4 style="color: #5e5e5e">马上购票</h4>
 					<div class="grid_3 grid_5">
-						<form action="">
-							<ul>
-								<li>选择电影：<select class="list_of_movies" name="" id=""></select></li>
-								<li>选择影城：<select class="list_of_movies" name="" id=""></select></li>
-								<li>选择时间：<select class="list_of_movies" name="" id=""></select></li>
+						<ul>
 
-							</ul>
-							<input type="submit" value="查询" class="btn btn-primary"
-								style="width: 100px; margin-left: 90px; margin-top: 30px;">
-						</form>
+							<li>选择电影：
+								<form action="">
+									<select class="list_of_movies" name="" id="">
+										<option>—— —— —— ——</option>
+										<c:forEach var="filmOnline" items="${filmOnline}">
+											<option>${filmOnline.f_name}</option>
+										</c:forEach>
+									</select>
+								</form>
+							</li>
+
+							<!--  <li>选择影城：<select class="list_of_movies" name="" id="">
+									<c:forEach items="${studios}" var="studios">
+										<option>${studios.studio_name}</option>
+									</c:forEach>
+							</select></li>
+							<li>选择时间：
+							<select class="list_of_movies" name="" id="">
+							</select></li>-->
+
+						</ul>
+						<input type="submit" value="查询" class="btn btn-primary"
+							style="width: 100px; margin-left: 90px; margin-top: 30px;">
+
 					</div>
 
 				</div>
@@ -337,8 +348,8 @@
 
 					<c:forEach var="filmOnline" items="${filmOnline}">
 
-						<li><a href="movies,html"> <img
-								src="resource/images/r1.jpg" alt="">
+						<li><a href="movies,html"> <img style="height:250px;"
+								src="resource/images/${filmOnline.f_cover_s}" alt="">
 						</a>
 							<div class="slide-title">
 								<h4>${filmOnline.f_name}</h4>
@@ -646,62 +657,21 @@
 				</div>
 				<div class="right-side-bar">
 					<div class="top-movies-in-india">
+
 						<h4>热销排行</h4>
-						<ul class="mov_list">
-							<li><i class="fa fa-star"></i></li>
-							<li>77%</li>
-							<li><a href="movie-single.html">Jurassic World (3D)
-									(U/A)</a></li>
-						</ul>
-						<ul class="mov_list">
-							<li><i class="fa fa-star"></i></li>
-							<li>80%</li>
-							<li><a href="movie-single.html">Jurassic World (3D
-									Hindi) (U/A)</a></li>
-						</ul>
-						<ul class="mov_list">
-							<li><i class="fa fa-star"></i></li>
-							<li>69%</li>
-							<li><a href="movie-single.html">Dil Dhadakne Do (U/A)</a></li>
-						</ul>
-						<ul class="mov_list">
-							<li><i class="fa fa-star"></i></li>
-							<li>65%</li>
-							<li><a href="movie-single.html">Hamari Adhuri Kahani (U)</a></li>
-						</ul>
-						<ul class="mov_list">
-							<li><i class="fa fa-star"></i></li>
-							<li>83%</li>
-							<li><a href="movie-single.html">Premam (U)</a></li>
-						</ul>
-						<ul class="mov_list">
-							<li><i class="fa fa-star"></i></li>
-							<li>87%</li>
-							<li><a href="movie-single.html">Tanu Weds Manu Returns
-									(U/A)</a></li>
-						</ul>
-						<ul class="mov_list">
-							<li><i class="fa fa-star"></i></li>
-							<li>71%</li>
-							<li><a href="movie-single.html">Romeo Juliet (U)</a></li>
-						</ul>
-						<ul class="mov_list">
-							<li><i class="fa fa-star"></i></li>
-							<li>81%</li>
-							<li><a href="movie-single.html">Jurassic World (IMAX 3D)
-									(U/A)</a></li>
-						</ul>
-						<ul class="mov_list">
-							<li><i class="fa fa-star"></i></li>
-							<li>80%</li>
-							<li><a href="movie-single.html">Jurassic World (2D
-									Hindi) (U/A)</a></li>
-						</ul>
-						<ul class="mov_list">
-							<li><i class="fa fa-star"></i></li>
-							<li>89%</li>
-							<li><a href="movie-single.html">Kaaka Muttai (U)</a></li>
-						</ul>
+						<c:forEach var="filmOnline" items="${filmOnline}">
+							<ul class="mov_list">
+								<li><i class="fa fa-star"></i></li>
+								<li>${filmOnline.f_click}</li>
+								<li><a href="movie-single.html">${filmOnline.f_name}
+										(3D) (${filmOnline.f_country})</a></li>
+							</ul>
+
+
+
+						</c:forEach>
+
+
 					</div>
 
 

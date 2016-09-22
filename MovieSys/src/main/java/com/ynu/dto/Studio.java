@@ -1,63 +1,65 @@
 package com.ynu.dto;
 
 public class Studio {
-    private Integer idstudio;
+    private Integer idStudio;
 
-    private String studioName;
+    private String studio_name;
 
-    private String studioOnline;
+    private String studio_online;
 
-    private String studioAddress;
+    private String studio_address;
 
-    private String studioPhone;
+    private String studio_phone;
 
-    private String studioText;
+    private String studio_text;
 
-    public Integer getIdstudio() {
-        return idstudio;
-    }
+	public Integer getIdStudio() {
+		return idStudio;
+	}
 
-    public void setIdstudio(Integer idstudio) {
-        this.idstudio = idstudio;
-    }
+	public void setIdStudio(Integer idStudio) {
+		this.idStudio = idStudio;
+	}
 
-    public String getStudioName() {
-        return studioName;
-    }
+	public String getStudio_name() {
+		return studio_name;
+	}
 
-    public void setStudioName(String studioName) {
-        this.studioName = studioName == null ? null : studioName.trim();
-    }
+	public void setStudio_name(String studio_name) {
+		this.studio_name = studio_name;
+	}
 
-    public String getStudioOnline() {
-        return studioOnline;
-    }
+	public String getStudio_online() {
+		return studio_online;
+	}
 
-    public void setStudioOnline(String studioOnline) {
-        this.studioOnline = studioOnline == null ? null : studioOnline.trim();
-    }
+	public void setStudio_online(String studio_online) {
+		this.studio_online = studio_online;
+	}
 
-    public String getStudioAddress() {
-        return studioAddress;
-    }
+	public String getStudio_address() {
+		return studio_address;
+	}
 
-    public void setStudioAddress(String studioAddress) {
-        this.studioAddress = studioAddress == null ? null : studioAddress.trim();
-    }
+	public void setStudio_address(String studio_address) {
+		this.studio_address = studio_address;
+	}
 
-    public String getStudioPhone() {
-        return studioPhone;
-    }
+	public String getStudio_phone() {
+		return studio_phone;
+	}
 
-    public void setStudioPhone(String studioPhone) {
-        this.studioPhone = studioPhone == null ? null : studioPhone.trim();
-    }
+	public void setStudio_phone(String studio_phone) {
+		this.studio_phone = studio_phone;
+	}
 
-    public String getStudioText() {
-        return studioText;
-    }
+	public String getStudio_text() {
+		return studio_text;
+	}
 
-    public void setStudioText(String studioText) {
-        this.studioText = studioText == null ? null : studioText.trim();
-    }
+	public void setStudio_text(String studio_text) {
+		this.studio_text = studio_text;
+	}
+
+   
 }

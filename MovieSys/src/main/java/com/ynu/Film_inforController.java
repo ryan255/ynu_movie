@@ -21,7 +21,7 @@ public class Film_inforController {
 	@Autowired
 	private Film_inforService film_inforService;
 	
-	@RequestMapping(value = "/index2")
+	@RequestMapping(value = "/home")
 	public String film_infor(Model model) {
 		System.out.println("index2");
 		List<Film_infor> filmOnline = film_inforService.selectAllFilmOnline();
@@ -29,7 +29,18 @@ public class Film_inforController {
 		System.out.println("2");
 		model.addAttribute("filmOnline",filmOnline);
 		model.addAttribute("filmComing", filmComing);
-		return "index2";
+		return "home";
+	}
+	
+	@RequestMapping(value = "/movies")
+	public String filmForMovies(Model model) {
+		System.out.println("index2");
+		List<Film_infor> filmOnline = film_inforService.selectAllFilmOnline();
+		List<Film_infor> filmComing = (List<Film_infor>) film_inforService.selectFilmComing();
+		System.out.println("2");
+		model.addAttribute("filmOnline",filmOnline);
+		model.addAttribute("filmComing", filmComing);
+		return "movies";
 	}
 	
 
