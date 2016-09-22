@@ -15,8 +15,8 @@
 	
 	<mvc:annotation-driven/>  
 	<mvc:resources location="resource/images/" mapping="resource/images/**"/>
-	<mvc:resources location="/WEB-INF/resource/css/" mapping="/css/**"/>
-	<mvc:resources location="/WEB-INF/resource/js/" mapping="/js/**"/>
+	<mvc:resources location="resource/css/" mapping="resource/css/**"/>
+	<mvc:resources location="resource/js/" mapping="resource/js/**"/>
 	<mvc:default-servlet-handler/>
 	
 	<bean id="propertyConfigurer"

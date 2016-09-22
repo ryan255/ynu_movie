@@ -2,7 +2,6 @@
 	pageEncoding="UTF-8"%>
 <%@page isELIgnored="false" %>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,7 +11,7 @@
 
     <title>Title</title>
 
- <!--css-->
+    <!--css-->
     <link href="resource/css/bootstrap.css" rel='stylesheet' type='text/css'/>
     <link href="resource/css/style.css" rel="stylesheet" type="text/css" media="all"/>
     <link href="resource/css/style.css" rel="stylesheet" type="text/css" media="all"/>
@@ -33,7 +32,7 @@
     <script>$(document).ready(function () {
         $(".megamenu").megamenu();
     });</script>
-    <script type="text/javascript" src="resource/resource/js/jquery.leanModal.min.js"></script>
+    <script type="text/javascript" src="resource/js/jquery.leanModal.min.js"></script>
     <script type="text/javascript" src="resource/js/move-top.js"></script>
     <script type="text/javascript" src="resource/js/easing.js"></script>
     <script type="text/javascript">
@@ -44,6 +43,18 @@
             });
         });
     </script>
+
+    <script src="resource/js/easyResponsiveTabs.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#horizontalTab').easyResponsiveTabs({
+                type: 'default', //Types: default, vertical, accordion
+                width: 'auto', //auto or any width like 600px
+                fit: true   // 100% fit in a container
+            });
+        });
+    </script>
+
 </head>
 <body>
 <!--网页顶部-->
@@ -251,41 +262,41 @@
         <!--展示及快捷购票-->
         <div class="main-banner">
             <div class="banner col-md-8">
-			<section class="slider">
-				<div class="flexslider">
-						<ul class="slides">
-						<li>
-							<img src="resource/images/pic1.jpg" class="img-responsive" alt="" />
-						</li>
-						<li>
-							<img src="resource/images/pic2.jpg" class="img-responsive" alt="" />
-						</li>
-						<li>
-							<img src="resource/images/pic3.jpg" class="img-responsive" alt="" />
-						</li>
-						<li>
-							<img src="resource/images/pic4.jpg" class="img-responsive" alt="" />
-						</li>
-				  </ul>
-				</div>
-					</section>
-				 <!-- FlexSlider -->
-				 <script defer src="resource//resource/js/jquery.flexslider.js"></script>
-				 <link rel="stylesheet" href="/resource/css/flexslider.css" type="text/css" media="screen" />
-					<script type="text/javascript">
-				$(function(){
-				 SyntaxHighlighter.all();
-				});
-				$(window).load(function(){
-				  $('.flexslider').flexslider({
-					animation: "slide",
-					start: function(slider){
-					  $('body').removeClass('loading');
-					}
-				 });
-				});
-			 </script>
-         </div>
+                <section class="slider">
+                    <div class="flexslider">
+                        <ul class="slides">
+                            <li>
+                                <img src="resource/images/pic1.jpg" class="img-responsive" alt="" />
+                            </li>
+                            <li>
+                                <img src="resource/images/pic2.jpg" class="img-responsive" alt="" />
+                            </li>
+                            <li>
+                                <img src="resource/images/pic3.jpg" class="img-responsive" alt="" />
+                            </li>
+                            <li>
+                                <img src="resource/images/pic4.jpg" class="img-responsive" alt="" />
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+                <!-- FlexSlider -->
+                <script defer src="resource/js/jquery.flexslider.js"></script>
+                <link rel="stylesheet" href="resource/css/flexslider.css" type="text/css" media="screen" />
+                <script type="text/javascript">
+                    $(function(){
+                        SyntaxHighlighter.all();
+                    });
+                    $(window).load(function(){
+                        $('.flexslider').flexslider({
+                            animation: "slide",
+                            start: function(slider){
+                                $('body').removeClass('loading');
+                            }
+                        });
+                    });
+                </script>
+            </div>
 
             <div class="col-md-4 banner-right">
                 <h4 style="color: #5e5e5e">马上购票</h4>
