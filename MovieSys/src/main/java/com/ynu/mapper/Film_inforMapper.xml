@@ -59,4 +59,18 @@
 		where
 		f_online=2;
 	</select>
+	
+	<select id="selectFilmPage" parameterType="java.lang.String" resultMap="BaseResultMap">
+		SELECT *
+		FROM film_infor
+		WHERE 1 = 1
+		<if test="f_name != null and f_name !=''">
+		    AND f_name = #{f_name,jdbcType=VARCHAR}
+		</if>
+		ORDER BY idFilm
+	</select>
+		<!-- 查询单条记录 -->
+	<select id="selectFilm_inforById" parameterType="int" resultMap="BaseResultMap">
+		SELECT * FROM film_infor WHERE idFilm = #{idFilm}
+	</select>
 </mapper>

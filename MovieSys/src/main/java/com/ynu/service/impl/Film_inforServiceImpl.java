@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ImportResource;
 import org.springframework.stereotype.Service;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.ynu.dto.Film_infor;
 import com.ynu.mapper.Film_inforMapper;
 import com.ynu.service.Film_inforService;
@@ -25,6 +27,30 @@ public class Film_inforServiceImpl implements Film_inforService {
 	public Film_infor selectPlayByfilmName(String f_name) {
 		// TODO Auto-generated method stub
 		return film_inforMapper.selectPlayByfilmName(f_name);
+	}
+	public PageInfo<Film_infor> queryByPage(String f_name, Integer pageNo, Integer pageSize) {
+		pageNo = pageNo == null?1:pageNo;
+		pageSize = pageSize == null?10:pageSize;
+		PageHelper.startPage(pageNo, pageSize);
+		List<Film_infor> list = film_inforMapper.selectFilmPage(f_name);
+		//用PageInfo对结果进行包装
+		PageInfo<Film_infor> page = new PageInfo<Film_infor>(list);
+		//测试PageInfo全部属性
+		System.out.println(page.getPageNum());
+		System.out.println(page.getPageSize());
+		System.out.println(page.getStartRow());
+		System.out.println(page.getEndRow());
+		System.out.println(page.getTotal());
+		System.out.println(page.getPages());
+		System.out.println(page.getFirstPage());
+		System.out.println(page.getLastPage());
+		System.out.println(page.isHasPreviousPage());
+		System.out.println(page.isHasNextPage());
+		return page;
+	}
+	public Film_infor selectFilm_inforById(Integer idFilm) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	

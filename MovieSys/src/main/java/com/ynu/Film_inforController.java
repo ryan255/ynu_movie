@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.ynu.dto.Film_infor;
 import com.ynu.dto.Studio;
@@ -61,5 +62,12 @@ public class Film_inforController {
 		return "movie-select";
 	}
 	
+	@RequestMapping("/")    
+    public ModelAndView getIndex(){      
+        ModelAndView mav = new ModelAndView("test");   
+        Film_infor film_infor = film_inforService.selectFilm_inforById(1);  
+        mav.addObject("film_infor", film_infor);   
+        return mav;    
+    }    
 
 }
