@@ -4,7 +4,17 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.ynu.mapper.StudioMapper">
-	<select id="selectAllStudio" resultType="com.ynu.dto.Studio">
+	<resultMap type="com.ynu.dto.Studio" id="studioMap">
+		<id property="idStudio" column="idStudio" />
+		<result property="studio_name" column="studio_name" />
+		<result property="studio_online" column="studio_online" />
+		<result property="studio_address" column="studio_address" />
+		<result property="studio_phone" column="studio_phone" />
+		<result property="studio_text" column="studio_text" />
+	</resultMap>
+
+
+	<select id="selectAllStudio" resultMap="studioMap">
 		select * from Studio
 	</select>
 </mapper>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ynu.mapper.PlayMapper">
+<resultMap type="com.ynu.dto.Play" id="playMap">
+		<id property="idPlay" column="idPlay" />
+		<result property="idStudio" column="idStudio" />
+		<result property="idFilm" column="idFilm" />
+		<result property="play_on" column="play_on" />
+		<result property="play_ontime" column="play_ontime" />
+		<result property="play_uptime" column="play_uptime" />
+	</resultMap>
+	
+	
+</mapper>

@@ -1,5 +1,8 @@
 package com.ynu.dto;
 
+import java.sql.Date;
+import java.util.List;
+
 public class Film_infor {
     private Integer idFilm;
 
@@ -28,6 +31,36 @@ public class Film_infor {
     private String f_cover_b;
     
     private Integer f_online;
+    
+    private Date f_ontime;
+    
+	private List<Studio> studios;
+
+	private Classification classification;
+    
+    public Classification getClassification() {
+		return classification;
+	}
+
+	public void setClassification(Classification classification) {
+		this.classification = classification;
+	}
+
+	public Date getF_ontime() {
+		return f_ontime;
+	}
+
+	public void setF_ontime(Date f_ontime) {
+		this.f_ontime = f_ontime;
+	}
+
+	public List<Studio> getStudios() {
+		return studios;
+	}
+
+	public void setStudios(List<Studio> studios) {
+		this.studios = studios;
+	}
 
 	public Integer getF_online() {
 		return f_online;

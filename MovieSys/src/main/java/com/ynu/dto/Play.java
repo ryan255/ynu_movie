@@ -3,63 +3,86 @@ package com.ynu.dto;
 import java.util.Date;
 
 public class Play {
-    private Integer idplay;
+	
+	private Film_infor film_infor;
+	
+	private Studio studio;
+	
+	private Integer idPlay;
 
-    private Integer idstudio;
+    private Integer idStudio;
 
-    private Integer idfilm;
+    private Integer idFilm;
 
-    private String playOn;
+    private String play_on;
 
-    private Date playOntime;
+    private Date play_ontime;
 
-    private Date playUptime;
+    private Date play_uptime;
 
-    public Integer getIdplay() {
-        return idplay;
-    }
+	public Film_infor getFilm_infor() {
+		return film_infor;
+	}
 
-    public void setIdplay(Integer idplay) {
-        this.idplay = idplay;
-    }
+	public void setFilm_infor(Film_infor film_infor) {
+		this.film_infor = film_infor;
+	}
 
-    public Integer getIdstudio() {
-        return idstudio;
-    }
+	public Studio getStudio() {
+		return studio;
+	}
 
-    public void setIdstudio(Integer idstudio) {
-        this.idstudio = idstudio;
-    }
+	public void setStudio(Studio studio) {
+		this.studio = studio;
+	}
 
-    public Integer getIdfilm() {
-        return idfilm;
-    }
+	public Integer getIdPlay() {
+		return idPlay;
+	}
 
-    public void setIdfilm(Integer idfilm) {
-        this.idfilm = idfilm;
-    }
+	public void setIdPlay(Integer idPlay) {
+		this.idPlay = idPlay;
+	}
 
-    public String getPlayOn() {
-        return playOn;
-    }
+	public Integer getIdStudio() {
+		return idStudio;
+	}
 
-    public void setPlayOn(String playOn) {
-        this.playOn = playOn == null ? null : playOn.trim();
-    }
+	public void setIdStudio(Integer idStudio) {
+		this.idStudio = idStudio;
+	}
 
-    public Date getPlayOntime() {
-        return playOntime;
-    }
+	public Integer getIdFilm() {
+		return idFilm;
+	}
 
-    public void setPlayOntime(Date playOntime) {
-        this.playOntime = playOntime;
-    }
+	public void setIdFilm(Integer idFilm) {
+		this.idFilm = idFilm;
+	}
 
-    public Date getPlayUptime() {
-        return playUptime;
-    }
+	public String getPlay_on() {
+		return play_on;
+	}
 
-    public void setPlayUptime(Date playUptime) {
-        this.playUptime = playUptime;
-    }
+	public void setPlay_on(String play_on) {
+		this.play_on = play_on;
+	}
+
+	public Date getPlay_ontime() {
+		return play_ontime;
+	}
+
+	public void setPlay_ontime(Date play_ontime) {
+		this.play_ontime = play_ontime;
+	}
+
+	public Date getPlay_uptime() {
+		return play_uptime;
+	}
+
+	public void setPlay_uptime(Date play_uptime) {
+		this.play_uptime = play_uptime;
+	}
+    
+   
 }

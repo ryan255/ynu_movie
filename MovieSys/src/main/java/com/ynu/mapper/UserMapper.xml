@@ -4,11 +4,27 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.ynu.mapper.UserMapper">
-	<select id="findUser" resultType="com.ynu.dto.User">
+
+	<resultMap type="com.ynu.dto.User" id="userMap">
+		<id property="idUser" column="idUser" />
+		<result property="user_name" column="user_name" />
+		<result property="user_pw" column="user_pw" />
+		<result property="usersex" column="usersex" />
+		<result property="user_birth" column="user_birth" />
+		<result property="user_phone" column="user_phone" />
+		<result property="user_mail" column="user_mail" />
+		<result property="user_point" column="user_point" />
+		<result property="idLevel" column="idLevel" />
+
+	</resultMap>
+
+	<select id="findUser" resultMap="userMap">
 		select * from user where
 		user_name = #{user_name}
 	</select>
 	<insert id="insertUser" parameterType="com.ynu.dto.User">
-		INSERT INTO user(user_name,user_pw,user_phone) values(#{user_name},#{user_pw},#{user_phone})
+		INSERT INTO
+		user(user_name,user_pw,user_phone)
+		values(#{user_name},#{user_pw},#{user_phone})
 	</insert>
 </mapper>

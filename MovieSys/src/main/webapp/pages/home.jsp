@@ -4,6 +4,7 @@
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@page isELIgnored="false"%>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,7 +12,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
-<title>index2</title>
+<title>首页</title>
 
 <!--css-->
 <link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
@@ -35,12 +36,22 @@
 	
 	
 	
+	
+	
+	
+	
+	
 	 addEventListener("load", function () {
         setTimeout(hideURLbar, 0);
     }, false);
     function hideURLbar() {
         window.scrollTo(0, 1);
     } 
+
+
+
+
+
 
 
 
@@ -83,6 +94,8 @@
 </head>
 <body>
 	<!--网页顶部-->
+
+
 	<div class="header-top-strip">
 		<div class="container">
 			<div class="header-top-left">
@@ -272,14 +285,12 @@
 					<section class="slider">
 						<div class="flexslider">
 							<ul class="slides">
-								<li><img src="resource/images/pic1.jpg"
-									class="img-responsive" alt="" /></li>
-								<li><img src="resource/images/pic2.jpg"
-									class="img-responsive" alt="" /></li>
-								<li><img src="resource/images/pic3.jpg"
-									class="img-responsive" alt="" /></li>
-								<li><img src="resource/images/pic4.jpg"
-									class="img-responsive" alt="" /></li>
+								<c:forEach var="filmOnline" items="${filmOnline}">
+									<li><img style="height: 350px;"
+										src="resource/images/${filmOnline.f_cover_s}"
+										class="img-responsive" alt="" /></li>
+								</c:forEach>
+
 							</ul>
 						</div>
 					</section>
@@ -308,13 +319,16 @@
 						<ul>
 
 							<li>选择电影：
-								<form action="">
-									<select class="list_of_movies" name="" id="">
-										<option>—— —— —— ——</option>
+								<form action="selectfilmByfilmName" method="Get">
+									<select class="list_of_movies" name="f_name">
+										<option value="">—— —— —— ——</option>
 										<c:forEach var="filmOnline" items="${filmOnline}">
-											<option>${filmOnline.f_name}</option>
+											<option value="${filmOnline.f_name}">${filmOnline.f_name}</option>
 										</c:forEach>
 									</select>
+									<h2 style="color: red;">${play_msg}</h2>
+									<input type="submit" value="查询" class="btn btn-primary"
+										style="width: 100px; margin-left: 90px; margin-top: 30px;">
 								</form>
 							</li>
 
@@ -328,8 +342,6 @@
 							</select></li>-->
 
 						</ul>
-						<input type="submit" value="查询" class="btn btn-primary"
-							style="width: 100px; margin-left: 90px; margin-top: 30px;">
 
 					</div>
 
@@ -345,22 +357,28 @@
 			<!--向左滑动展示-->
 			<div class="review-slider col-md-12">
 				<ul id="flexiselDemo1">
-
 					<c:forEach var="filmOnline" items="${filmOnline}">
 
-						<li><a href="movies,html"> <img style="height:250px;"
-								src="resource/images/${filmOnline.f_cover_s}" alt="">
-						</a>
-							<div class="slide-title">
-								<h4>${filmOnline.f_name}</h4>
-							</div>
-							<div class="date-city">
-								<h5>${filmOnline.f_time}</h5>
-								<h6>${filmOnline.f_country}</h6>
-								<div class="buy-tickets">
-									<a href="movie-select-show.html">购票</a>
+						<li>
+							<form action="selectfilmByfilmName" method="Get">
+
+								<a href="selectfilmByfilmName?f_name=${filmOnline.f_name}"> <img style="height: 250px;"
+									src="resource/images/${filmOnline.f_cover_s}" alt="">
+								</a>
+								<div class="slide-title">
+									<h4>${filmOnline.f_name}</h4>
 								</div>
-							</div></li>
+								<div class="date-city">
+									<h5>${filmOnline.f_time}</h5>
+									<h6>${filmOnline.f_country}</h6>
+									<input value="${filmOnline.f_name}" style="display:none" name="f_name" />
+									<div class="buy-tickets">
+										<input class="btn btn-primary" type="submit" value="购票">
+									</div>
+								</div>
+							</form>
+						</li>
+
 					</c:forEach>
 				</ul>
 
@@ -404,7 +422,7 @@
 								<ul class="resp-tabs-list">
 									<li class="resp-tab-item" aria-controls="tab_item-2" role="tab"><span>正在热映</span></li>
 									<li class="resp-tab-item" aria-controls="tab_item-1" role="tab"><span>一周内上映</span></li>
-									<li class="resp-tab-item" aria-controls="tab_item-0" role="tab"><span>马上上映</span></li>
+									<li class="resp-tab-item" aria-controls="tab_item-0" role="tab"><span>即将上映</span></li>
 									<div class="clearfix"></div>
 								</ul>
 								<div class="resp-tabs-container">

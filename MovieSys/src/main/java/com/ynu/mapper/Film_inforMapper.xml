@@ -4,12 +4,59 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.ynu.mapper.Film_inforMapper">
-	<select id="selectAllFilmOnline" resultType="com.ynu.dto.Film_infor">
-		select * from film_infor where
+	<resultMap type="com.ynu.dto.Film_infor" id="filmMap">
+		<id property="idFilm" column="idFilm" />
+		<result property="f_name" column="f_name" />
+		<result property="f_director" column="f_director" />
+		<result property="f_star" column="f_star" />
+		<result property="idClass" column="idClass" />
+		<result property="f_country" column="f_country" />
+		<result property="f_time" column="f_time" />
+		<result property="f_level" column="f_level" />
+		<result property="f_comment" column="f_comment" />
+		<result property="f_introduce" column="f_introduce" />
+		<result property="f_cover_s" column="f_cover_s" />
+		<result property="f_cover_b" column="f_cover_b" />
+		<result property="f_online" column="f_online" />
+		<result property="f_ontime" column="f_ontime" />
+
+		
+	</resultMap>
+
+	<resultMap type="com.ynu.dto.Film_infor" id="filmStudioMap"
+		extends="filmMap">
+		<collection property="studios" ofType="com.ynu.dto.Studio">
+			<id property="idStudio" column="idStudio" />
+			<result property="studio_name" column="studio_name" />
+			<result property="studio_online" column="studio_online" />
+			<result property="studio_address" column="studio_address" />
+			<result property="studio_phone" column="studio_phone" />
+			<result property="studio_text" column="studio_text" />
+		</collection>
+	</resultMap>
+	<select id="selectPlayByfilmName" parameterType="String"
+		resultMap="filmStudioMap">
+		select
+		f.f_ontime,f.idFilm,f.f_name,f.f_director,f.f_star,f.idClass,f.f_country,
+		f.f_time,f.f_level,f.f_comment,f.f_introduce,f.f_cover_s,f.f_cover_b,
+		f.f_online,
+		s.idStudio,s.studio_name,s.studio_address,s.studio_phone,s.studio_text,
+		p.play_ontime,p.play_uptime
+		from film_infor f left join play p on
+		f.idFilm = p.idFilm
+		left join studio s on p.idStudio = s.idStudio where
+		f.f_name = #{f_name}
+	</select>
+
+	<select id="selectAllFilmOnline" resultMap="filmMap">
+		select * from
+		film_infor where
 		f_online=1;
 	</select>
-	<select id="selectFilmComing" resultType="com.ynu.dto.Film_infor">
-		select * from film_infor where
+	<select id="selectFilmComing" resultMap="filmMap">
+		select * from
+		film_infor
+		where
 		f_online=2;
 	</select>
 </mapper>

@@ -17,10 +17,10 @@ public class StudioController {
 	@Autowired
 	private StudioService studioService;
 	
-	@RequestMapping(value="/home2")
+	@RequestMapping(value="/home3")
 	public String selectAllStuidio(Model model){
 		List<Studio> studios = studioService.selectAllStudio();
 		model.addAttribute("studios", studios);
-		return "home";
+		return "success";
 	}
 }

@@ -1,6 +1,7 @@
 package com.ynu;
 
 
+import java.sql.Date;
 import java.util.List;
 
 
@@ -9,8 +10,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.ynu.dto.Film_infor;
+import com.ynu.dto.Studio;
 import com.ynu.service.Film_inforService;
 
 
@@ -41,6 +44,21 @@ public class Film_inforController {
 		model.addAttribute("filmOnline",filmOnline);
 		model.addAttribute("filmComing", filmComing);
 		return "movies";
+	}
+	
+	@RequestMapping(value="/selectfilmByfilmName")
+	public String selectMovieByName(@RequestParam("f_name")String filmName,Model model){
+		System.out.println(filmName);
+		Film_infor film_infor = film_inforService.selectPlayByfilmName(filmName);
+		model.addAttribute(film_infor);
+		
+		List<Studio> studios = film_infor.getStudios();
+		for(Studio studio:studios){
+			System.out.println("进入循环");
+			System.out.println(studio.getStudio_name());
+		}
+		model.addAttribute("studios", studios);
+		return "movie-select";
 	}
 	
 
