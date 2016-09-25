@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ynu.mapper.AdminMapper">
+
+	<resultMap type="com.ynu.dto.Admin" id="adminMap">
+	<id column="idAdmin" jdbcType="INTEGER" property="idAdmin" />
+    <result column="idStudio" jdbcType="INTEGER" property="idStudio" />
+    <result column="admin_name" jdbcType="VARCHAR" property="admin_name" />
+    <result column="admin_pw" jdbcType="VARCHAR" property="admin_pw" />
+    <result column="admin_phone" jdbcType="VARCHAR" property="admin_phone" />
+    <result column="admin_identity" jdbcType="VARCHAR" property="admin_identity" />
+
+	</resultMap>
+
+	<select id="findAdmin" resultMap="adminMap">
+		select * from admin where
+		admin_name = #{admin_name}
+	</select>
+	<insert id="insertAdmin" parameterType="com.ynu.dto.Admin">
+		INSERT INTO
+		admin(idStudio,admin_name,admin_pw,admin_phone)
+		values(#{idStudio},#{admin_name},#{admin_pw},#{admin_phone})
+	</insert>
+</mapper>

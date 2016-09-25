@@ -1,63 +1,64 @@
 package com.ynu.dto;
 
 public class Admin {
-    private Integer idadmin;
+    private Integer idAdmin;
 
-    private Integer idstudio;
+	private Integer idStudio;
 
-    private String adminName;
+    private String admin_name;
 
-    private String adminPw;
+    private String admin_pw;
 
-    private String adminPhone;
+    private String admin_phone;
 
-    private String adminIdentity;
+    private String admin_identity;
+    
+    public Integer getIdAdmin() {
+		return idAdmin;
+	}
 
-    public Integer getIdadmin() {
-        return idadmin;
-    }
+	public void setIdAdmin(Integer idAdmin) {
+		this.idAdmin = idAdmin;
+	}
 
-    public void setIdadmin(Integer idadmin) {
-        this.idadmin = idadmin;
-    }
+	public Integer getIdStudio() {
+		return idStudio;
+	}
 
-    public Integer getIdstudio() {
-        return idstudio;
-    }
+	public void setIdStudio(Integer idStudio) {
+		this.idStudio = idStudio;
+	}
 
-    public void setIdstudio(Integer idstudio) {
-        this.idstudio = idstudio;
-    }
+	public String getAdmin_name() {
+		return admin_name;
+	}
 
-    public String getAdminName() {
-        return adminName;
-    }
+	public void setAdmin_name(String admin_name) {
+		this.admin_name = admin_name;
+	}
 
-    public void setAdminName(String adminName) {
-        this.adminName = adminName == null ? null : adminName.trim();
-    }
+	public String getAdmin_pw() {
+		return admin_pw;
+	}
 
-    public String getAdminPw() {
-        return adminPw;
-    }
+	public void setAdmin_pw(String admin_pw) {
+		this.admin_pw = admin_pw;
+	}
 
-    public void setAdminPw(String adminPw) {
-        this.adminPw = adminPw == null ? null : adminPw.trim();
-    }
+	public String getAdmin_phone() {
+		return admin_phone;
+	}
 
-    public String getAdminPhone() {
-        return adminPhone;
-    }
+	public void setAdmin_phone(String admin_phone) {
+		this.admin_phone = admin_phone;
+	}
 
-    public void setAdminPhone(String adminPhone) {
-        this.adminPhone = adminPhone == null ? null : adminPhone.trim();
-    }
+	public String getAdmin_identity() {
+		return admin_identity;
+	}
 
-    public String getAdminIdentity() {
-        return adminIdentity;
-    }
+	public void setAdmin_identity(String admin_identity) {
+		this.admin_identity = admin_identity;
+	}
 
-    public void setAdminIdentity(String adminIdentity) {
-        this.adminIdentity = adminIdentity == null ? null : adminIdentity.trim();
-    }
 }
