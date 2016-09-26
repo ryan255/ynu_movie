@@ -22,6 +22,12 @@
 	<insert id="insertAdmin" parameterType="com.ynu.dto.Admin">
 		INSERT INTO
 		admin(idStudio,admin_name,admin_pw,admin_phone)
-		values(#{idStudio},#{admin_name},#{admin_pw},#{admin_phone})
+		values(#{idStudio},#{admin_name},#{admin_pw},#{admin_phone},#{admin_identity})
 	</insert>
+	
+	<delete id="deleteAdminByName" parameterType="java.lang.String" >
+   		delete from admin
+     	where admin_name = #{admin_name}
+   </delete>
+	
 </mapper>

@@ -21,6 +21,10 @@ public class AdminServiceImpl implements AdminService{
 	public void insertAdmin(Admin admin) {
 		adminMapper.insertAdmin(admin);
 	}
+
+	public void deleteAdminByName(String admin_name) {
+		adminMapper.deleteAdminByName(admin_name);
+	}
 	
 
 }

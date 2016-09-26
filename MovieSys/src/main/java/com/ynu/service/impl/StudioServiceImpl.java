@@ -15,8 +15,13 @@ public class StudioServiceImpl implements StudioService {
 	@Autowired
 	private StudioMapper studioMapper;
 	public List<Studio> selectAllStudio() {
-		// TODO Auto-generated method stub
 		return studioMapper.selectAllStudio();
+	}
+	public void insertStudio(Studio studio) {
+		studioMapper.insertStudio(studio);
+	}
+	public void deleteStudioByName(String studio_name) {
+		studioMapper.deleteStudioByName(studio_name);
 	}
 
 }
