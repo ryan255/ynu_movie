@@ -1,23 +1,25 @@
 package com.ynu.dto;
 
 public class City {
-    private Integer idcity;
+    private Integer idCity;
 
-    private String cityName;
+    private String city_name;
 
-    public Integer getIdcity() {
-        return idcity;
-    }
+	public Integer getIdCity() {
+		return idCity;
+	}
 
-    public void setIdcity(Integer idcity) {
-        this.idcity = idcity;
-    }
+	public void setIdCity(Integer idCity) {
+		this.idCity = idCity;
+	}
 
-    public String getCityName() {
-        return cityName;
-    }
+	public String getCity_name() {
+		return city_name;
+	}
 
-    public void setCityName(String cityName) {
-        this.cityName = cityName == null ? null : cityName.trim();
-    }
+	public void setCity_name(String city_name) {
+		this.city_name = city_name;
+	}
+
+  
 }

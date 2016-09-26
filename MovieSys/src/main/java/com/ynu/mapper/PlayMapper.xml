@@ -14,4 +14,10 @@
 	</resultMap>
 	
 	
+	<delete id="deletePlayById" parameterType="java.lang.Integer" >
+   		delete from play
+     	where idPlay = #{idPlay}
+  	</delete>
+	
+	
 </mapper>
