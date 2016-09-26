@@ -28,12 +28,54 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <script src="js/jquery.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script type="application/x-javascript">
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	 addEventListener("load", function () {
         setTimeout(hideURLbar, 0);
     }, false);
     function hideURLbar() {
         window.scrollTo(0, 1);
     } 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </script>
 <script type="text/javascript" src="js/megamenu.js"></script>
 <script>
@@ -178,69 +220,109 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							<h4>Language:</h4>
 							<p>${film_infor.f_country }</p>
 							<h4>Genre:</h4>
-							<p>${film_infor.idClass }</p>
+							<p>${classe }</p>
 							<h4>Cast & Crew:</h4>
 							<p>${film_infor.f_introduce }</p>
 						</div>
 					</div>
 				</div>
 				<div class="col-md-8 movies-dates">
-					<div class="movie-date-selection">
-						<c:forEach var="studios" items="${studios}">
-						
-						<ul>
-							<li class="location"><a href="pic-a-movie.html"><i
-									class="fa fa-map-marker"></i>${studios.studio_name}</a> <input
-								style="margin-left: 20px;" type="submit" value="选座购票"
-								class="btn btn-primary"></li>
-								<li class="time" style="width:100%;text-align:left">${studios.studio_address}</li>
-								</br>
-							<li class="time"><a href="movie-payment.html">11:00 AM</a></li>
-							<li class="time"><a href="movie-payment.html">3:00 PM</a></li>
-							<li class="time"><a href="movie-payment.html">6:20 PM</a></li>
-							<li class="time"><a href="movie-payment.html">9:00 PM</a></li>
-						</ul>
-							1:
-						</c:forEach>
-						
+					<c:forEach var="studios" items="${film_infor.studios}">
 
-					</div>
-					<div class="movie-date-selection">
-						<ul>
-							<li class="location"><a href="pic-a-movie.html"><i
-									class="fa fa-map-marker"></i>Theater Name: Location</a> <input
-								style="margin-left: 20px;" type="submit" value="选座购票"
-								class="btn btn-primary"></li>
-							<li class="time"><a href="movie-payment.html">11:00 AM</a></li>
-							<li class="time"><a href="movie-payment.html">3:00 PM</a></li>
-							<li class="time"><a href="movie-payment.html">6:20 PM</a></li>
-							<li class="time"><a href="movie-payment.html">9:00 PM</a></li>
-						</ul>
-					</div>
-					<div class="movie-date-selection">
-						<ul>
-							<li class="location"><a href="pic-a-movie.html"><i
-									class="fa fa-map-marker"></i>Theater Name: Location</a> <input
-								style="margin-left: 20px;" type="submit" value="选座购票"
-								class="btn btn-primary"></li>
-							<li class="time"><a href="movie-payment.html">11:00 AM</a></li>
-							<li class="time"><a href="movie-payment.html">3:00 PM</a></li>
-							<li class="time"><a href="movie-payment.html">6:20 PM</a></li>
-							<li class="time"><a href="movie-payment.html">9:00 PM</a></li>
-						</ul>
-					</div>
-					<div class="movie-date-selection">
-						<ul>
-							<li class="location"><a href="pic-a-movie.html"><i
-									class="fa fa-map-marker"></i>Theater Name: Location</a> <input
-								style="margin-left: 20px;" type="submit" value="选座购票"
-								class="btn btn-primary"></li>
-							<li class="time"><a href="movie-payment.html">11:00 AM</a></li>
-							<li class="time"><a href="movie-payment.html">3:00 PM</a></li>
-							<li class="time"><a href="movie-payment.html">6:20 PM</a></li>
-							<li class="time"><a href="movie-payment.html">9:00 PM</a></li>
-						</ul>
-					</div>
+						<div class="movie-date-selection">
+							<ul>
+								<li class="location"><a href="pic-a-movie.html"> <i
+										class="fa fa-map-marker"></i>${studios.studio_name}</a>
+
+
+									<button type="button" class="btn btn-primary"
+										style="float: right; margin-left: 20px;" data-toggle="modal"
+										data-target="#${studios.idStudio}">选座购票</button></li>
+								<li class="time" style="width: 100%; text-align: left">地址：${studios.studio_address}</li>
+								</br>
+								</br> 场次：
+								<c:forEach items="${film_infor.plays}" var="plays">
+									<c:if test="${studios.idStudio==plays.idStudio}">
+										<c:forEach items="${film_infor.prices}" var="prices">
+											<c:if test="${prices.idPlay1==plays.idPlay }">
+												<li class="time"><a href="movie-payment.html">${prices.price_screens }</a></li>
+											</c:if>
+										</c:forEach>
+									</c:if>
+								</c:forEach>
+							</ul>
+						</div>
+
+						<div class="modal fade" id="${studios.idStudio}" tabindex="-1"
+							role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+							<div class="modal-dialog">
+								<div class="modal-content">
+									<div class="modal-header">
+										<button type="button" class="close" data-dismiss="modal">
+											<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+										</button>
+										<h4 class="modal-title" id="myModalLabel">${studios.studio_name}</h4>
+									</div>
+									<div class="modal-body">
+										<div class="panel panel-default">
+											<!-- Default panel contents -->
+											<div class="panel-heading"><h3 class="panel-title col-sm-3">放映时间</h3>
+												<h3 class="panel-title col-sm-3">语言版本</h3>
+												<h3 class="panel-title col-sm-3">放映厅</h3>
+												<h3 class="panel-title col-sm-3">售价</h3>
+												</br></div>
+											<!-- Table -->
+											<table class="table">
+											<c:forEach items="${film_infor.plays}" var="plays">
+											<c:if test="${studios.idStudio==plays.idStudio}">
+												<c:forEach items="${film_infor.prices}" var="prices">
+													<c:if test="${prices.idPlay1==plays.idPlay }">
+
+																<tr>
+																<td class="col-sm-3" style="margin-left:10px;text-align:center">${prices.price_screens }</td>
+																<td class="col-sm-3" style="padding-left:10px">${prices.price_screens }</td>
+																<td class="col-sm-3" style="padding-left:10px">${prices.price_screens }</td>
+																<td class="col-sm-3" style="padding-left:10px">${prices.price_screens }</td></tr>
+
+													</c:if>
+												</c:forEach>
+											</c:if>
+										</c:forEach>
+											
+											</table>
+										</div>
+
+
+
+
+										<div class="panel panel-default">
+											<div class="panel-heading">
+												
+												</br>
+											</div>
+										</div>
+
+										
+
+									</div>
+									<div class="modal-footer">
+										<button type="button" class="btn btn-default"
+											data-dismiss="modal">Close</button>
+										<button type="button" class="btn btn-primary">Save
+											changes</button>
+									</div>
+								</div>
+							</div>
+						</div>
+
+
+
+
+					</c:forEach>
+
+
+
+
 				</div>
 				<div class="clearfix"></div>
 			</div>

@@ -1,53 +1,65 @@
 package com.ynu.dto;
 
 public class Auditorium {
-    private Integer idauditorium;
+	private Integer idAuditorium;
 
-    private Integer idstudio;
+	private Integer idStudio;
 
-    private Integer auditoriumNum;
+	private String auditorium_num;
 
-    private Integer auditoriumCol;
+	private Integer auditorium_col;
 
-    private Integer auditoriumRow;
+	private Integer auditorium_row;
 
-    public Integer getIdauditorium() {
-        return idauditorium;
-    }
+	private Studio studio;
 
-    public void setIdauditorium(Integer idauditorium) {
-        this.idauditorium = idauditorium;
-    }
+	public Integer getIdAuditorium() {
+		return idAuditorium;
+	}
 
-    public Integer getIdstudio() {
-        return idstudio;
-    }
+	public void setIdAuditorium(Integer idAuditorium) {
+		this.idAuditorium = idAuditorium;
+	}
 
-    public void setIdstudio(Integer idstudio) {
-        this.idstudio = idstudio;
-    }
+	public Integer getIdStudio() {
+		return idStudio;
+	}
 
-    public Integer getAuditoriumNum() {
-        return auditoriumNum;
-    }
+	public void setIdStudio(Integer idStudio) {
+		this.idStudio = idStudio;
+	}
 
-    public void setAuditoriumNum(Integer auditoriumNum) {
-        this.auditoriumNum = auditoriumNum;
-    }
+	public String getAuditorium_num() {
+		return auditorium_num;
+	}
 
-    public Integer getAuditoriumCol() {
-        return auditoriumCol;
-    }
+	public void setAuditorium_num(String auditorium_num) {
+		this.auditorium_num = auditorium_num;
+	}
 
-    public void setAuditoriumCol(Integer auditoriumCol) {
-        this.auditoriumCol = auditoriumCol;
-    }
+	public Integer getAuditorium_col() {
+		return auditorium_col;
+	}
 
-    public Integer getAuditoriumRow() {
-        return auditoriumRow;
-    }
+	public void setAuditorium_col(Integer auditorium_col) {
+		this.auditorium_col = auditorium_col;
+	}
 
-    public void setAuditoriumRow(Integer auditoriumRow) {
-        this.auditoriumRow = auditoriumRow;
-    }
+	public Integer getAuditorium_row() {
+		return auditorium_row;
+	}
+
+	public void setAuditorium_row(Integer auditorium_row) {
+		this.auditorium_row = auditorium_row;
+	}
+
+	public Studio getStudio() {
+		return studio;
+	}
+
+	public void setStudio(Studio studio) {
+		this.studio = studio;
+	}
+	
+	
 }

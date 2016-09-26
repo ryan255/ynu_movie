@@ -4,46 +4,96 @@ import java.sql.Date;
 import java.util.List;
 
 public class Film_infor {
-    private Integer idFilm;
+	private Integer idFilm;
 
-    private String f_name;
+	private String f_name;
 
-    private String f_director;
+	private String f_director;
 
-    private String f_star;
+	private String f_star;
 
-    private Integer idClass;
+	private Integer idClass;
 
-    private String f_country;
+	private String f_country;
 
-    private Integer f_time;
+	private Integer f_time;
 
-    private Integer f_level;
+	private Integer f_level;
 
-    private Integer f_click;
+	private Integer f_click;
 
-    private String f_comment;
+	private String f_comment;
 
-    private String f_introduce;
+	private String f_introduce;
 
-    private String f_cover_s;
+	private String f_cover_s;
 
-    private String f_cover_b;
-    
-    private Integer f_online;
-    
-    private Date f_ontime;
-    
+	private String f_cover_b;
+
+	private Integer f_online;
+
+	private Date f_ontime;
+
 	private List<Studio> studios;
 
-	private Classification classification;
-    
-    public Classification getClassification() {
-		return classification;
+	private String class_name;
+
+	private List<Classification> classifications;
+
+	private List<Auditorium> auditoriums;
+
+	private List<Play> plays;
+
+	private List<Price> prices;
+
+	private List<Edition> editions;
+
+	public String getClass_name() {
+		return class_name;
 	}
 
-	public void setClassification(Classification classification) {
-		this.classification = classification;
+	public void setClass_name(String class_name) {
+		this.class_name = class_name;
+	}
+
+	public List<Classification> getClassifications() {
+		return classifications;
+	}
+
+	public void setClassifications(List<Classification> classifications) {
+		this.classifications = classifications;
+	}
+
+	public List<Auditorium> getAuditoriums() {
+		return auditoriums;
+	}
+
+	public void setAuditoriums(List<Auditorium> auditoriums) {
+		this.auditoriums = auditoriums;
+	}
+
+	public List<Play> getPlays() {
+		return plays;
+	}
+
+	public void setPlays(List<Play> plays) {
+		this.plays = plays;
+	}
+
+	public List<Price> getPrices() {
+		return prices;
+	}
+
+	public void setPrices(List<Price> prices) {
+		this.prices = prices;
+	}
+
+	public List<Edition> getEditions() {
+		return editions;
+	}
+
+	public void setEditions(List<Edition> editions) {
+		this.editions = editions;
 	}
 
 	public Date getF_ontime() {
@@ -174,5 +224,4 @@ public class Film_infor {
 		this.f_cover_b = f_cover_b;
 	}
 
-   
 }

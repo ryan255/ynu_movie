@@ -1,63 +1,69 @@
 package com.ynu.dto;
 
+import java.sql.Time;
+
 public class Price {
-    private Integer idprice;
+	private Integer idPrice;
 
-    private Integer idplay1;
+	private Integer idPlay1;
 
-    private Integer idauditorium1;
+	private Integer idAuditorium1;
 
-    private Integer idedition1;
+	private Integer idEdition1;
 
-    private String priceScreens;
+	private Time price_screens;
 
-    private Long prices;
+	private Long prices;
 
-    public Integer getIdprice() {
-        return idprice;
-    }
 
-    public void setIdprice(Integer idprice) {
-        this.idprice = idprice;
-    }
+	public Integer getIdPrice() {
+		return idPrice;
+	}
 
-    public Integer getIdplay1() {
-        return idplay1;
-    }
+	public void setIdPrice(Integer idPrice) {
+		this.idPrice = idPrice;
+	}
 
-    public void setIdplay1(Integer idplay1) {
-        this.idplay1 = idplay1;
-    }
+	public Integer getIdPlay1() {
+		return idPlay1;
+	}
 
-    public Integer getIdauditorium1() {
-        return idauditorium1;
-    }
+	public void setIdPlay1(Integer idPlay1) {
+		this.idPlay1 = idPlay1;
+	}
 
-    public void setIdauditorium1(Integer idauditorium1) {
-        this.idauditorium1 = idauditorium1;
-    }
+	public Integer getIdAuditorium1() {
+		return idAuditorium1;
+	}
 
-    public Integer getIdedition1() {
-        return idedition1;
-    }
+	public void setIdAuditorium1(Integer idAuditorium1) {
+		this.idAuditorium1 = idAuditorium1;
+	}
 
-    public void setIdedition1(Integer idedition1) {
-        this.idedition1 = idedition1;
-    }
+	public Integer getIdEdition1() {
+		return idEdition1;
+	}
 
-    public String getPriceScreens() {
-        return priceScreens;
-    }
+	public void setIdEdition1(Integer idEdition1) {
+		this.idEdition1 = idEdition1;
+	}
 
-    public void setPriceScreens(String priceScreens) {
-        this.priceScreens = priceScreens == null ? null : priceScreens.trim();
-    }
+	public Time getPrice_screens() {
+		return price_screens;
+	}
 
-    public Long getPrices() {
-        return prices;
-    }
+	public void setPrice_screens(Time price_screens) {
+		this.price_screens = price_screens;
+	}
 
-    public void setPrices(Long prices) {
-        this.prices = prices;
-    }
+	public Long getPrices() {
+		return prices;
+	}
+
+	public void setPrices(Long prices) {
+		this.prices = prices;
+	}
+
+
+
 }

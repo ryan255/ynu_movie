@@ -1,5 +1,7 @@
 package com.ynu.dto;
 
+import java.util.List;
+
 public class Studio {
     private Integer idStudio;
 
@@ -12,6 +14,16 @@ public class Studio {
     private String studio_phone;
 
     private String studio_text;
+    
+    private List<Play> plays;
+
+	public List<Play> getPlays() {
+		return plays;
+	}
+
+	public void setPlays(List<Play> plays) {
+		this.plays = plays;
+	}
 
 	public Integer getIdStudio() {
 		return idStudio;

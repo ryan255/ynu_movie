@@ -4,8 +4,6 @@ import java.util.Date;
 
 public class Play {
 	
-	private Film_infor film_infor;
-	
 	private Studio studio;
 	
 	private Integer idPlay;
@@ -19,14 +17,6 @@ public class Play {
     private Date play_ontime;
 
     private Date play_uptime;
-
-	public Film_infor getFilm_infor() {
-		return film_infor;
-	}
-
-	public void setFilm_infor(Film_infor film_infor) {
-		this.film_infor = film_infor;
-	}
 
 	public Studio getStudio() {
 		return studio;

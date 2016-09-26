@@ -19,8 +19,7 @@
 		<result property="f_cover_b" column="f_cover_b" />
 		<result property="f_online" column="f_online" />
 		<result property="f_ontime" column="f_ontime" />
-
-		
+		<result property="class_name" column="class_name" />
 	</resultMap>
 
 	<resultMap type="com.ynu.dto.Film_infor" id="filmStudioMap"
@@ -33,19 +32,54 @@
 			<result property="studio_phone" column="studio_phone" />
 			<result property="studio_text" column="studio_text" />
 		</collection>
+		<collection property="plays" ofType="com.ynu.dto.Play">
+			<id property="idPlay" column="idPlay" />
+			<result property="idStudio" column="idStudio" />
+			<result property="idFilm" column="idFilm" />
+			<result property="play_on" column="play_on" />
+			<result property="play_ontime" column="play_ontime" />
+			<result property="play_uptime" column="play_uptime" />
+		</collection>
+		<collection property="auditoriums" ofType="com.ynu.dto.Auditorium">
+			<id property="idAuditorium" column="idAuditorium" />
+			<result property="idStudio" column="idStudio" />
+			<result property="auditorium_num" column="auditorium_num" />
+			<result property="auditorium_col" column="auditorium_col" />
+			<result property="auditorium_row" column="auditorium_row" />
+		</collection>
+		<collection property="editions" ofType="com.ynu.dto.Edition">
+			<id property="idEdition" column="idEdition" />
+			<result property="edition_name" column="edition_name" />
+		</collection>
+		<collection property="classifications" ofType="com.ynu.dto.Classification">
+			<id property="idClass" column="idClass" />
+			<result property="class_name" column="class_name" />
+		</collection>
+		<collection property="prices" ofType="com.ynu.dto.Price">
+			<id property="idPrice" column="idPrice" />
+			<result property="idPlay1" column="idPlay1" />
+			<result property="idAuditorium1" column="idAuditorium1" />
+			<result property="idEdition1" column="idEdition1" />
+			<result property="price_screens" column="price_screens" />
+			<result property="prices" column="prices" />
+		</collection>
+
 	</resultMap>
 	<select id="selectPlayByfilmName" parameterType="String"
 		resultMap="filmStudioMap">
-		select
-		f.f_ontime,f.idFilm,f.f_name,f.f_director,f.f_star,f.idClass,f.f_country,
-		f.f_time,f.f_level,f.f_comment,f.f_introduce,f.f_cover_s,f.f_cover_b,
-		f.f_online,
-		s.idStudio,s.studio_name,s.studio_address,s.studio_phone,s.studio_text,
-		p.play_ontime,p.play_uptime
-		from film_infor f left join play p on
-		f.idFilm = p.idFilm
-		left join studio s on p.idStudio = s.idStudio where
-		f.f_name = #{f_name}
+		select p.*,a.*,e.*,s.*,f.*,pl.*,c.*
+		from film_infor f
+		left join play pl on f.idFilm = pl.idFilm
+		left join
+		price p on pl.idPlay = p.idPlay1
+        left join studio s on pl.idStudio = s.idStudio
+		left join edition e on e.idEdition =
+		p.idEdition1
+		left join
+		auditorium a on a.idAuditorium = p.idAuditorium1,classification c
+		where f.f_name =
+		#{f_name} and c.idClass = f.idClass
+		
 	</select>
 
 	<select id="selectAllFilmOnline" resultMap="filmMap">
@@ -59,18 +93,19 @@
 		where
 		f_online=2;
 	</select>
-	
-	<select id="selectFilmPage" parameterType="java.lang.String" resultMap="BaseResultMap">
+
+	<select id="selectFilmPage" parameterType="java.lang.String"
+		resultMap="filmMap">
 		SELECT *
 		FROM film_infor
 		WHERE 1 = 1
 		<if test="f_name != null and f_name !=''">
-		    AND f_name = #{f_name,jdbcType=VARCHAR}
+			AND f_name = #{f_name,jdbcType=VARCHAR}
 		</if>
 		ORDER BY idFilm
 	</select>
-		<!-- 查询单条记录 -->
-	<select id="selectFilm_inforById" parameterType="int" resultMap="BaseResultMap">
+	<!-- 查询单条记录 -->
+	<select id="selectFilm_inforById" parameterType="int" resultMap="filmMap">
 		SELECT * FROM film_infor WHERE idFilm = #{idFilm}
 	</select>
 </mapper>

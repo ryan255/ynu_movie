@@ -1,23 +1,24 @@
 package com.ynu.dto;
 
 public class Classification {
-    private Integer idclass;
+	private Integer idClass;
 
-    private String className;
+	private String class_name;
 
-    public Integer getIdclass() {
-        return idclass;
-    }
+	public Integer getIdClass() {
+		return idClass;
+	}
 
-    public void setIdclass(Integer idclass) {
-        this.idclass = idclass;
-    }
+	public void setIdClass(Integer idClass) {
+		this.idClass = idClass;
+	}
 
-    public String getClassName() {
-        return className;
-    }
+	public String getClass_name() {
+		return class_name;
+	}
 
-    public void setClassName(String className) {
-        this.className = className == null ? null : className.trim();
-    }
+	public void setClass_name(String class_name) {
+		this.class_name = class_name;
+	}
+
 }

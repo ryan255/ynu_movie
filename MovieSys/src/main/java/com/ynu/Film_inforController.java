@@ -2,6 +2,7 @@ package com.ynu;
 
 
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -9,11 +10,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
+import org.springframework.util.SystemPropertyUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.ynu.dto.Auditorium;
+import com.ynu.dto.Classification;
+import com.ynu.dto.Edition;
 import com.ynu.dto.Film_infor;
+import com.ynu.dto.Play;
+import com.ynu.dto.Price;
 import com.ynu.dto.Studio;
 import com.ynu.service.Film_inforService;
 
@@ -52,13 +59,30 @@ public class Film_inforController {
 		System.out.println(filmName);
 		Film_infor film_infor = film_inforService.selectPlayByfilmName(filmName);
 		model.addAttribute(film_infor);
-		
+		List<Play> plays = film_infor.getPlays();
+		List<Classification> classifications = film_infor.getClassifications();
+		List<Price> prices = film_infor.getPrices();
 		List<Studio> studios = film_infor.getStudios();
-		for(Studio studio:studios){
-			System.out.println("进入循环");
-			System.out.println(studio.getStudio_name());
+		List<Auditorium> auditoriums = film_infor.getAuditoriums();
+		List<Edition> editions = film_infor.getEditions();
+		String classe = null;
+		for(Classification classification:classifications){
+			classe = classification.getClass_name();
 		}
+	
+
+		
+		for(Play play:plays){
+			System.out.println(play.getPlay_ontime());
+		}
+		
+		model.addAttribute("classe",classe);
+		System.out.println(classe);
 		model.addAttribute("studios", studios);
+		model.addAttribute("editions", editions);
+		model.addAttribute("auditoriums", auditoriums);
+		model.addAttribute("prices", prices);
+		model.addAttribute("plays", plays);
 		return "movie-select";
 	}
 	

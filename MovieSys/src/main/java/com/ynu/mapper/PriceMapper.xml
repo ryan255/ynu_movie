@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ynu.mapper.PriceMapper">
+	<resultMap type="com.ynu.dto.Price" id="priceMap">
+		<id property="idPrice" column="idPrice" />
+		<result property="idPlay1" column="idPlay1" />
+		<result property="idAuditorium1" column="idAuditorium1" />
+		<result property="idEdition1" column="idEdition1" />
+		<result property="price_screens" column="price_screens" />
+		<result property="prices" column="prices" />
+	</resultMap>
+
+	<resultMap type="com.ynu.dto.Price" id="filmPriceMap"
+		extends="priceMap">
+		<collection property="play" column="play" javaType="com.ynu.dto.Play">
+			<id property="idPlay" column="idPlay" />
+			<result property="idStudio" column="idStudio" />
+			<result property="idFilm" column="idFilm" />
+			<result property="play_on" column="play_on" />
+			<result property="play_ontime" column="play_ontime" />
+			<result property="play_uptime" column="play_uptime" />
+		</collection>
+		<collection property="auditorium" javaType="com.ynu.dto.Auditorium">
+			<id property="idAuditorium" column="idAuditorium" />
+			<result property="idStudio" column="idStudio" />
+			<result property="auditorium_num" column="auditorium_num" />
+			<result property="auditorium_col" column="auditorium_col" />
+			<result property="auditorium_row" column="auditorium_row" />
+		</collection>
+		<collection property="edition" javaType="com.ynu.dto.Edition">
+			<id property="idEdition" column="idEdition" />
+			<result property="edition_name" column="edition_name" />
+		</collection>
+		<collection property="studio" javaType="com.ynu.dto.Studio">
+			<id property="idStudio" column="idStudio" />
+			<result property="studio_name" column="studio_name" />
+			<result property="studio_online" column="studio_online" />
+			<result property="studio_address" column="studio_address" />
+			<result property="studio_phone" column="studio_phone" />
+			<result property="studio_text" column="studio_text" />
+		</collection>
+		<collection property="film_infor" javaType="com.ynu.dto.Film_infor">
+			<id property="idFilm" column="idFilm" />
+			<result property="f_name" column="f_name" />
+			<result property="f_director" column="f_director" />
+			<result property="f_star" column="f_star" />
+			<result property="idClass" column="idClass" />
+			<result property="f_country" column="f_country" />
+			<result property="f_time" column="f_time" />
+			<result property="f_level" column="f_level" />
+			<result property="f_comment" column="f_comment" />
+			<result property="f_introduce" column="f_introduce" />
+			<result property="f_cover_s" column="f_cover_s" />
+			<result property="f_cover_b" column="f_cover_b" />
+			<result property="f_online" column="f_online" />
+			<result property="f_ontime" column="f_ontime" />
+		</collection>
+		<collection property="classification" javaType="com.ynu.dto.Classification">
+			<id property="idClass" column="idClass" />
+			<result property="class_name" column="class_name" />
+		</collection>
+	</resultMap>
+	<select id="selectPriceByfilmName" parameterType="String"
+		resultMap="filmPriceMap">
+		select
+		p.price_screens,p.prices,a.auditorium_num,e.edition_name,f.*,s.studio_name,c.class_name
+		from price p,auditorium a,edition e,studio s,film_infor f,play
+		pl,classification c
+		where a.idAuditorium = p.idAuditorium1 and
+		e.idEdition = p.idEdition1 and pl.idPlay = p.idPlay1
+		and s.idStudio = pl.idStudio and f.idFilm = pl.idFilm and f.idClass =
+		c.idClass
+		and f.f_name = #{f_name}
+	</select>
+
+
+</mapper>

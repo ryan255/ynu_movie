@@ -1,23 +1,25 @@
 package com.ynu.dto;
 
 public class Edition {
-    private Integer idedition;
+    private Integer idEdition;
 
-    private String editionName;
+    private String edition_name;
 
-    public Integer getIdedition() {
-        return idedition;
-    }
+	public Integer getIdEdition() {
+		return idEdition;
+	}
 
-    public void setIdedition(Integer idedition) {
-        this.idedition = idedition;
-    }
+	public void setIdEdition(Integer idEdition) {
+		this.idEdition = idEdition;
+	}
 
-    public String getEditionName() {
-        return editionName;
-    }
+	public String getEdition_name() {
+		return edition_name;
+	}
 
-    public void setEditionName(String editionName) {
-        this.editionName = editionName == null ? null : editionName.trim();
-    }
+	public void setEdition_name(String edition_name) {
+		this.edition_name = edition_name;
+	}
+
+   
 }
