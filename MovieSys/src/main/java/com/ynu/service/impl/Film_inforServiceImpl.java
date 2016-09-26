@@ -52,6 +52,10 @@ public class Film_inforServiceImpl implements Film_inforService {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	public Film_infor selectPlayBypriceId(Integer idPrice) {
+		// TODO Auto-generated method stub
+		return film_inforMapper.selectPlayBypriceId(idPrice);
+	}
 
 	
 

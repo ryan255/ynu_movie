@@ -9,7 +9,8 @@ public interface Film_inforService {
 	public List<Film_infor> selectAllFilmOnline();
 	public List<Film_infor> selectFilmComing();
 	public Film_infor selectPlayByfilmName(String f_name);
-	
+	public Film_infor selectPlayBypriceId(Integer idPrice);
+
 	Film_infor selectFilm_inforById(Integer idFilm);
 	PageInfo<Film_infor> queryByPage(String f_name,Integer pageNo,Integer pageSize); 
 }

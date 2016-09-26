@@ -47,6 +47,16 @@ public class Film_infor {
 	private List<Price> prices;
 
 	private List<Edition> editions;
+	
+	private List<Seat> seats;
+
+	public List<Seat> getSeats() {
+		return seats;
+	}
+
+	public void setSeats(List<Seat> seats) {
+		this.seats = seats;
+	}
 
 	public String getClass_name() {
 		return class_name;
