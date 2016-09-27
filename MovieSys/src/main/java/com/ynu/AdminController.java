@@ -25,7 +25,7 @@ public class AdminController {
 		System.out.println("管理员填写的账号和密码是："+name+"和"+password);
 		if (name.equals("")||password.equals("")) {
 			model.addAttribute("message","用户名或密码不能为空");
-			return "successadmin";
+			return "success";
 		}else {
 			Admin admin = adminService.find(name);			
 			
@@ -34,7 +34,7 @@ public class AdminController {
 			if (admin==null) {
 				System.out.println("用户名错误");
 				model.addAttribute("message","用户名或密码错误");
-				return "successadmin";
+				return "success";
 			}else{
 				System.out.println("取出的用户"+admin.getAdmin_name());
 				if (admin.getAdmin_pw().equals(password)) {
@@ -42,8 +42,8 @@ public class AdminController {
 					session.setAttribute("successadmin", name);
 					return  "redirect:home";
 				}else{
-					model.addAttribute("successadmin","用户名或密码错误");
-					return "successadmin";
+					model.addAttribute("message","用户名或密码错误");
+					return "success";
 				}
 			}
 			

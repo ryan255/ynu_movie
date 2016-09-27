@@ -1,3 +1,10 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@page isELIgnored="false"%>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@page isELIgnored="false"%>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,31 +16,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 
-    <title>Title</title>
-
     <!--css-->
-    <link href="css/bootstrap.css" rel='stylesheet' type='text/css'/>
-    <link href="css/style.css" rel="stylesheet" type="text/css" media="all"/>
-    <link href="css/style.css" rel="stylesheet" type="text/css" media="all"/>
-    <link href="css/megamenu.css" rel="stylesheet" type="text/css" media="all"/>
-    <link rel="stylesheet" href="css/font-awesome.min.css"/>
-    <link rel="stylesheet" href="css/menu.css"/>
+    <link href="<%=request.getContextPath()%>/css/bootstrap.css" rel='stylesheet' type='text/css'/>
+    <link href="<%=request.getContextPath()%>/css/style.css" rel="stylesheet" type="text/css" media="all"/>
+    <link href="<%=request.getContextPath()%>/css/style.css" rel="stylesheet" type="text/css" media="all"/>
+    <link href="<%=request.getContextPath()%>/css/megamenu.css" rel="stylesheet" type="text/css" media="all"/>
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/css/menu.css"/>
 
     <!--js-->
-    <script src="js/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
+    <script src="<%=request.getContextPath()%>/js/jquery.min.js"></script>
+    <script src="<%=request.getContextPath()%>/js/bootstrap.min.js"></script>
     <script type="application/x-javascript"> addEventListener("load", function () {
         setTimeout(hideURLbar, 0);
     }, false);
     function hideURLbar() {
         window.scrollTo(0, 1);
     } </script>
-    <script type="text/javascript" src="js/megamenu.js"></script>
+    <script type="text/javascript" src="<%=request.getContextPath()%>/js/megamenu.js"></script>
     <script>$(document).ready(function () {
         $(".megamenu").megamenu();
     });</script>
-    <script type="text/javascript" src="js/jquery.leanModal.min.js"></script>
-    <script type="text/javascript" src="js/move-top.js"></script>
+    <script type="text/javascript" src="<%=request.getContextPath()%>/js/jquery.leanModal.min.js"></script>
+    <script type="text/javascript" src="<%=request.getContextPath()%>/js/move-top.js"></script>
 </head>
 <body>
 <!--网页顶部-->
@@ -61,7 +66,7 @@
 
         </div>
         <!--end of logo-->
-        <script src="js/responsive-tabs.js"></script>
+        <script src="<%=request.getContextPath()%>/js/responsive-tabs.js"></script>
         <script type="text/javascript">
             $('#myTab a').click(function (e) {
                 e.preventDefault();
@@ -122,24 +127,24 @@
                         </div>
                         <div role="tabpanel" class="tab-pane fade" id="profile" aria-labelledby="profile-tab">
 
-                                <form class="form-horizontal" role="form">
+                                <form class="form-horizontal" role="form" action="/MovieSys/loginadmin" method="post">
                                     <div class="form-group">
-                                        <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
+                                        <label for="inputEmail3" class="col-sm-2 control-label">用户名</label>
                                         <div class="col-sm-8">
-                                            <input type="email" class="form-control" id="inputEmail4"
-                                                   placeholder="Email">
+                                            <input name="admin_name" type="email" class="form-control" id="inputEmail4"
+                                                   placeholder="用户名">
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
+                                        <label for="inputPassword3" class="col-sm-2 control-label">密 码</label>
                                         <div class="col-sm-8">
-                                            <input type="password" class="form-control" id="inputPassword4"
-                                                   placeholder="Password">
+                                            <input name="admin_pw" type="password" class="form-control" id="inputPassword4"
+                                                   placeholder="密码">
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <div class="col-sm-offset-2 col-sm-10">
-                                            <button type="submit" class="btn btn-default">Sign in</button>
+                                            <button type="submit" class="btn btn-default">注册</button>
                                         </div>
                                     </div>
                                 </form>

@@ -102,7 +102,7 @@
 				<a href="#">网站说明</a> | <a href="#">所在城市</a>
 			</div>
 			<div class="header-top-right">
-				<a href="login.html">我是商家</a>
+				<a href="pages/login.jsp">我是商家</a>
 				<%
 					if (request.getSession().getAttribute("success") == null) {
 				%>
