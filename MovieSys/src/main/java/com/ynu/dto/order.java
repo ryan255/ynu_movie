@@ -1,73 +1,86 @@
 package com.ynu.dto;
 
+import java.util.List;
+
 public class Order {
-    private Integer idorder;
+    private Integer idOrder;
 
-    private Integer iduser;
+    private Integer idUser;
 
-    private Integer idprice;
+    private Integer idPrice;
 
-    private Long truePrice;
+    private Long true_price;
 
-    private Integer orderNumber;
+    private Integer order_number;
 
-    private Long orderTotal;
+    private Long order_total;
 
-    private Integer orderState;
+    private Integer order_state;
+    
+    private List<Seat> seats;
 
-    public Integer getIdorder() {
-        return idorder;
-    }
+	public List<Seat> getSeats() {
+		return seats;
+	}
 
-    public void setIdorder(Integer idorder) {
-        this.idorder = idorder;
-    }
+	public void setSeats(List<Seat> seats) {
+		this.seats = seats;
+	}
 
-    public Integer getIduser() {
-        return iduser;
-    }
+	public Integer getIdOrder() {
+		return idOrder;
+	}
 
-    public void setIduser(Integer iduser) {
-        this.iduser = iduser;
-    }
+	public void setIdOrder(Integer idOrder) {
+		this.idOrder = idOrder;
+	}
 
-    public Integer getIdprice() {
-        return idprice;
-    }
+	public Integer getIdUser() {
+		return idUser;
+	}
 
-    public void setIdprice(Integer idprice) {
-        this.idprice = idprice;
-    }
+	public void setIdUser(Integer idUser) {
+		this.idUser = idUser;
+	}
 
-    public Long getTruePrice() {
-        return truePrice;
-    }
+	public Integer getIdPrice() {
+		return idPrice;
+	}
 
-    public void setTruePrice(Long truePrice) {
-        this.truePrice = truePrice;
-    }
+	public void setIdPrice(Integer idPrice) {
+		this.idPrice = idPrice;
+	}
 
-    public Integer getOrderNumber() {
-        return orderNumber;
-    }
+	public Long getTrue_price() {
+		return true_price;
+	}
 
-    public void setOrderNumber(Integer orderNumber) {
-        this.orderNumber = orderNumber;
-    }
+	public void setTrue_price(Long true_price) {
+		this.true_price = true_price;
+	}
 
-    public Long getOrderTotal() {
-        return orderTotal;
-    }
+	public Integer getOrder_number() {
+		return order_number;
+	}
 
-    public void setOrderTotal(Long orderTotal) {
-        this.orderTotal = orderTotal;
-    }
+	public void setOrder_number(Integer order_number) {
+		this.order_number = order_number;
+	}
 
-    public Integer getOrderState() {
-        return orderState;
-    }
+	public Long getOrder_total() {
+		return order_total;
+	}
 
-    public void setOrderState(Integer orderState) {
-        this.orderState = orderState;
-    }
+	public void setOrder_total(Long order_total) {
+		this.order_total = order_total;
+	}
+
+	public Integer getOrder_state() {
+		return order_state;
+	}
+
+	public void setOrder_state(Integer order_state) {
+		this.order_state = order_state;
+	}
+
 }

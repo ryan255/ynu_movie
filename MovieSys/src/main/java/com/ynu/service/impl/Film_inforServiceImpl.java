@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.ynu.dto.Film_infor;
+import com.ynu.dto.User;
 import com.ynu.mapper.Film_inforMapper;
 import com.ynu.service.Film_inforService;
 
@@ -55,6 +56,10 @@ public class Film_inforServiceImpl implements Film_inforService {
 	public Film_infor selectPlayBypriceId(Integer idPrice) {
 		// TODO Auto-generated method stub
 		return film_inforMapper.selectPlayBypriceId(idPrice);
+	}
+	public User selectUserOrder(Integer user_id) {
+		// TODO Auto-generated method stub
+		return film_inforMapper.selectUserOrder(user_id);
 	}
 
 	

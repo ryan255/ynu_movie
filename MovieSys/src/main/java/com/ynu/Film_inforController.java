@@ -95,9 +95,10 @@ public class Film_inforController {
 			studio = studio2.getStudio_name();
 		}
 		String auditorium = null;
-		int col = 0, row = 0;
+		int col = 0, row = 0,aid = 0;
 		for (Auditorium auditorium2 : auditoriums) {
 			auditorium = auditorium2.getAuditorium_num();
+			aid = auditorium2.getIdAuditorium();
 			col = auditorium2.getAuditorium_col();
 			row = auditorium2.getAuditorium_row();
 		}
@@ -145,9 +146,11 @@ public class Film_inforController {
 		}
 		Long price = (Long) null;
 		Time screen = null;
+		Integer pid = 0;
 		for (Price price2 : prices) {
 			price = price2.getPrices();
 			screen = price2.getPrice_screens();
+			pid = price2.getIdPrice();
 		}
 
 		ObjectMapper mapper = new ObjectMapper();
@@ -156,17 +159,20 @@ public class Film_inforController {
 			String saled2 = mapper.writeValueAsString(saled);
 			model.addAttribute("saled", saled2);
 			model.addAttribute("seat", seat3);
-			System.out.println(seat3);
+			System.out.println("seat:"+seat3);
 		} catch (JsonProcessingException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		System.out.println("aid:"+aid);
+		model.addAttribute("aid", aid);
 		model.addAttribute("price", price);
 		model.addAttribute("screen", screen);
 		model.addAttribute("edition", edition);
 		model.addAttribute("auditorium", auditorium);
 		model.addAttribute("studio", studio);
 		model.addAttribute("classe", classe);
+		model.addAttribute("pid", pid);
 		System.out.println(classe);
 		return "seat-select";
 	}

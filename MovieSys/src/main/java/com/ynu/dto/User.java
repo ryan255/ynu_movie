@@ -1,5 +1,7 @@
 package com.ynu.dto;
 
+import java.util.List;
+
 public class User {
 	private Integer idUser;
 
@@ -18,6 +20,16 @@ public class User {
 	private Integer user_point;
 
 	private Integer idLevel;
+	
+	private List<Order> orders;
+
+	public List<Order> getOrders() {
+		return orders;
+	}
+
+	public void setOrders(List<Order> orders) {
+		this.orders = orders;
+	}
 
 	public Integer getIdUser() {
 		return idUser;

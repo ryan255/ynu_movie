@@ -39,6 +39,8 @@ public class UserController {
 				if (user.getUser_pw().equals(password)) {
 //					model.addAttribute("name",name);
 					session.setAttribute("success", name);
+					session.setAttribute("userid", user.getIdUser());
+					session.setAttribute("tel", user.getUser_phone());
 					return  "redirect:home";
 				}else{
 					model.addAttribute("success","用户名或密码错误");

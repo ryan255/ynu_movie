@@ -17,6 +17,7 @@
 		<result property="idLevel" column="idLevel" />
 
 	</resultMap>
+	
 
 	<select id="findUser" resultMap="userMap">
 		select * from user where

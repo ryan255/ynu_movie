@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ynu.mapper.OrderMapper">
+	<resultMap type="com.ynu.dto.Order" id="orderMap">
+		<id property="idOrder" column="idOrder" />
+		<result property="idUser" column="idUser" />
+		<result property="idPrice" column="idPrice" />
+		<result property="true_price" column="true_price" />
+		<result property="order_number" column="order_number" />
+		<result property="order_total" column="order_total" />
+		<result property="order_state" column="order_state" />
+	</resultMap>
+
+	<resultMap type="com.ynu.dto.OrderSeat" id="orderSeatMap2">
+		<id property="idorderSeat" column="idorderSeat" />
+		<result property="fk_orderSeat_idOrder" column="fk_orderSeat_idOrder" />
+		<result property="fk_orderSeat_idSeat" column="fk_orderSeat_idSeat" />
+	</resultMap>
+	<resultMap type="com.ynu.dto.Seat" id="seatMap2">
+		<id property="idSeat" column="idSeat" />
+		<result property="seat_num" column="seat_num" />
+		<result property="seat_state" column="seat_state" />
+		<result property="seat_order" column="seat_order" />
+		<result property="fk_seat_idAuditorium" column="fk_seat_idAuditorium" />
+	</resultMap>
+
+	<insert id="insertOrder" parameterType="com.ynu.dto.Order">
+		INSERT INTO
+		`moviesys_db`.`order`
+		( `idUser`, `idprice`, `true_price`,
+		`order_number`, `order_total`,
+		`order_state`)
+		VALUES(#{idUser},#{idPrice},#{true_price},#{order_number},#{order_total},#{order_state})
+	</insert>
+
+	<select id="selectSeatId" parameterType="com.ynu.dto.Seat"
+		resultMap="seatMap2">
+		select * from seat where seat_order=#{seat_order} and
+		fk_seat_idAuditorium = #{fk_seat_idAuditorium};
+	</select>
+
+	<select id="selectOrderLast" resultMap="orderMap">
+		SELECT * FROM
+		moviesys_db.`order` order by idOrder desc limit 1;
+	</select>
+	<insert id="insertOrderSeat" parameterType="com.ynu.dto.OrderSeat">
+		INSERT INTO
+		`moviesys_db`.`orderseat` (`fk_orderSeat_idOrder`,
+		`fk_orderSeat_idSeat`) VALUES (#{fk_orderSeat_idOrder}, #{fk_orderSeat_idSeat});
+	</insert>
+</mapper>

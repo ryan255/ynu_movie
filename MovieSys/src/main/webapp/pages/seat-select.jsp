@@ -68,8 +68,130 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			</div>
 			<div class="header-top-right">
 				<a href="#">我是商家</a>
-				<button class="btn btn-primary" data-toggle="modal"
+				<%
+					if (request.getSession().getAttribute("success") == null) {
+				%>
+				<button id="login-btn" class="btn btn-primary" data-toggle="modal"
 					data-target="#myModal">登录</button>
+
+				<%
+					} else {
+				%>
+				<%=request.getSession().getAttribute("success")%>
+				<button class="btn btn-primary">退出</button>
+				<%
+					}
+				%>
+
+
+				<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
+					aria-labelledby="myLargeModalLabel" aria-hidden="true">
+					<div class="modal-dialog modal-lg">
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal"
+									aria-hidden="true">&times;</button>
+								<h4 class="modal-title" id="myModalLabel">登录</h4>
+							</div>
+							<div class="modal-body">
+								<div class="row">
+									<div class="col-md-8"
+										style="border-right: 1px dotted #C2C2C2; padding-right: 30px;">
+										<!-- Nav tabs -->
+										<ul class="nav nav-tabs">
+											<li class="active"><a href="#Login" data-toggle="tab">登录</a></li>
+											<li><a href="#Registration" data-toggle="tab">注册</a></li>
+										</ul>
+										<!-- Tab panes -->
+										<div class="tab-content">
+											<div class="tab-pane active" id="Login">
+												<form role="form" class="form-horizontal"
+													action="/MovieSys/logins" method="post">
+													<div class="form-group">
+														<label for="email" class="col-sm-2 control-label">
+															用户名</label>
+														<div class="col-sm-10">
+															<input name="user_name" type="text" class="form-control"
+																id="email1" placeholder="用户名" />
+														</div>
+													</div>
+													<div class="form-group">
+														<label for="exampleInputPassword1"
+															class="col-sm-2 control-label"> 密码</label>
+														<div class="col-sm-10">
+															<input name="user_pw" type="password"
+																class="form-control" id="exampleInputPassword1"
+																placeholder="密码" />
+														</div>
+													</div>
+													<div class="row">
+														<div class="col-sm-2"></div>
+														<div class="col-sm-10">
+															<button type="submit" class="btn btn-primary btn-sm">登录</button>
+															<a href="javascript:;">忘记密码?</a>
+														</div>
+													</div>
+												</form>
+											</div>
+											<div class="tab-pane" id="Registration">
+
+
+
+
+
+
+												<form action="register" method="post" role="form"
+													class="form-horizontal">
+
+
+													<div class="form-group">
+														<label for="mobile" class="col-sm-2 control-label">
+															手机</label>
+														<div class="col-sm-10">
+															<input name="user_phone" class="form-control" id="mobile"
+																placeholder="手机号" />
+														</div>
+													</div>
+													<div class="form-group">
+														<label for="password" class="col-sm-2 control-label">
+															密码</label>
+														<div class="col-sm-10">
+															<input name="user_pw" type="password"
+																class="form-control" id="password" placeholder="密码" />
+														</div>
+													</div>
+													<div class="row">
+														<div class="col-sm-2"></div>
+														<div class="col-sm-10">
+															<button type="submit" class="btn btn-primary btn-sm">
+																确定</button>
+															<button type="reset" class="btn btn-default btn-sm">
+																取消</button>
+														</div>
+													</div>
+												</form>
+											</div>
+										</div>
+										<div id="OR" class="hidden-xs">OR</div>
+									</div>
+									<div class="col-md-4">
+										<div class="row text-center sign-with">
+											<div class="col-md-12">
+												<h3 class="other-nw">Sign in with</h3>
+											</div>
+											<div class="col-md-12">
+												<div class="btn-group btn-group-justified">
+													<a href="#" class="btn btn-primary">QQ</a> <a href="#"
+														class="btn btn-danger"> 微博</a>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -135,6 +257,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								<div class="front">屏幕</div>
 							</div>
 							<div class="booking-details">
+					<form id="orderInsert" action="orderInsert" method="post">
+							
 								<p>
 									影片：<span>${film_infor.f_name}</span>
 								</p>
@@ -148,28 +272,54 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									影院: <span>${studio}</span>
 								</p>
 								<p>
-									影厅: <span>${auditorium}</span>
+									影厅: <span>${auditorium}厅</span>
 								</p>
 								<p>
 									版本: <span>${edition}</span>
 								</p>
 								<p>
-									场次: <span> ${screen}厅</span>
+									场次: <span> ${screen}</span>
 								</p>
 								<p>
-									票价: <span>${price}</span>
+									票价: <span>￥${price}/张</span>
+									<input style="display:none" value="${price}" name="price">
+									<input style="display:none" value="${pid}" name="pid">
+									<input style="display:none" value="${aid}" name="aid">
 								</p>
 								<p>座位：</p>
 								<ul id="selected-seats"></ul>
 								<p>
-									票数：<span id="counter">0</span>
+									票数：<input id="counter" value="0" name="counter"
+										class="btn btn-warning">
 								</p>
 								<p>
-									总计：<b>￥<span id="total">0</span></b>
+									总计：<b>￥<input id="total" value="0" name="total"
+										class="btn btn-warning" /></b>
 								</p>
-
-								<button class="checkout-button">确定购买</button>
-
+								<p>
+									<input style="display:none" id="pay" value="1" name="state">
+									<input style="display:none" id="seatList" value="0" name="seatList">
+								</p>
+								<p>
+									<input style="display:none" name="uid"
+										value="<%=request.getSession().getAttribute("userid")%>" />
+								</p>
+								</br> </br>
+								</form>
+                                <%
+									if (request.getSession().getAttribute("success") == null) {
+								%>
+								<button id="login-btn2" class="btn btn-primary checkout-button"
+									data-toggle="modal" data-target="#myModal">确认购买</button>
+								<%
+									} else {
+								%>
+								<button class="btn btn-primary checkout-button"
+									onclick="order()">确认购买</button>
+								<%
+									}
+								%>
+								
 							</div>
 							<div style="clear: both"></div>
 						</div>
@@ -219,26 +369,25 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 																if (this
 																		.status() == 'available') { //可选座
 																	$(
-																			'<li>'
-																					+ (this.settings.row + 1)
+																	'<input class="btn btn-success btn-xs" style="width:80px;height:40px;margin:5px;" name="seatselect"/>')
+																	.val(
+																			(this.settings.row + 1)
 																					+ '排'
 																					+ this.settings.label
-																					+ '座</li>')
-																			.attr(
-																					'id',
-																					'cart-item-'
-																							+ this.settings.id)
-																			.data(
-																					'seatId',
-																					this.settings.id)
-																			.appendTo(
-																					$cart);
+																					+ '座')
+																	.attr(
+																			'id',
+																			this.settings.id)
+																	.data(
+																			'seatId',
+																			this.settings.id)
+																	.appendTo($cart);
 
 																	$counter
-																			.text(sc
+																			.val(sc
 																					.find('selected').length + 1);
 																	$total
-																			.text(recalculateTotal(sc)
+																			.val(recalculateTotal(sc)
 																					+ price);
 
 																	return 'selected';
@@ -246,16 +395,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 																		.status() == 'selected') { //已选中
 																	//更新数量
 																	$counter
-																			.text(sc
+																			.val(sc
 																					.find('selected').length - 1);
 																	//更新总计
 																	$total
-																			.text(recalculateTotal(sc)
+																			.val(recalculateTotal(sc)
 																					- price);
 
 																	//删除已预订座位
 																	$(
-																			'#cart-item-'
+																			'#'
 																					+ this.settings.id)
 																			.remove();
 																	//可选座
@@ -286,65 +435,33 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					}
 				</script>
 
+<script>
+									function order() {
+										var payment = confirm("订单提交成功，立即支付");
+										if (payment == true) {
+											$(pay).val("2");
+											var valArr = new Array;
+										    $("input[name='seatselect']").each(function (i) {
+										    	valArr = valArr+$(this).attr("id")+";";
+									    });
+										   $(seatList).val(valArr);
+										   $(orderInsert).submit();
+										} else {
+											$(pay).val("1");
+											var valArr="";
+										    $("input[name='seatselect']").each(function (i) {
+										        valArr = valArr+$(this).attr("id")+";";
+										        alert(valArr);
+										    });
+											   $(seatList).val(valArr);
+											   $(orderInsert).submit();
+											 
+										}
+									}
+									 
+								</script>
 
 
-
-
-
-
-
-				<div class="col-md-4">
-					<div class="payment-right">
-						<h3>Ticket Summary</h3>
-
-						>
-						<h6>
-							<span>电影名称:</span>${film_infor.f_name}</h6>
-						<p>
-							<span>时长:</span>
-						</p>
-						<p>
-							<span>类型:</span>${classe}
-						</p>
-						<p>
-							<span>影院:</span>${studio}
-						</p>
-						<p>
-							<span>影厅:</span> ${auditorium}
-						</p>
-						<p>
-							<span>版本:</span> ${edition}
-						</p>
-						<p>
-							<span>场次:</span> ${screen}
-						</p>
-						<p>
-							<span>票价:</span> ${price}
-						</p>
-						<p>
-							<span>座位:</span> ${classe}
-						</p>
-						<h4>
-							<span>总价 :</span>Rs. 150.00
-						</h4>
-						<p>
-							<span>取票手机:</span> ${classe}
-						</p>
-						<p>+ (Internet handling fees : Rs. 42.00 (incl. of Service
-							Tax))</p>
-						<h5>Grand Total :Rs. 192.00</h5>
-					</div>
-					<div class="ticket-note">
-						<h3>Note:</h3>
-						<ol>
-							<li><p>Registrations/Tickets once booked cannot be
-									exchanged, cancelled or refunded.</p></li>
-							<li><p>In case of Credit/Debit Card bookings, the
-									Credit/Debit Card and Card holder must be present at the ticket
-									counter while collecting the ticket(s).</p></li>
-						</ol>
-					</div>
-				</div>
 				<div class="clearfix"></div>
 			</div>
 			<!--end of select seat-->

@@ -1,33 +1,35 @@
 package com.ynu.dto;
 
 public class OrderSeat {
-    private Integer idorderseat;
+    private Integer idorderSeat;
 
-    private Integer fkOrderseatIdorder;
+    private Integer fk_orderSeat_idOrder;
 
-    private Integer fkOrderseatIdseat;
+    private Integer fk_orderSeat_idSeat;
 
-    public Integer getIdorderseat() {
-        return idorderseat;
-    }
+	public Integer getIdorderSeat() {
+		return idorderSeat;
+	}
 
-    public void setIdorderseat(Integer idorderseat) {
-        this.idorderseat = idorderseat;
-    }
+	public void setIdorderSeat(Integer idorderSeat) {
+		this.idorderSeat = idorderSeat;
+	}
 
-    public Integer getFkOrderseatIdorder() {
-        return fkOrderseatIdorder;
-    }
+	public Integer getFk_orderSeat_idOrder() {
+		return fk_orderSeat_idOrder;
+	}
 
-    public void setFkOrderseatIdorder(Integer fkOrderseatIdorder) {
-        this.fkOrderseatIdorder = fkOrderseatIdorder;
-    }
+	public void setFk_orderSeat_idOrder(Integer fk_orderSeat_idOrder) {
+		this.fk_orderSeat_idOrder = fk_orderSeat_idOrder;
+	}
 
-    public Integer getFkOrderseatIdseat() {
-        return fkOrderseatIdseat;
-    }
+	public Integer getFk_orderSeat_idSeat() {
+		return fk_orderSeat_idSeat;
+	}
 
-    public void setFkOrderseatIdseat(Integer fkOrderseatIdseat) {
-        this.fkOrderseatIdseat = fkOrderseatIdseat;
-    }
+	public void setFk_orderSeat_idSeat(Integer fk_orderSeat_idSeat) {
+		this.fk_orderSeat_idSeat = fk_orderSeat_idSeat;
+	}
+
+   
 }

@@ -21,7 +21,32 @@
 		<result property="f_ontime" column="f_ontime" />
 		<result property="class_name" column="class_name" />
 	</resultMap>
+	<resultMap type="com.ynu.dto.User" id="userMap2">
+		<id property="idUser" column="idUser" />
+		<result property="user_name" column="user_name" />
+		<result property="user_pw" column="user_pw" />
+		<result property="usersex" column="usersex" />
+		<result property="user_birth" column="user_birth" />
+		<result property="user_phone" column="user_phone" />
+		<result property="user_mail" column="user_mail" />
+		<result property="user_point" column="user_point" />
+		<result property="idLevel" column="idLevel" />
 
+	</resultMap>
+
+	<resultMap type="com.ynu.dto.User" id="userOrderMap" extends="userMap2">
+		<collection property="orders" ofType="com.ynu.dto.Order">
+			<id property="idOrder" column="idOrder" />
+			<result property="idUser" column="idUser" />
+			<result property="idPrice" column="idPrice" />
+			<result property="true_price" column="true_price" />
+			<result property="order_number" column="order_number" />
+			<result property="order_total" column="order_total" />
+			<result property="order_state" column="order_state" />
+
+			
+		</collection>
+	</resultMap>
 	<resultMap type="com.ynu.dto.Film_infor" id="filmStudioMap"
 		extends="filmMap">
 		<collection property="studios" ofType="com.ynu.dto.Studio">
@@ -81,11 +106,13 @@
 		price p on pl.idPlay =
 		p.idPlay1
 		left join studio s on pl.idStudio = s.idStudio
-		left join edition e on
+		left join
+		edition e on
 		e.idEdition =
 		p.idEdition1
 		left join
-		auditorium a on a.idAuditorium =
+		auditorium a on
+		a.idAuditorium =
 		p.idAuditorium1
 		left join seat st on a.idAuditorium =
 		st.fk_seat_idAuditorium,classification c
@@ -94,21 +121,30 @@
 		c.idClass = f.idClass
 
 	</select>
-	
+	<select resultMap="userOrderMap" id="selectUserOrder" parameterType="Integer">
+		select u.* ,o.* from user u left join `moviesys_db`.`order` o on u.idUser = o.idUser where u.idUser= #{idUser}
+	</select>
 	<select id="selectPlayBypriceId" parameterType="Integer"
 		resultMap="filmStudioMap">
 		select p.*,a.*,e.*,s.*,f.*,pl.*,c.*,st.*
 		from film_infor f
 		left join play pl on f.idFilm = pl.idFilm
 		left join
-		price p on pl.idPlay = p.idPlay1
-        left join studio s on pl.idStudio = s.idStudio
-		left join edition e on e.idEdition =
+		price p on pl.idPlay
+		= p.idPlay1
+		left join studio s on pl.idStudio = s.idStudio
+		left join
+		edition e on
+		e.idEdition =
 		p.idEdition1
 		left join
-		auditorium a on a.idAuditorium = p.idAuditorium1
-        left join seat st on a.idAuditorium = st.fk_seat_idAuditorium,classification c
-		where p.idprice=1 and c.idClass = f.idClass
+		auditorium a on
+		a.idAuditorium =
+		p.idAuditorium1
+		left join seat st on a.idAuditorium =
+		st.fk_seat_idAuditorium,classification c
+		where p.idprice=#{idPrice} and
+		c.idClass = f.idClass
 
 	</select>
 
