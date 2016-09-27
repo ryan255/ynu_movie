@@ -11,5 +11,5 @@ public interface Film_inforService {
 	public Film_infor selectPlayByfilmName(String f_name);
 	
 	Film_infor selectFilm_inforById(Integer idFilm);
-	PageInfo<Film_infor> queryByPage(String f_name,Integer pageNo,Integer pageSize); 
+	PageInfo<Film_infor> queryByPage(Integer pageNo,Integer pageSize); 
 }

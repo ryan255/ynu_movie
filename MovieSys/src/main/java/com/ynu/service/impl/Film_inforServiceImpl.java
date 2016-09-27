@@ -28,11 +28,11 @@ public class Film_inforServiceImpl implements Film_inforService {
 		// TODO Auto-generated method stub
 		return film_inforMapper.selectPlayByfilmName(f_name);
 	}
-	public PageInfo<Film_infor> queryByPage(String f_name, Integer pageNo, Integer pageSize) {
+	public PageInfo<Film_infor> queryByPage(Integer pageNo, Integer pageSize) {
 		pageNo = pageNo == null?1:pageNo;
 		pageSize = pageSize == null?10:pageSize;
 		PageHelper.startPage(pageNo, pageSize);
-		List<Film_infor> list = film_inforMapper.selectFilmPage(f_name);
+		List<Film_infor> list = film_inforMapper.selectFilmPage();
 		//用PageInfo对结果进行包装
 		PageInfo<Film_infor> page = new PageInfo<Film_infor>(list);
 		//测试PageInfo全部属性

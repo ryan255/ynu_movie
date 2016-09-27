@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.ynu.dto.Auditorium;
 import com.ynu.dto.Classification;
 import com.ynu.dto.Edition;
@@ -93,5 +95,17 @@ public class Film_inforController {
         mav.addObject("film_infor", film_infor);   
         return mav;    
     }    
+	
+	
+	@RequestMapping(value = "/home2")
+	public String film_infor3(Model model) {
+		System.out.println("index3");
+		PageInfo<Film_infor> filmOnline = film_inforService.queryByPage(1, 1);
+		System.out.println("3333333333");
+		model.addAttribute("filmOnline",filmOnline);
+		return "home2";
+	}
+
+	
 
 }

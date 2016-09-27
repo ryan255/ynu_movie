@@ -98,11 +98,8 @@
 		resultMap="filmMap">
 		SELECT *
 		FROM film_infor
-		WHERE 1 = 1
-		<if test="f_name != null and f_name !=''">
-			AND f_name = #{f_name,jdbcType=VARCHAR}
-		</if>
-		ORDER BY idFilm
+		where
+		f_online=1
 	</select>
 	<!-- 查询单条记录 -->
 	<select id="selectFilm_inforById" parameterType="int" resultMap="filmMap">
