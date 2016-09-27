@@ -171,20 +171,11 @@ public class Film_inforController {
 		return "seat-select";
 	}
 
-	@RequestMapping("/")
-	public ModelAndView getIndex() {
-		ModelAndView mav = new ModelAndView("test");
-		Film_infor film_infor = film_inforService.selectFilm_inforById(1);
-		mav.addObject("film_infor", film_infor);
-		return mav;
-	}
-	
- 
 	
 	@RequestMapping(value = "/home2")
 	public String film_infor3(Model model) {
 		System.out.println("index3");
-		PageInfo<Film_infor> filmOnline = film_inforService.queryByPage(1, 1);
+		PageInfo<Film_infor> filmOnline = film_inforService.queryByPage(1,5);
 		System.out.println("3333333333");
 		model.addAttribute("filmOnline",filmOnline);
 		return "home2";
