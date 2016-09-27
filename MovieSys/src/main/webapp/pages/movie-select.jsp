@@ -13,7 +13,7 @@
 <meta name="keywords"
 	content="My Show Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template,
 Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
-<title>Title</title>
+<title>${film_infor.f_name}</title>
 
 <!--css-->
 <link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
@@ -49,12 +49,24 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	
 	
 	
+	
+	
+	
+	
+	
+	
 	 addEventListener("load", function () {
         setTimeout(hideURLbar, 0);
     }, false);
     function hideURLbar() {
         window.scrollTo(0, 1);
     } 
+
+
+
+
+
+
 
 
 
@@ -264,52 +276,60 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 										<h4 class="modal-title" id="myModalLabel">${studios.studio_name}</h4>
 									</div>
 									<div class="modal-body">
-										<div class="panel panel-default">
-											<!-- Default panel contents -->
-											<div class="panel-heading"><h3 class="panel-title col-sm-3">放映时间</h3>
-												<h3 class="panel-title col-sm-3">语言版本</h3>
-												<h3 class="panel-title col-sm-3">放映厅</h3>
-												<h3 class="panel-title col-sm-3">售价</h3>
-												</br></div>
-											<!-- Table -->
-											<table class="table">
+										<table class="table table-striped">
+
+											<tr>
+												<td style=" text-align: center">放映时间</td>
+												<td>语言版本</td>
+												<td>放映厅</td>
+												<td>售价</td>
+												<td>在线选座</td>
+
+											</tr>
+											</br>
 											<c:forEach items="${film_infor.plays}" var="plays">
-											<c:if test="${studios.idStudio==plays.idStudio}">
-												<c:forEach items="${film_infor.prices}" var="prices">
-													<c:if test="${prices.idPlay1==plays.idPlay }">
+												<c:if test="${studios.idStudio==plays.idStudio}">
+													<c:forEach items="${film_infor.prices}" var="prices">
+														<c:if test="${prices.idPlay1==plays.idPlay }">
 
-																<tr>
-																<td class="col-sm-3" style="margin-left:10px;text-align:center">${prices.price_screens }</td>
-																<td class="col-sm-3" style="padding-left:10px">${prices.price_screens }</td>
-																<td class="col-sm-3" style="padding-left:10px">${prices.price_screens }</td>
-																<td class="col-sm-3" style="padding-left:10px">${prices.price_screens }</td></tr>
+															<tr>
+																<td 
+																	style=" text-align: center">${prices.price_screens }</td>
+																<c:forEach items="${film_infor.editions }"
+																	var="editions">
+																	<c:if test="${prices.idEdition1==editions.idEdition }">
+																		<td>${editions.edition_name }</td>
+																	</c:if>
+																</c:forEach>
+																<c:forEach items="${film_infor.auditoriums }"
+																	var="auditoriums">
+																	<c:if
+																		test="${prices.idAuditorium1==auditoriums.idAuditorium }">
+																		<td  style="padding-left: 10px;">${auditoriums.auditorium_num }</td>
+																	</c:if>
+																</c:forEach>
+																<td style="padding-left: 10px;">￥${prices.prices }</td>
+																<td style="padding-left: 10px;">
+																<form action="selectseat" method="get">
+																<input name="idPrice" value="${prices.idPrice}" style="display:none">
+																<button type="submit" class="btn btn-primary btn-xs">选座购票</button>
+																</form>
+																</td>
+															</tr>
+														</c:if>
+													</c:forEach>
+												</c:if>
+											</c:forEach>
 
-													</c:if>
-												</c:forEach>
-											</c:if>
-										</c:forEach>
-											
-											</table>
-										</div>
-
-
-
-
-										<div class="panel panel-default">
-											<div class="panel-heading">
-												
-												</br>
 											</div>
-										</div>
 
-										
+										</table>
 
 									</div>
 									<div class="modal-footer">
 										<button type="button" class="btn btn-default"
-											data-dismiss="modal">Close</button>
-										<button type="button" class="btn btn-primary">Save
-											changes</button>
+											data-dismiss="modal">关闭</button>
+										
 									</div>
 								</div>
 							</div>

@@ -63,11 +63,41 @@
 			<result property="price_screens" column="price_screens" />
 			<result property="prices" column="prices" />
 		</collection>
-
+		<collection property="seats" ofType="com.ynu.dto.Seat">
+			<id property="idSeat" column="idSeat" />
+			<result property="seat_num" column="seat_num" />
+			<result property="seat_state" column="seat_state" />
+			<result property="seat_order" column="seat_order" />
+			<result property="fk_seat_idAuditorium" column="fk_seat_idAuditorium" />
+		</collection>
 	</resultMap>
 	<select id="selectPlayByfilmName" parameterType="String"
 		resultMap="filmStudioMap">
 		select p.*,a.*,e.*,s.*,f.*,pl.*,c.*
+		from film_infor f
+		left
+		join play pl on f.idFilm = pl.idFilm
+		left join
+		price p on pl.idPlay =
+		p.idPlay1
+		left join studio s on pl.idStudio = s.idStudio
+		left join edition e on
+		e.idEdition =
+		p.idEdition1
+		left join
+		auditorium a on a.idAuditorium =
+		p.idAuditorium1
+		left join seat st on a.idAuditorium =
+		st.fk_seat_idAuditorium,classification c
+		where f.f_name =
+		#{f_name} and
+		c.idClass = f.idClass
+
+	</select>
+	
+	<select id="selectPlayBypriceId" parameterType="Integer"
+		resultMap="filmStudioMap">
+		select p.*,a.*,e.*,s.*,f.*,pl.*,c.*,st.*
 		from film_infor f
 		left join play pl on f.idFilm = pl.idFilm
 		left join
@@ -76,10 +106,10 @@
 		left join edition e on e.idEdition =
 		p.idEdition1
 		left join
-		auditorium a on a.idAuditorium = p.idAuditorium1,classification c
-		where f.f_name =
-		#{f_name} and c.idClass = f.idClass
-		
+		auditorium a on a.idAuditorium = p.idAuditorium1
+        left join seat st on a.idAuditorium = st.fk_seat_idAuditorium,classification c
+		where p.idprice=1 and c.idClass = f.idClass
+
 	</select>
 
 	<select id="selectAllFilmOnline" resultMap="filmMap">
