@@ -227,7 +227,7 @@
 							<li class="w3_megamenu-fw"><a href="activities">促销活动<b
 									class="caret"></b></a></li>
 
-							<li class="w3_megamenu-fw"><a href="message">电影影评<b
+							<li class="w3_megamenu-fw"><a href="message">个人中心<b
 									class="caret"></b></a></li>
 						</ul>
 					</div>

@@ -24,10 +24,12 @@ import com.ynu.dto.Auditorium;
 import com.ynu.dto.Classification;
 import com.ynu.dto.Edition;
 import com.ynu.dto.Film_infor;
+import com.ynu.dto.Order;
 import com.ynu.dto.Play;
 import com.ynu.dto.Price;
 import com.ynu.dto.Seat;
 import com.ynu.dto.Studio;
+import com.ynu.dto.User;
 import com.ynu.service.Film_inforService;
 
 @Service
@@ -185,6 +187,53 @@ public class Film_inforController {
 		System.out.println("3333333333");
 		model.addAttribute("filmOnline",filmOnline);
 		return "home2";
+	}
+	
+	@RequestMapping(value="/selectUserInforOrder")
+	public String selectUserInforOrder(@RequestParam("idUser")Integer user_id,@RequestParam("idPrice")Integer idPrice,Model model){
+		System.out.println(user_id);
+		User user = film_inforService.selectUserOrder(user_id);
+		List<Film_infor> film_infors = new ArrayList<Film_infor>();
+		for(Order order:user.getOrders()){
+			Film_infor film_infor = film_inforService.selectPlayBypriceId(order.getIdPrice());
+			film_infors.add(film_infor);
+		}
+		List<Price> prices = new ArrayList<Price>();
+		List<Play> plays = new ArrayList<Play>();
+		List<Auditorium> auditoriums = new ArrayList<Auditorium>();
+		List<Studio> studios = new ArrayList<Studio>();
+		List<Edition> editions = new ArrayList<Edition>();
+		for(Film_infor film_infor2:film_infors){
+			List<Price> prices2 = film_infor2.getPrices();
+			List<Edition> editions2 =film_infor2.getEditions();
+			List<Play> plays2 = film_infor2.getPlays();
+			List<Auditorium> auditoriums2 = film_infor2.getAuditoriums();
+			List<Studio> studios2 = film_infor2.getStudios();
+			for(Edition edition:editions2){
+				editions.add(edition);
+			}
+			for(Price price:prices2){
+				prices.add(price);
+			}
+			for(Play play:plays2){
+				plays.add(play);
+			}
+			for(Auditorium auditorium:auditoriums2){
+				auditoriums.add(auditorium);
+			}
+			for(Auditorium auditorium:auditoriums2){
+				auditoriums.add(auditorium);
+			}
+		}
+		model.addAttribute("user", user);
+		model.addAttribute("films", film_infors);
+		model.addAttribute("stuodios", studios);
+		model.addAttribute("editions", editions);
+		model.addAttribute("auditoriums",auditoriums);
+		model.addAttribute("plays",plays);
+		model.addAttribute("prices",prices);
+		System.out.println("success");
+		return "message";
 	}
 
 }

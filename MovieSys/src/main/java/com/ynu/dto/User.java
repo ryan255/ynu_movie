@@ -22,6 +22,16 @@ public class User {
 	private Integer idLevel;
 	
 	private List<Order> orders;
+	
+	private List<OrderSeat> orderSeats;
+	
+	public List<OrderSeat> getOrderSeats() {
+		return orderSeats;
+	}
+
+	public void setOrderSeats(List<OrderSeat> orderSeats) {
+		this.orderSeats = orderSeats;
+	}
 
 	public List<Order> getOrders() {
 		return orders;

@@ -122,7 +122,9 @@
 
 	</select>
 	<select resultMap="userOrderMap" id="selectUserOrder" parameterType="Integer">
-		select u.* ,o.* from user u left join `moviesys_db`.`order` o on u.idUser = o.idUser where u.idUser= #{idUser}
+		select u.* ,o.* from user u 
+		left join `moviesys_db`.`order` o on u.idUser = o.idUser
+		left join orderseat os on os.fk_orderSeat_idOrder = o.idOrder where u.idUser= #{idUser}
 	</select>
 	<select id="selectPlayBypriceId" parameterType="Integer"
 		resultMap="filmStudioMap">

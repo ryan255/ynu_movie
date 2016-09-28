@@ -1,14 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@page isELIgnored="false"%>
-<%@taglib uri="http://www.springframework.org/tags/form" prefix
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@page isELIgnored="false"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title>社区</title>
+    <title>社区——${user.user_name}</title>
 
     <!--css-->
     <link href="css/bootstrap.css" rel='stylesheet' type='text/css'/>
@@ -54,143 +56,130 @@
         </div>
         <div class="header-top-right">
             <a href="#">我是商家</a>
-            <button class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-                登录
-            </button>
-            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
-                 aria-hidden="true">
-                <div class="modal-dialog modal-lg">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                                &times;</button>
-                            <h4 class="modal-title" id="myModalLabel">
-                                登录</h4>
-                        </div>
-                        <div class="modal-body">
-                            <div class="row">
-                                <div class="col-md-8" style="border-right: 1px dotted #C2C2C2;padding-right: 30px;">
-                                    <!-- Nav tabs -->
-                                    <ul class="nav nav-tabs">
-                                        <li class="active"><a href="#Login" data-toggle="tab">登录</a></li>
-                                        <li><a href="#Registration" data-toggle="tab">注册</a></li>
-                                    </ul>
-                                    <!-- Tab panes -->
-                                    <div class="tab-content">
-                                        <div class="tab-pane active" id="Login">
-                                            <form role="form" class="form-horizontal">
-                                                <div class="form-group">
-                                                    <label for="email" class="col-sm-2 control-label">
-                                                        用户名</label>
-                                                    <div class="col-sm-10">
-                                                        <input type="email" class="form-control" id="email1"
-                                                               placeholder="用户名"/>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="exampleInputPassword1" class="col-sm-2 control-label">
-                                                        密码</label>
-                                                    <div class="col-sm-10">
-                                                        <input type="password" class="form-control"
-                                                               id="exampleInputPassword1" placeholder="密码"/>
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col-sm-2">
-                                                    </div>
-                                                    <div class="col-sm-10">
-                                                        <button type="submit" class="btn btn-primary btn-sm">
-                                                            登录
-                                                        </button>
-                                                        <a href="javascript:;">忘记密码?</a>
-                                                    </div>
-                                                </div>
-                                            </form>
-                                        </div>
-                                        <div class="tab-pane" id="Registration">
-                                            <form role="form" class="form-horizontal">
-                                                <div class="form-group">
-                                                    <label for="email" class="col-sm-2 control-label">
-                                                        用户名</label>
-                                                    <div class="col-sm-10">
-                                                        <div class="row">
-                                                            <div class="col-md-3">
-                                                                <select class="form-control">
-                                                                    <option>Mr.</option>
-                                                                    <option>Ms.</option>
-                                                                    <option>Mrs.</option>
-                                                                </select>
-                                                            </div>
-                                                            <div class="col-md-9">
-                                                                <input type="text" class="form-control"
-                                                                       placeholder="Name"/>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="email" class="col-sm-2 control-label">
-                                                        邮箱</label>
-                                                    <div class="col-sm-10">
-                                                        <input type="email" class="form-control" id="email"
-                                                               placeholder="Email"/>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="mobile" class="col-sm-2 control-label">
-                                                        手机</label>
-                                                    <div class="col-sm-10">
-                                                        <input type="email" class="form-control" id="mobile"
-                                                               placeholder="Mobile"/>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="password" class="col-sm-2 control-label">
-                                                        密码</label>
-                                                    <div class="col-sm-10">
-                                                        <input type="password" class="form-control" id="password"
-                                                               placeholder="Password"/>
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col-sm-2">
-                                                    </div>
-                                                    <div class="col-sm-10">
-                                                        <button type="button" class="btn btn-primary btn-sm">
-                                                            确定
-                                                        </button>
-                                                        <button type="button" class="btn btn-default btn-sm">
-                                                            取消
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                    <div id="OR" class="hidden-xs">
-                                        OR
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="row text-center sign-with">
-                                        <div class="col-md-12">
-                                            <h3 class="other-nw">
-                                                Sign in with</h3>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <div class="btn-group btn-group-justified">
-                                                <a href="#" class="btn btn-primary">QQ</a> <a href="#"
-                                                                                              class="btn btn-danger">
-                                                微博</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+           <%
+					if (request.getSession().getAttribute("success") == null) {
+				%>
+				<button id="login-btn" class="btn btn-primary" data-toggle="modal"
+					data-target="#myModal">登录</button>
+
+				<%
+					} else {
+				%>
+				<%=request.getSession().getAttribute("success")%>
+				<button class="btn btn-primary">退出</button>
+				<%
+					}
+				%>
+
+
+				<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
+					aria-labelledby="myLargeModalLabel" aria-hidden="true">
+					<div class="modal-dialog modal-lg">
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal"
+									aria-hidden="true">&times;</button>
+								<h4 class="modal-title" id="myModalLabel">登录</h4>
+							</div>
+							<div class="modal-body">
+								<div class="row">
+									<div class="col-md-8"
+										style="border-right: 1px dotted #C2C2C2; padding-right: 30px;">
+										<!-- Nav tabs -->
+										<ul class="nav nav-tabs">
+											<li class="active"><a href="#Login" data-toggle="tab">登录</a></li>
+											<li><a href="#Registration" data-toggle="tab">注册</a></li>
+										</ul>
+										<!-- Tab panes -->
+										<div class="tab-content">
+											<div class="tab-pane active" id="Login">
+												<form role="form" class="form-horizontal"
+													action="/MovieSys/logins" method="post">
+													<div class="form-group">
+														<label for="email" class="col-sm-2 control-label">
+															用户名</label>
+														<div class="col-sm-10">
+															<input name="user_name" type="text" class="form-control"
+																id="email1" placeholder="用户名" />
+														</div>
+													</div>
+													<div class="form-group">
+														<label for="exampleInputPassword1"
+															class="col-sm-2 control-label"> 密码</label>
+														<div class="col-sm-10">
+															<input name="user_pw" type="password"
+																class="form-control" id="exampleInputPassword1"
+																placeholder="密码" />
+														</div>
+													</div>
+													<div class="row">
+														<div class="col-sm-2"></div>
+														<div class="col-sm-10">
+															<button type="submit" class="btn btn-primary btn-sm">登录</button>
+															<a href="javascript:;">忘记密码?</a>
+														</div>
+													</div>
+												</form>
+											</div>
+											<div class="tab-pane" id="Registration">
+
+
+
+
+
+
+												<form action="register" method="post" role="form"
+													class="form-horizontal">
+
+
+													<div class="form-group">
+														<label for="mobile" class="col-sm-2 control-label">
+															手机</label>
+														<div class="col-sm-10">
+															<input name="user_phone" class="form-control" id="mobile"
+																placeholder="手机号" />
+														</div>
+													</div>
+													<div class="form-group">
+														<label for="password" class="col-sm-2 control-label">
+															密码</label>
+														<div class="col-sm-10">
+															<input name="user_pw" type="password"
+																class="form-control" id="password" placeholder="密码" />
+														</div>
+													</div>
+													<div class="row">
+														<div class="col-sm-2"></div>
+														<div class="col-sm-10">
+															<button type="submit" class="btn btn-primary btn-sm">
+																确定</button>
+															<button type="reset" class="btn btn-default btn-sm">
+																取消</button>
+														</div>
+													</div>
+												</form>
+											</div>
+										</div>
+										<div id="OR" class="hidden-xs">OR</div>
+									</div>
+									<div class="col-md-4">
+										<div class="row text-center sign-with">
+											<div class="col-md-12">
+												<h3 class="other-nw">Sign in with</h3>
+											</div>
+											<div class="col-md-12">
+												<div class="btn-group btn-group-justified">
+													<a href="#" class="btn btn-primary">QQ</a> <a href="#"
+														class="btn btn-danger"> 微博</a>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
         </div>
     </div>
 </div>
@@ -226,19 +215,14 @@
                     <ul class="nav navbar-nav">
 
                         <li class="w3_megamenu-fw" style="margin-left: 60px;">
-                            <a href="index.html">首页</a>
+                            <a href="home">首页</a>
                         </li>
 
                         <li class="w3_megamenu-fw">
-                            <a href="movies.html">电影排期<b class="caret"></b></a>
+                            <a href="movies">电影排期<b class="caret"></b></a>
                         </li>
-
-                        <li class="w3_megamenu-fw">
-                            <a href="activities.html">促销活动<b class="caret"></b></a>
-                        </li>
-
                         <li class="active">
-                            <a href="#">电影影评<b class="caret"></b></a>
+                            <a href="#">个人中心<b class="caret"></b></a>
                         </li>
                     </ul>
                 </div>
@@ -256,7 +240,7 @@
 
             <div class="tabs-box">
                 <ul class="tabs-menu">
-                    <li><a href="#tab1"><span> </span>About-us</a></li>
+                    <li><a href="#tab1"><span> </span>我的订单</a></li>
                     <li><a href="#tab2"><span> </span>Our History</a></li>
                     <li><a href="#tab3"><span> </span>Our Work</a></li>
                     <li><a href="#tab4"><span> </span>Careers</a></li>
@@ -264,11 +248,44 @@
                 <div class="clearfix"> </div>
                 <div class="tab-grids">
                     <div id="tab1" class="tab-grid">
-                        <h5>About-us</h5>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus efficitur, eros sed suscipit porttitor, diam felis tempus odio, eget sollicitudin purus sem sit amet dolor. Integer euismod non mauris commodo rutrum. Nulla risus felis, rhoncus vel est sed, consequat efficitur ante. Phasellus mi sapien, accumsan vitae lobortis vitae, laoreet dapibus metus. Pellentesque id ipsum vel nibh imperdiet imperdiet ac ac mauris. Suspendisse ac leo augue. Nullam venenatis massa ut pulvinar scelerisque. Duis vel vehicula urna. Quisque semper vitae lectus a feugiat. Sed dignissim egestas nunc, nec suscipit mauris interdum lobortis.</p>
-                        <p>Duis iaculis justo nec tellus bibendum rhoncus. Phasellus quis pretium leo, sed porta ligula. Mauris vitae ornare nisi, et dapibus elit. Vestibulum vel urna malesuada, bibendum orci sed, venenatis nunc. Morbi dignissim est tortor, ac aliquam augue blandit at. Pellentesque pulvinar convallis augue, in sodales risus feugiat et. Ut viverra pellentesque tellus eu consectetur. Maecenas eget massa nulla. Fusce convallis et sapien a hendrerit. Etiam viverra maximus dolor, ac tempor sapien.</p>
+                        <h5>我的订单</h5>
                         <div class="about-grids">
                             <div class="about-bottom-grids">
+                            
+                            	<c:forEach items="${user.orders }" var="orders">
+                            		<forEach items = "${prices }" var = "prices">
+                            			<c:if test="${orders.idPrice == prices.idPrice }">
+                            				<c:forEach items="${plays }" var= "plays">
+                            					<C:if test="${plays.idPlay == prices.idPlay1}">
+                            						<c:forEach items="${films }" var="films">
+                            							<c:if test="${films.idFilm==plays.idFilm }">
+                            							
+                            							</c:if>
+                            						</c:forEach>
+                            					</C:if>
+                            				</c:forEach>
+                            			</c:if>
+                            		</forEach>
+                            	
+                            		 <div class="col-sm-6 about-left">
+                                               <div class="about-left-grids">
+                                                 <div class="col-md-2 about-left-img">
+                                                  <i class="fa fa-clock-o"></i>
+                                                </div>
+                                              <div class="col-md-10 about-left-info">
+                                              <a href="#">When We Started</a>
+                                            <p>Suspendisse cursus tempus ullamcorper Praesent molestie urna a metus auctor vulputate molestie urna a metus auctor molestie urna a metus auctor.</p>
+                                        </div>
+                                        <div class="clearfix"> </div>
+                                    </div>
+                                </div>
+                            	
+                            		<c:forEach items="${user.orderSeats }" var="orderSeats" >
+                            			<c:if test="${orders.idOrder == orderSeats.fk_orderSeat_idOrder }">
+                            			
+                            			</c:if>
+                            		</c:forEach>
+                            	</c:forEach>
                                 <div class="col-sm-6 about-left">
                                     <div class="about-left-grids">
                                         <div class="col-md-2 about-left-img">

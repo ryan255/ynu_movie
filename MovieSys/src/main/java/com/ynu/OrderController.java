@@ -58,6 +58,8 @@ public class OrderController {
 		System.out.println(counter);
 		System.out.println(total);
 		System.out.println(state);
-		return "home";
+		String url="selectUserInforOrder?idUser="+uid+"&idPrice="+pid;
+		System.out.println(url);
+		return "redirect:"+url;
 	}
 }

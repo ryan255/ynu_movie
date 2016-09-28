@@ -235,7 +235,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							<li class="w3_megamenu-fw"><a href="activities.html">促销活动<b
 									class="caret"></b></a></li>
 
-							<li class="w3_megamenu-fw"><a href="message.html">电影影评<b
+							<li class="w3_megamenu-fw"><a href="message.html">个人中心<b
 									class="caret"></b></a></li>
 						</ul>
 					</div>
