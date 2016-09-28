@@ -6,32 +6,15 @@
 <mapper namespace="com.ynu.mapper.AdminMapper">
 
 	<resultMap type="com.ynu.dto.Admin" id="adminMap">
-		<id column="idAdmin" jdbcType="INTEGER" property="idAdmin" />
-		<result column="idStudio" jdbcType="INTEGER" property="idStudio" />
-		<result column="admin_name" jdbcType="VARCHAR" property="admin_name" />
-		<result column="admin_pw" jdbcType="VARCHAR" property="admin_pw" />
-		<result column="admin_phone" jdbcType="VARCHAR" property="admin_phone" />
-		<result column="admin_identity" jdbcType="VARCHAR" property="admin_identity" />
+	<id column="idAdmin" jdbcType="INTEGER" property="idAdmin" />
+    <result column="idStudio" jdbcType="INTEGER" property="idStudio" />
+    <result column="admin_name" jdbcType="VARCHAR" property="admin_name" />
+    <result column="admin_pw" jdbcType="VARCHAR" property="admin_pw" />
+    <result column="admin_phone" jdbcType="VARCHAR" property="admin_phone" />
+    <result column="admin_identity" jdbcType="VARCHAR" property="admin_identity" />
 
 	</resultMap>
-	<resultMap type="com.ynu.dto.Admin" id="adminStudioMap"
-		extends="adminMap">
-		<collection property="studios" ofType="com.ynu.dto.Studio">
-			<id property="idStudio" column="idStudio" />
-			<result property="studio_name" column="studio_name" />
-			<result property="studio_online" column="studio_online" />
-			<result property="studio_address" column="studio_address" />
-			<result property="studio_phone" column="studio_phone" />
-			<result property="studio_text" column="studio_text" />
-		</collection>
-		<collection property="auditoriums" ofType="com.ynu.dto.Auditorium">
-			<id property="idAuditorium" column="idAuditorium" />
-			<result property="idStudio" column="idStudio" />
-			<result property="auditorium_num" column="auditorium_num" />
-			<result property="auditorium_col" column="auditorium_col" />
-			<result property="auditorium_row" column="auditorium_row" />
-		</collection>
-	</resultMap>
+
 	<select id="findAdmin" resultMap="adminMap">
 		select * from admin where
 		admin_phone = #{admin_phone}
@@ -39,22 +22,12 @@
 	<insert id="insertAdmin" parameterType="com.ynu.dto.Admin">
 		INSERT INTO
 		admin(idStudio,admin_name,admin_pw,admin_phone)
-		values(#{idStudio},#{admin_name},#{admin_pw},#{admin_phone},#{admin_identity})
+		values(#{idStudio},#{admin_name},#{admin_pw},#{admin_phone})
 	</insert>
-
-	<delete id="deleteAdminByName" parameterType="java.lang.String">
-		delete from admin
-		where admin_name = #{admin_name}
-	</delete>
-
-	<select id="selectAdminStudioById" resultMap="adminStudioMap"
-		parameterType="java.lang.Integer">
-		select * from admin a left join studio s
-		on a.idStudio =
-		s.idStudio
-		left join auditorium ar on s.idStudio =
-		ar.idStudio where
-		a.idAdmin= #{idAdmin}
-	</select>
-
+	
+	<delete id="deleteAdminByName" parameterType="java.lang.String" >
+   		delete from admin
+     	where admin_name = #{admin_name}
+   </delete>
+	
 </mapper>
