@@ -193,7 +193,7 @@
 	
 	<insert id="insertFilm" parameterType="com.ynu.dto.Film_infor">
 		INSERT INTO
-		film_infor(f_name,f_director,f_star,idClass)
-		values(#{f_name},#{f_director},#{f_star},#{idClass})
+		film_infor(f_name,f_director,f_star,idClass,f_time)
+		values(#{f_name},#{f_director},#{f_star},#{idClass},#{f_time})
 	</insert>
 </mapper>

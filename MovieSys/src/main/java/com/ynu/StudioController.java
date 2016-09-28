@@ -36,6 +36,7 @@ public class StudioController {
 		studio.setStudio_online("是");
 		studio.setStudio_address(address);
 		studio.setStudio_phone(phone);
+		studio.setStudio_text("因为很懒所以没有添加描述");
 		studioService.insertStudio(studio);
 		model.addAttribute("message","影院添加成功");
 		System.out.println("successadd");

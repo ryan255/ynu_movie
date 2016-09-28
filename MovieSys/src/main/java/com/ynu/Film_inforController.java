@@ -192,13 +192,14 @@ public class Film_inforController {
 	}
 	
 	@RequestMapping(value="/addmovie",method=RequestMethod.POST)
-	public String addmovie(@RequestParam("f_name")String name,@RequestParam("f_director")String director,@RequestParam("f_star")String star,@RequestParam("idClass")Integer idclass,ModelMap model){
+	public String addmovie(@RequestParam("f_name")String name,@RequestParam("f_director")String director,@RequestParam("f_star")String star,@RequestParam("idClass")Integer idclass,@RequestParam("f_time")Integer time,ModelMap model){
 		System.out.println(name);
 		Film_infor film_infor = new Film_infor();
 		film_infor.setF_name(name);
 		film_infor.setF_director(director);
 		film_infor.setF_star(star);
 		film_infor.setIdClass(idclass);
+		film_infor.setF_time(time);
 		film_inforService.insertFilm(film_infor);
 		model.addAttribute("message","电影添加成功");
 		System.out.println("successadd");

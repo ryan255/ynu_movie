@@ -9,10 +9,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>后台登陆</title>
-
-
-    <meta charset="UTF-8">
+    <title>影城/电影添加</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 
@@ -160,6 +157,13 @@
                                         <div class="col-sm-8">
                                             <input name="idClass" type="text" class="form-control" id="inputPassword4"
                                                    placeholder="分类号">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inputPassword3" class="col-sm-2 control-label">时长（分钟）</label>
+                                        <div class="col-sm-8">
+                                            <input name="f_time" type="text" class="form-control" id="inputPassword4"
+                                                   placeholder="时长（分钟）">
                                         </div>
                                     </div>
                                     <div class="form-group">
