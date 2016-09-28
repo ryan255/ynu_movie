@@ -1,5 +1,7 @@
 package com.ynu.dto;
 
+import java.util.List;
+
 public class Admin {
     private Integer idAdmin;
 
@@ -13,7 +15,57 @@ public class Admin {
 
     private String admin_identity;
     
-    public Integer getIdAdmin() {
+    private List<Auditorium> auditoriums;
+    
+    private List<Film_infor> film_infors;
+    
+    private List<Play> plays;
+    
+    private Studio studio;
+    
+    private List<Studio> studios;
+    
+    public List<Film_infor> getFilm_infors() {
+		return film_infors;
+	}
+
+	public void setFilm_infors(List<Film_infor> film_infors) {
+		this.film_infors = film_infors;
+	}
+
+	public List<Play> getPlays() {
+		return plays;
+	}
+
+	public void setPlays(List<Play> plays) {
+		this.plays = plays;
+	}
+
+	public List<Studio> getStudios() {
+		return studios;
+	}
+
+	public void setStudios(List<Studio> studios) {
+		this.studios = studios;
+	}
+
+	public List<Auditorium> getAuditoriums() {
+		return auditoriums;
+	}
+
+	public void setAuditoriums(List<Auditorium> auditoriums) {
+		this.auditoriums = auditoriums;
+	}
+
+	public Studio getStudio() {
+		return studio;
+	}
+
+	public void setStudio(Studio studio) {
+		this.studio = studio;
+	}
+
+	public Integer getIdAdmin() {
 		return idAdmin;
 	}
 

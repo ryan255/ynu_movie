@@ -49,11 +49,9 @@
             <a href="#">所在城市</a>
         </div>
         <div class="header-top-right">
-            <a href="index.html">返回网站首页</a>
+            <a href="<%=request.getContextPath() %>/home">返回网站首页</a>
         </div>
     </div>
-</div>
-<!--顶部结束-->
 
 <!--网页主体-->
 <div class="container">
@@ -99,25 +97,24 @@
                     </ul>
                     <div id="myTabContent" class="tab-content" scoll=no >
                         <div role="tabpanel" class="tab-pane fade in active" id="home" aria-labelledby="home-tab" style="overflow:scroll;overflow-x:hidden;overflow-y: hidden">
-                            <form class="form-horizontal" role="form">
+                            <form class="form-horizontal" role="form" action="<%=request.getContextPath()%>/loginadmin" method="post">
                                 <div class="form-group">
-                                    <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
+                                    <label for="inputEmail3" class="col-sm-2 control-label">用户名：</label>
                                     <div class="col-sm-6">
-                                        <input type="email" class="form-control" id="inputEmail3"
-                                               placeholder="Email">
+                                        <input name="admin_name" type="text" class="form-control" id="inputEmail3"
+                                               placeholder="手机号">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
+                                    <label for="inputPassword3" class="col-sm-2 control-label">密码：</label>
                                     <div class="col-sm-6">
-                                        <input type="password" class="form-control" id="inputPassword3"
-                                               placeholder="Password">
+                                        <input name="admin_pw" type="password" class="form-control" id="inputPassword3"
+                                               placeholder="密码">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <div class="col-sm-offset-2 col-sm-6">
-                                        <button type="submit" class="btn btn-default">Sign in</button>
-                                        <a href="manager-index.html">登录</a>
+                                        <button type="submit" class="btn btn-default">登录</button>
                                     </div>
                                 </div>
                             </form>

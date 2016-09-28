@@ -25,6 +25,11 @@ public class AdminServiceImpl implements AdminService{
 	public void deleteAdminByName(String admin_name) {
 		adminMapper.deleteAdminByName(admin_name);
 	}
+
+	public Admin selectAdminStudioById(Integer idAdmin) {
+		// TODO Auto-generated method stub
+		return adminMapper.selectAdminStudioById(idAdmin);
+	}
 	
 
 }
