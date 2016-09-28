@@ -12,6 +12,7 @@ public interface Film_inforService {
 	public Film_infor selectPlayByfilmName(String f_name);
 	public Film_infor selectPlayBypriceId(Integer idPrice);
 	public User selectUserOrder(Integer user_id);
+	public void insertFilm (Film_infor film_infor);
 
 	Film_infor selectFilm_inforById(Integer idFilm);
 	PageInfo<Film_infor> queryByPage(Integer pageNo,Integer pageSize); 
