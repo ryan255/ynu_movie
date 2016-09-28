@@ -21,13 +21,13 @@ public class AdminController {
 	private AdminService adminService;
 	
 	@RequestMapping(value="/loginadmin",method = RequestMethod.POST)
-	public String loginCheck(@RequestParam("admin_name")String name,@RequestParam("admin_pw")String password,Model model,HttpSession session){
-		System.out.println("管理员填写的账号和密码是："+name+"和"+password);
-		if (name.equals("")||password.equals("")) {
+	public String loginCheck(@RequestParam("admin_phone")String phone,@RequestParam("admin_pw")String password,Model model,HttpSession session){
+		System.out.println("管理员填写的账号和密码是："+phone+"和"+password);
+		if (phone.equals("")||password.equals("")) {
 			model.addAttribute("message","用户名或密码不能为空");
 			return "success";
 		}else {
-			Admin admin = adminService.find(name);			
+			Admin admin = adminService.find(phone);			
 			
 			System.out.println("成功调用finduser");
 			
@@ -39,7 +39,7 @@ public class AdminController {
 				System.out.println("取出的用户"+admin.getAdmin_name());
 				if (admin.getAdmin_pw().equals(password)) {
 //					model.addAttribute("name",name);
-					session.setAttribute("successadmin", name);
+					session.setAttribute("successadmin", phone);
 					return  "redirect:home";
 				}else{
 					model.addAttribute("message","用户名或密码错误");
@@ -51,9 +51,10 @@ public class AdminController {
 	}
 	
 	@RequestMapping(value="/registeradmin",method=RequestMethod.POST)
-	public String registerAdmin(@RequestParam("admin_phone")String phone,@RequestParam("admin_pw")String password,ModelMap model){
+	public String registerAdmin(@RequestParam("idStudio")Integer studio,@RequestParam("admin_phone")String phone,@RequestParam("admin_pw")String password,ModelMap model){
 		System.out.println(phone);
 		Admin admin = new Admin();
+		admin.setIdStudio(studio);
 		admin.setAdmin_phone(phone);
 		admin.setAdmin_pw(password);
 		admin.setAdmin_name("未命名");

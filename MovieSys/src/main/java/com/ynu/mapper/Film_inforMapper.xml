@@ -190,4 +190,10 @@
 	<select id="selectFilm_inforById" parameterType="int" resultMap="filmMap">
 		SELECT * FROM film_infor WHERE idFilm = #{idFilm}
 	</select>
+	
+	<insert id="insertFilm" parameterType="com.ynu.dto.Film_infor">
+		INSERT INTO
+		film_infor(f_name,f_director,f_star,idClass)
+		values(#{f_name},#{f_director},#{f_star},#{idClass})
+	</insert>
 </mapper>

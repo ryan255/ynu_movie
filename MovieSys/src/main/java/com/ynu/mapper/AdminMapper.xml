@@ -17,12 +17,12 @@
 
 	<select id="findAdmin" resultMap="adminMap">
 		select * from admin where
-		admin_name = #{admin_name}
+		admin_phone = #{admin_phone}
 	</select>
 	<insert id="insertAdmin" parameterType="com.ynu.dto.Admin">
 		INSERT INTO
 		admin(idStudio,admin_name,admin_pw,admin_phone)
-		values(#{idStudio},#{admin_name},#{admin_pw},#{admin_phone},#{admin_identity})
+		values(#{idStudio},#{admin_name},#{admin_pw},#{admin_phone})
 	</insert>
 	
 	<delete id="deleteAdminByName" parameterType="java.lang.String" >

@@ -61,6 +61,10 @@ public class Film_inforServiceImpl implements Film_inforService {
 		// TODO Auto-generated method stub
 		return film_inforMapper.selectUserOrder(user_id);
 	}
+	public void insertFilm(Film_infor film_infor) {
+		film_inforMapper.insertFilm(film_infor);
+		
+	}
 
 	
 

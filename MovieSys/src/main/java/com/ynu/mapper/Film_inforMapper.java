@@ -20,4 +20,6 @@ public interface Film_inforMapper {
 	public Film_infor selectFilm_inforById(Integer idFilm);
 	public Film_infor selectPlayBypriceId(Integer idPrice);
 	public User selectUserOrder(Integer user_id);
+	
+	public void insertFilm (Film_infor film_infor);
 }

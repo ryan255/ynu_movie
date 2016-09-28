@@ -61,7 +61,7 @@
         <!--logo-->
         <div class="header">
             <div class="logo">
-                <a href="#"><h1>电影秀</h1></a>
+                <a href="#"><h1>影城/电影添加</h1></a>
             </div>
 
         </div>
@@ -93,30 +93,37 @@
                     <ul id="myTab" class="nav nav-tabs" role="tablist">
                         <li role="presentation" class="active"><a href="#home" id="home-tab" role="tab"
                                                                   data-toggle="tab" aria-controls="home"
-                                                                  aria-expanded="true">商家登录</a></li>
+                                                                  aria-expanded="true">添加影城</a></li>
                         <li role="presentation"><a href="#profile" role="tab" id="profile-tab" data-toggle="tab"
-                                                   aria-controls="profile">商家注册</a></li>
+                                                   aria-controls="profile">添加电影</a></li>
                     </ul>
                     <div id="myTabContent" class="tab-content" scoll=no >
                         <div role="tabpanel" class="tab-pane fade in active" id="home" aria-labelledby="home-tab" style="overflow:scroll;overflow-x:hidden;overflow-y: hidden">
-                            <form class="form-horizontal" role="form" action="/MovieSys/loginadmin" method="post">
+                            <form class="form-horizontal" role="form" action="/MovieSys/addstudio" method="post">
                                 <div class="form-group">
-                                    <label for="inputEmail3" class="col-sm-2 control-label">手机号</label>
+                                    <label for="inputEmail3" class="col-sm-2 control-label">影院名</label>
                                     <div class="col-sm-6">
-                                        <input name="admin_phone" type="text" class="form-control" id="inputEmail3"
-                                               placeholder="手机号">
+                                        <input name="studio_name" type="text" class="form-control" id="inputEmail3"
+                                               placeholder="影院名">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="inputPassword3" class="col-sm-2 control-label">密码</label>
+                                    <label for="studio_address" class="col-sm-2 control-label">影院地址</label>
                                     <div class="col-sm-6">
-                                        <input name="admin_pw" type="password" class="form-control" id="inputPassword3"
-                                               placeholder="Password">
+                                        <input name="studio_address" type="text" class="form-control" id="inputPassword3"
+                                               placeholder="影院地址">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="studio_phone" class="col-sm-2 control-label">联系电话</label>
+                                    <div class="col-sm-6">
+                                        <input name="studio_phone" type="text" class="form-control" id="inputPassword3"
+                                               placeholder="联系电话">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <div class="col-sm-offset-2 col-sm-6">
-                                        <button type="submit" class="btn btn-default">登录</button>
+                                        <button type="submit" class="btn btn-default">确认添加</button>
                                     </div>
                                 </div>
                             </form>
@@ -126,31 +133,38 @@
                         </div>
                         <div role="tabpanel" class="tab-pane fade" id="profile" aria-labelledby="profile-tab">
 
-                                <form class="form-horizontal" role="form" action="/MovieSys/registeradmin" method="post">
+                                <form class="form-horizontal" role="form" action="/MovieSys/addmovie" method="post">
                                 	<div class="form-group">
-                                        <label for="inputEmail3" class="col-sm-2 control-label">影城号</label>
+                                        <label for="inputEmail3" class="col-sm-2 control-label">电影名</label>
                                         <div class="col-sm-8">
-                                            <input name="idStudio" type="text" class="form-control" id="inputEmail4"
-                                                   placeholder="影城号">
+                                            <input name="f_name" type="text" class="form-control" id="inputEmail4"
+                                                   placeholder="电影名">
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="inputEmail3" class="col-sm-2 control-label">手机号</label>
+                                        <label for="inputEmail3" class="col-sm-2 control-label">导演</label>
                                         <div class="col-sm-8">
-                                            <input name="admin_phone" type="text" class="form-control" id="inputEmail4"
-                                                   placeholder="手机号">
+                                            <input name="f_director" type="text" class="form-control" id="inputEmail4"
+                                                   placeholder="导演">
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="inputPassword3" class="col-sm-2 control-label">密 码</label>
+                                        <label for="inputPassword3" class="col-sm-2 control-label">演员</label>
                                         <div class="col-sm-8">
-                                            <input name="admin_pw" type="password" class="form-control" id="inputPassword4"
-                                                   placeholder="密码">
+                                            <input name="f_star" type="text" class="form-control" id="inputPassword4"
+                                                   placeholder="演员">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inputPassword3" class="col-sm-2 control-label">分类号</label>
+                                        <div class="col-sm-8">
+                                            <input name="idClass" type="text" class="form-control" id="inputPassword4"
+                                                   placeholder="分类号">
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <div class="col-sm-offset-2 col-sm-10">
-                                            <button type="submit" class="btn btn-default">注册</button>
+                                            <button type="submit" class="btn btn-default">确认添加</button>
                                         </div>
                                     </div>
                                 </form>

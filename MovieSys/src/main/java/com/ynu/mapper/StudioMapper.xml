@@ -20,8 +20,8 @@
 	
 	<insert id="insertStudio" parameterType="com.ynu.dto.Studio">
 		INSERT INTO
-		studio(studio_name,studio_online,studio_address,studio_phone,studio_text)
-		values(#{studio_name},#{studio_online},#{studio_address},#{studio_phone}，#{studio_text})
+		studio(studio_name,studio_online,studio_address,studio_phone)
+		values(#{studio_name},#{studio_online},#{studio_address},#{studio_phone})
 	</insert>
 	
 	<delete id="deleteStudioByName" parameterType="java.lang.String" >

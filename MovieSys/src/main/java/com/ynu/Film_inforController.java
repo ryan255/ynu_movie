@@ -9,8 +9,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.util.SystemPropertyUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -19,6 +21,7 @@ import com.github.pagehelper.PageInfo;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.ynu.dto.Admin;
 import com.ynu.dto.Auditorium;
 import com.ynu.dto.Classification;
 import com.ynu.dto.Edition;
@@ -186,6 +189,21 @@ public class Film_inforController {
 		System.out.println("3333333333");
 		model.addAttribute("filmOnline", filmOnline);
 		return "home2";
+	}
+	
+	@RequestMapping(value="/addmovie",method=RequestMethod.POST)
+	public String addmovie(@RequestParam("f_name")String name,@RequestParam("f_director")String director,@RequestParam("f_star")String star,@RequestParam("idClass")Integer idclass,ModelMap model){
+		System.out.println(name);
+		Film_infor film_infor = new Film_infor();
+		film_infor.setF_name(name);
+		film_infor.setF_director(director);
+		film_infor.setF_star(star);
+		film_infor.setIdClass(idclass);
+		film_inforService.insertFilm(film_infor);
+		model.addAttribute("message","电影添加成功");
+		System.out.println("successadd");
+		return "redirect:home";
+		
 	}
 
 	@RequestMapping(value = "/selectUserInforOrder")

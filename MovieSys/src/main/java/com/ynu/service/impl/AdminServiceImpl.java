@@ -13,9 +13,9 @@ public class AdminServiceImpl implements AdminService{
 	@Autowired
 	private AdminMapper adminMapper;
 
-	public Admin find(String admin_name) {
+	public Admin find(String admin_phone) {
 
-		return adminMapper.findAdmin(admin_name);
+		return adminMapper.findAdmin(admin_phone);
 	}
 
 	public void insertAdmin(Admin admin) {
