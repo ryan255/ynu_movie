@@ -5,7 +5,7 @@
 
 <mapper namespace="com.ynu.mapper.PriceMapper">
 	<resultMap type="com.ynu.dto.Price" id="priceMap">
-		<id property="idPrice" column="idPrice" />
+		<id property="idPrice" column="idprice" />
 		<result property="idPlay1" column="idPlay1" />
 		<result property="idAuditorium1" column="idAuditorium1" />
 		<result property="idEdition1" column="idEdition1" />

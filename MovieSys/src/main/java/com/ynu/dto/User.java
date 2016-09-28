@@ -21,10 +21,30 @@ public class User {
 
 	private Integer idLevel;
 	
+	private long account;
+	
+	public long getAccount() {
+		return account;
+	}
+
+	public void setAccount(long newAccount) {
+		this.account = newAccount;
+	}
+
 	private List<Order> orders;
 	
 	private List<OrderSeat> orderSeats;
 	
+	private List<Seat> seats;
+	
+	public List<Seat> getSeats() {
+		return seats;
+	}
+
+	public void setSeats(List<Seat> seats) {
+		this.seats = seats;
+	}
+
 	public List<OrderSeat> getOrderSeats() {
 		return orderSeats;
 	}

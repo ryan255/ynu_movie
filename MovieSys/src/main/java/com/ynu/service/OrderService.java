@@ -9,5 +9,7 @@ public interface OrderService {
 	public Seat selectSeatId(Seat seat);
 	public Order selectOrderLast();
 	public void insertOrderSeat(OrderSeat orderSeat);
+	public void updateOrderState(Integer idOrder);
+
 
 }

@@ -1,8 +1,11 @@
 package com.ynu;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -39,6 +42,7 @@ public class OrderController {
 		String[] seat3 = seatList.split(";");
 		orderService.insertOrder(order);
 		Order order2 = orderService.selectOrderLast();
+		int idOrder2 = order2.getIdOrder();
 		System.out.println("idOrder:"+order2.getIdOrder());
 		for(int i=0;i<seat3.length;i++){
 			Seat seat = new Seat();
@@ -58,8 +62,17 @@ public class OrderController {
 		System.out.println(counter);
 		System.out.println(total);
 		System.out.println(state);
-		String url="selectUserInforOrder?idUser="+uid+"&idPrice="+pid;
+		String url="updateUser?idUser="+uid+"&total="+total+"&state="+state+"&idOrder2="+idOrder2;
 		System.out.println(url);
 		return "redirect:"+url;
+	}
+	
+	@RequestMapping(value="/perrorupdateOrderState")
+	public String updateOrderState(@RequestParam("idOrder")Integer idOrder,Model model,HttpSession session){
+		orderService.updateOrderState(idOrder);
+		int uid = (Integer) session.getAttribute("userid");
+		System.out.println(uid);
+		model.addAttribute("payError", "支付失败，余额不足");
+		return "redirect:selectUserInforOrder?idUser="+uid;
 	}
 }

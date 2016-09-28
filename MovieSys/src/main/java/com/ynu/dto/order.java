@@ -7,7 +7,7 @@ public class Order {
 
     private Integer idUser;
 
-    private Integer idPrice;
+    private Integer idprice;
 
     private Long true_price;
 
@@ -44,11 +44,11 @@ public class Order {
 	}
 
 	public Integer getIdPrice() {
-		return idPrice;
+		return idprice;
 	}
 
 	public void setIdPrice(Integer idPrice) {
-		this.idPrice = idPrice;
+		this.idprice = idPrice;
 	}
 
 	public Long getTrue_price() {

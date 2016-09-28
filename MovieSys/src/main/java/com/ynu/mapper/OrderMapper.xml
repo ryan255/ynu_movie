@@ -7,7 +7,7 @@
 	<resultMap type="com.ynu.dto.Order" id="orderMap">
 		<id property="idOrder" column="idOrder" />
 		<result property="idUser" column="idUser" />
-		<result property="idPrice" column="idPrice" />
+		<result property="idprice" column="idprice" />
 		<result property="true_price" column="true_price" />
 		<result property="order_number" column="order_number" />
 		<result property="order_total" column="order_total" />
@@ -51,4 +51,7 @@
 		`moviesys_db`.`orderseat` (`fk_orderSeat_idOrder`,
 		`fk_orderSeat_idSeat`) VALUES (#{fk_orderSeat_idOrder}, #{fk_orderSeat_idSeat});
 	</insert>
+	<update id="updateOrderState" parameterType="Integer">
+		UPDATE `moviesys_db`.`order` SET `order_state`='1' WHERE `idOrder`=#{idOrder};
+	</update>
 </mapper>

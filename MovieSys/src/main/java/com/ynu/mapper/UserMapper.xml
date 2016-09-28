@@ -15,17 +15,27 @@
 		<result property="user_mail" column="user_mail" />
 		<result property="user_point" column="user_point" />
 		<result property="idLevel" column="idLevel" />
+		<result property="account" column="account" />
 
+		
 	</resultMap>
-	
+
 
 	<select id="findUser" resultMap="userMap">
 		select * from user where
-		user_name = #{user_name}
+		user_phone = #{user_phone}
+	</select>
+	
+	<select id="selectUserById" resultMap="userMap">
+		select * from user where
+		idUser = #{idUser}
 	</select>
 	<insert id="insertUser" parameterType="com.ynu.dto.User">
 		INSERT INTO
 		user(user_name,user_pw,user_phone)
 		values(#{user_name},#{user_pw},#{user_phone})
 	</insert>
+	<update id="updateAccount">
+		UPDATE `moviesys_db`.`user` SET `account`=#{account} where idUser=#{idUser};
+	</update>
 </mapper>

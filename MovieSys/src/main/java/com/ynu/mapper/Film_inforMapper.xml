@@ -31,21 +31,33 @@
 		<result property="user_mail" column="user_mail" />
 		<result property="user_point" column="user_point" />
 		<result property="idLevel" column="idLevel" />
-
+		<result property="account" column="account" />
 	</resultMap>
 
 	<resultMap type="com.ynu.dto.User" id="userOrderMap" extends="userMap2">
 		<collection property="orders" ofType="com.ynu.dto.Order">
 			<id property="idOrder" column="idOrder" />
 			<result property="idUser" column="idUser" />
-			<result property="idPrice" column="idPrice" />
+			<result property="idprice" column="idprice" />
 			<result property="true_price" column="true_price" />
 			<result property="order_number" column="order_number" />
 			<result property="order_total" column="order_total" />
 			<result property="order_state" column="order_state" />
 
-			
 		</collection>
+		<collection property="orderSeats" ofType="com.ynu.dto.OrderSeat">
+			<id property="idorderSeat" column="idorderSeat" />
+			<result property="fk_orderSeat_idOrder" column="fk_orderSeat_idOrder" />
+			<result property="fk_orderSeat_idSeat" column="fk_orderSeat_idSeat" />
+		</collection>
+		<collection property="seats" ofType="com.ynu.dto.Seat">
+			<id property="idSeat" column="idSeat" />
+			<result property="seat_num" column="seat_num" />
+			<result property="seat_state" column="seat_state" />
+			<result property="seat_order" column="seat_order" />
+			<result property="fk_seat_idAuditorium" column="fk_seat_idAuditorium" />
+		</collection>
+
 	</resultMap>
 	<resultMap type="com.ynu.dto.Film_infor" id="filmStudioMap"
 		extends="filmMap">
@@ -121,10 +133,15 @@
 		c.idClass = f.idClass
 
 	</select>
-	<select resultMap="userOrderMap" id="selectUserOrder" parameterType="Integer">
-		select u.* ,o.* from user u 
+	<select resultMap="userOrderMap" id="selectUserOrder"
+		parameterType="Integer">
+		select u.* ,o.*,s.*,os.* from user u
 		left join `moviesys_db`.`order` o on u.idUser = o.idUser
-		left join orderseat os on os.fk_orderSeat_idOrder = o.idOrder where u.idUser= #{idUser}
+		left join
+		orderseat os on os.fk_orderSeat_idOrder = o.idOrder
+		left join seat s on
+		os.fk_orderSeat_idSeat = s.idSeat
+		where u.idUser= #{idUser} order by o.idOrder desc
 	</select>
 	<select id="selectPlayBypriceId" parameterType="Integer"
 		resultMap="filmStudioMap">

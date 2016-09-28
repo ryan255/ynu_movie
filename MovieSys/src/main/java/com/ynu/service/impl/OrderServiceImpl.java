@@ -32,6 +32,10 @@ public class OrderServiceImpl implements OrderService {
 		orderMapper.insertOrderSeat(orderSeat);
 		
 	}
+	public void updateOrderState(Integer idOrder) {
+		// TODO Auto-generated method stub
+		orderMapper.updateOrderState(idOrder);
+	}
 	
 	
 

@@ -22,6 +22,7 @@
 	media="all" />
 <link rel="stylesheet" href="css/font-awesome.min.css" />
 <link rel="stylesheet" href="css/menu.css" />
+<link rel="stylesheet" href="css/flexslider.css" type="text/css" media="screen" />
 
 <!--js-->
 <script type="text/javascript">
@@ -48,8 +49,24 @@
         window.scrollTo(0, 1);
     } 
 
-
-
+	function check(){
+		var uname=$(user_name).val();
+		var pw = $(Password1).val();
+		if(uname==""||pw==""){
+			alert("用户名或密码不能为空");
+		}else{
+			$(login).submit();
+		}
+	}
+	function checkFilm(){
+		
+		var filmName = $('select[name="f_name"]').val(); //得到下拉菜单的选中项的值
+		if(filmName=="null"){
+			alert("未选择电影，无法查询")
+		}else{
+			$(selectFilm).submit();
+		}
+	}
 
 
 
@@ -102,7 +119,7 @@
 				<a href="#">网站说明</a> | <a href="#">所在城市</a>
 			</div>
 			<div class="header-top-right">
-				<a href="pages/login.jsp">我是商家</a>
+				<a href="login.html">我是商家</a>
 				<%
 					if (request.getSession().getAttribute("success") == null) {
 				%>
@@ -112,8 +129,9 @@
 				<%
 					} else {
 				%>
-				<%=request.getSession().getAttribute("success")%>
-				<button class="btn btn-primary">退出</button>
+			欢迎：	<%=request.getSession().getAttribute("success")%>
+				
+				<a href="logout"><button class="btn btn-primary">退出</button></a>
 				<%
 					}
 				%>
@@ -126,7 +144,7 @@
 							<div class="modal-header">
 								<button type="button" class="close" data-dismiss="modal"
 									aria-hidden="true">&times;</button>
-								<h4 class="modal-title" id="myModalLabel">登录</h4>
+								<h4 class="modal-title" id="myModalLabel">登录/注册</h4>
 							</div>
 							<div class="modal-body">
 								<div class="row">
@@ -140,14 +158,14 @@
 										<!-- Tab panes -->
 										<div class="tab-content">
 											<div class="tab-pane active" id="Login">
-												<form role="form" class="form-horizontal"
+												<form id="login" role="form" class="form-horizontal"
 													action="/MovieSys/logins" method="post">
 													<div class="form-group">
 														<label for="email" class="col-sm-2 control-label">
 															用户名</label>
 														<div class="col-sm-10">
 															<input name="user_name" type="text" class="form-control"
-																id="email1" placeholder="用户名" />
+																id="user_name" placeholder="用户名" />
 														</div>
 													</div>
 													<div class="form-group">
@@ -155,18 +173,19 @@
 															class="col-sm-2 control-label"> 密码</label>
 														<div class="col-sm-10">
 															<input name="user_pw" type="password"
-																class="form-control" id="exampleInputPassword1"
+																class="form-control" id="Password1"
 																placeholder="密码" />
 														</div>
 													</div>
+													</form>
 													<div class="row">
 														<div class="col-sm-2"></div>
 														<div class="col-sm-10">
-															<button type="submit" class="btn btn-primary btn-sm">登录</button>
+															<button onclick="check()" class="btn btn-primary btn-sm">登录</button>
 															<a href="javascript:;">忘记密码?</a>
 														</div>
 													</div>
-												</form>
+												
 											</div>
 											<div class="tab-pane" id="Registration">
 
@@ -267,11 +286,11 @@
 							<li class="w3_megamenu-fw"><a href="movies">电影排期<b
 									class="caret"></b></a></li>
 
-							<li class="w3_megamenu-fw"><a href="activities.jsp">促销活动<b
-									class="caret"></b></a></li>
+							<%if(request.getSession().getAttribute("userid")!=null){ %>
 
-							<li class="w3_megamenu-fw"><a href="message.jsp">电影影评<b
+							<li class="w3_megamenu-fw"><a href="selectUserInforOrder?idUser=<%=request.getSession().getAttribute("userid")%>">个人中心<b
 									class="caret"></b></a></li>
+									<%} %>
 						</ul>
 					</div>
 
@@ -296,9 +315,8 @@
 					</section>
 					<!-- FlexSlider -->
 					<script defer src="js/jquery.flexslider.js"></script>
-					<link rel="stylesheet" href="css/flexslider.css" type="text/css"
-						media="screen" />
 					<script type="text/javascript">
+						
 						$(function() {
 							SyntaxHighlighter.all();
 						});
@@ -319,27 +337,20 @@
 						<ul>
 
 							<li>选择电影：
-								<form action="selectfilmByfilmName" method="Get">
-									<select class="list_of_movies" name="f_name">
-										<option value="">—— —— —— ——</option>
+								<form id="selectFilm" action="selectfilmByfilmName" method="Get">
+								
+									<select id="filmName" class="list_of_movies" name="f_name">
+										<option value="null">—— —— —— ——</option>
 										<c:forEach var="filmOnline" items="${filmOnline}">
 											<option value="${filmOnline.f_name}">${filmOnline.f_name}</option>
 										</c:forEach>
 									</select>
+									</form>
 									<h2 style="color: red;">${play_msg}</h2>
-									<input type="submit" value="查询" class="btn btn-primary"
-										style="width: 100px; margin-left: 90px; margin-top: 30px;">
-								</form>
+									<button onclick="checkFilm()"  class="btn btn-primary"
+										style="width: 100px; margin-left: 90px; margin-top: 30px;">查询</button>
+								
 							</li>
-
-							<!--  <li>选择影城：<select class="list_of_movies" name="" id="">
-									<c:forEach items="${studios}" var="studios">
-										<option>${studios.studio_name}</option>
-									</c:forEach>
-							</select></li>
-							<li>选择时间：
-							<select class="list_of_movies" name="" id="">
-							</select></li>-->
 
 						</ul>
 

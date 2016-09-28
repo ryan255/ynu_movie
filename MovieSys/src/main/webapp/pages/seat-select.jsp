@@ -29,7 +29,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <script src="js/bootstrap.min.js"></script>
 <script src="js/jquery.seat-charts.min.js"></script>
 <script type="application/x-javascript">
-	
+function check(){
+	var uname=$(user_name).val();
+	var pw = $(Password1).val();
+	if(uname==""||pw==""){
+		alert("用户名或密码不能为空");
+	}else{
+		$(login).submit();
+	}
+}
 	 addEventListener("load", function () {
         setTimeout(hideURLbar, 0);
     }, false);
@@ -68,7 +76,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			</div>
 			<div class="header-top-right">
 				<a href="#">我是商家</a>
-				<%
+			<%
 					if (request.getSession().getAttribute("success") == null) {
 				%>
 				<button id="login-btn" class="btn btn-primary" data-toggle="modal"
@@ -77,8 +85,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<%
 					} else {
 				%>
-				<%=request.getSession().getAttribute("success")%>
-				<button class="btn btn-primary">退出</button>
+			欢迎：	<%=request.getSession().getAttribute("success")%>
+				
+				<a href="logout"><button class="btn btn-primary">退出</button></a>
 				<%
 					}
 				%>
@@ -91,7 +100,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							<div class="modal-header">
 								<button type="button" class="close" data-dismiss="modal"
 									aria-hidden="true">&times;</button>
-								<h4 class="modal-title" id="myModalLabel">登录</h4>
+								<h4 class="modal-title" id="myModalLabel">登录/注册</h4>
 							</div>
 							<div class="modal-body">
 								<div class="row">
@@ -105,14 +114,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 										<!-- Tab panes -->
 										<div class="tab-content">
 											<div class="tab-pane active" id="Login">
-												<form role="form" class="form-horizontal"
+												<form id="login" role="form" class="form-horizontal"
 													action="/MovieSys/logins" method="post">
 													<div class="form-group">
 														<label for="email" class="col-sm-2 control-label">
 															用户名</label>
 														<div class="col-sm-10">
 															<input name="user_name" type="text" class="form-control"
-																id="email1" placeholder="用户名" />
+																id="user_name" placeholder="用户名" />
 														</div>
 													</div>
 													<div class="form-group">
@@ -120,18 +129,19 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 															class="col-sm-2 control-label"> 密码</label>
 														<div class="col-sm-10">
 															<input name="user_pw" type="password"
-																class="form-control" id="exampleInputPassword1"
+																class="form-control" id="Password1"
 																placeholder="密码" />
 														</div>
 													</div>
+													</form>
 													<div class="row">
 														<div class="col-sm-2"></div>
 														<div class="col-sm-10">
-															<button type="submit" class="btn btn-primary btn-sm">登录</button>
+															<button onclick="check()" class="btn btn-primary btn-sm">登录</button>
 															<a href="javascript:;">忘记密码?</a>
 														</div>
 													</div>
-												</form>
+												
 											</div>
 											<div class="tab-pane" id="Registration">
 
@@ -227,16 +237,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<ul class="nav navbar-nav">
 
 							<li class="w3_megamenu-fw" style="margin-left: 60px;"><a
-								href="index.html">首页</a></li>
+								href="home">首页</a></li>
 
 							<li class="active"><a href="movies.html">电影排期<b
 									class="caret"></b></a></li>
 
-							<li class="w3_megamenu-fw"><a href="activities.html">促销活动<b
-									class="caret"></b></a></li>
+<%if(request.getSession().getAttribute("userid")!=null){ %>
 
-							<li class="w3_megamenu-fw"><a href="message.html">个人中心<b
+							<li class="w3_megamenu-fw"><a href="selectUserInforOrder?idUser=<%=request.getSession().getAttribute("userid")%>">个人中心<b
 									class="caret"></b></a></li>
+									<%} %>
 						</ul>
 					</div>
 

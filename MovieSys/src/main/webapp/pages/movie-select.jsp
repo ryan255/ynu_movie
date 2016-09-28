@@ -28,7 +28,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <script src="js/jquery.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script type="application/x-javascript">
-	
+function check(){
+	var uname=$(user_name).val();
+	var pw = $(Password1).val();
+	if(uname==""||pw==""){
+		alert("用户名或密码不能为空");
+	}else{
+		$(login).submit();
+	}
+}
 	
 	
 	
@@ -119,8 +127,131 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			</div>
 			<div class="header-top-right">
 				<a href="#">我是商家</a>
-				<button class="btn btn-primary" data-toggle="modal"
+				<%
+					if (request.getSession().getAttribute("success") == null) {
+				%>
+				<button id="login-btn" class="btn btn-primary" data-toggle="modal"
 					data-target="#myModal">登录</button>
+
+				<%
+					} else {
+				%>
+			欢迎：	<%=request.getSession().getAttribute("success")%>
+				
+				<a href="logout"><button class="btn btn-primary">退出</button></a>
+				<%
+					}
+				%>
+				
+				<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
+					aria-labelledby="myLargeModalLabel" aria-hidden="true">
+					<div class="modal-dialog modal-lg">
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal"
+									aria-hidden="true">&times;</button>
+								<h4 class="modal-title" id="myModalLabel">登录/注册</h4>
+							</div>
+							<div class="modal-body">
+								<div class="row">
+									<div class="col-md-8"
+										style="border-right: 1px dotted #C2C2C2; padding-right: 30px;">
+										<!-- Nav tabs -->
+										<ul class="nav nav-tabs">
+											<li class="active"><a href="#Login" data-toggle="tab">登录</a></li>
+											<li><a href="#Registration" data-toggle="tab">注册</a></li>
+										</ul>
+										<!-- Tab panes -->
+										<div class="tab-content">
+											<div class="tab-pane active" id="Login">
+												<form id="login" role="form" class="form-horizontal"
+													action="/MovieSys/logins" method="post">
+													<div class="form-group">
+														<label for="email" class="col-sm-2 control-label">
+															用户名</label>
+														<div class="col-sm-10">
+															<input name="user_name" type="text" class="form-control"
+																id="user_name" placeholder="用户名" />
+														</div>
+													</div>
+													<div class="form-group">
+														<label for="exampleInputPassword1"
+															class="col-sm-2 control-label"> 密码</label>
+														<div class="col-sm-10">
+															<input name="user_pw" type="password"
+																class="form-control" id="Password1"
+																placeholder="密码" />
+														</div>
+													</div>
+													</form>
+													<div class="row">
+														<div class="col-sm-2"></div>
+														<div class="col-sm-10">
+															<button onclick="check()" class="btn btn-primary btn-sm">登录</button>
+															<a href="javascript:;">忘记密码?</a>
+														</div>
+													</div>
+												
+											</div>
+											<div class="tab-pane" id="Registration">
+
+
+
+
+
+
+												<form action="register" method="post" role="form"
+													class="form-horizontal">
+
+
+													<div class="form-group">
+														<label for="mobile" class="col-sm-2 control-label">
+															手机</label>
+														<div class="col-sm-10">
+															<input name="user_phone" class="form-control" id="mobile"
+																placeholder="手机号" />
+														</div>
+													</div>
+													<div class="form-group">
+														<label for="password" class="col-sm-2 control-label">
+															密码</label>
+														<div class="col-sm-10">
+															<input name="user_pw" type="password"
+																class="form-control" id="password" placeholder="密码" />
+														</div>
+													</div>
+													<div class="row">
+														<div class="col-sm-2"></div>
+														<div class="col-sm-10">
+															<button type="submit" class="btn btn-primary btn-sm">
+																确定</button>
+															<button type="reset" class="btn btn-default btn-sm">
+																取消</button>
+														</div>
+													</div>
+												</form>
+											</div>
+										</div>
+										<div id="OR" class="hidden-xs">OR</div>
+									</div>
+									<div class="col-md-4">
+										<div class="row text-center sign-with">
+											<div class="col-md-12">
+												<h3 class="other-nw">Sign in with</h3>
+											</div>
+											<div class="col-md-12">
+												<div class="btn-group btn-group-justified">
+													<a href="#" class="btn btn-primary">QQ</a> <a href="#"
+														class="btn btn-danger"> 微博</a>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -161,11 +292,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							<li class="active"><a href="movies.html">电影排期<b
 									class="caret"></b></a></li>
 
-							<li class="w3_megamenu-fw"><a href="activities.html">促销活动<b
-									class="caret"></b></a></li>
+								<%if(request.getSession().getAttribute("userid")!=null){ %>
 
-							<li class="w3_megamenu-fw"><a href="message.html">个人中心<b
+							<li class="w3_megamenu-fw"><a href="selectUserInforOrder?idUser=<%=request.getSession().getAttribute("userid")%>">个人中心<b
 									class="caret"></b></a></li>
+									<%} %>
 						</ul>
 					</div>
 
@@ -174,43 +305,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<!--end of nav-->
 
 
-			<!--快速订票-->
-			<div class="m-tickets-instantly">
-				<h4>快速订票</h4>
-				<form action="">
-					<div class="m-select-movie">
-						<select class="list_of_movies" name="" id="">
-							<option value="">选择电影</option>
-						</select>
-
-					</div>
-
-					<div class="m-select-movie">
-						<select class="list_of_movies" name="" id="">
-							<option value="">选择电影</option>
-						</select>
-					</div>
-
-					<div class="m-select-movie">
-						<select class="list_of_movies" name="" id="">
-							<option value="">选择日期</option>
-						</select>
-					</div>
-
-					<div class="m-select-movie">
-						<select class="list_of_movies" name="" id="">
-							<option value="">选择场次</option>
-						</select>
-					</div>
-					<div class="m-select-movie">
-						<input style="margin-top: 7px;" type="submit"
-							class="btn btn-primary" value="确定">
-					</div>
-				</form>
-
-				<div class="clearfix"></div>
-			</div>
-			<!--end of 快速订票-->
+			
 
 			<!--影片选择-->
 			<div class="now-showing-list">

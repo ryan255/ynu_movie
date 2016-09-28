@@ -31,6 +31,15 @@
     function hideURLbar() {
         window.scrollTo(0, 1);
     } 
+    function check(){
+		var uname=$(user_name).val();
+		var pw = $(Password1).val();
+		if(uname==""||pw==""){
+			alert("用户名或密码不能为空");
+		}else{
+			$(login).submit();
+		}
+	}
 </script>
 <script type="text/javascript" src="js/megamenu.js"></script>
 <script>
@@ -71,8 +80,9 @@
 				<%
 					} else {
 				%>
-				<%=request.getSession().getAttribute("success")%>
-				<button class="btn btn-primary">退出</button>
+			欢迎：	<%=request.getSession().getAttribute("success")%>
+				
+				<a href="logout"><button class="btn btn-primary">退出</button></a>
 				<%
 					}
 				%>
@@ -83,7 +93,7 @@
 							<div class="modal-header">
 								<button type="button" class="close" data-dismiss="modal"
 									aria-hidden="true">&times;</button>
-								<h4 class="modal-title" id="myModalLabel">登录</h4>
+								<h4 class="modal-title" id="myModalLabel">登录/注册</h4>
 							</div>
 							<div class="modal-body">
 								<div class="row">
@@ -97,14 +107,14 @@
 										<!-- Tab panes -->
 										<div class="tab-content">
 											<div class="tab-pane active" id="Login">
-												<form role="form" class="form-horizontal"
+												<form id="login" role="form" class="form-horizontal"
 													action="/MovieSys/logins" method="post">
 													<div class="form-group">
 														<label for="email" class="col-sm-2 control-label">
 															用户名</label>
 														<div class="col-sm-10">
 															<input name="user_name" type="text" class="form-control"
-																id="email1" placeholder="用户名" />
+																id="user_name" placeholder="用户名" />
 														</div>
 													</div>
 													<div class="form-group">
@@ -112,18 +122,19 @@
 															class="col-sm-2 control-label"> 密码</label>
 														<div class="col-sm-10">
 															<input name="user_pw" type="password"
-																class="form-control" id="exampleInputPassword1"
+																class="form-control" id="Password1"
 																placeholder="密码" />
 														</div>
 													</div>
+													</form>
 													<div class="row">
 														<div class="col-sm-2"></div>
 														<div class="col-sm-10">
-															<button type="submit" class="btn btn-primary btn-sm">登录</button>
+															<button onclick="check()" class="btn btn-primary btn-sm">登录</button>
 															<a href="javascript:;">忘记密码?</a>
 														</div>
 													</div>
-												</form>
+												
 											</div>
 											<div class="tab-pane" id="Registration">
 
@@ -224,11 +235,11 @@
 							<li class="active"><a href="#">电影排期<b class="caret"></b></a>
 							</li>
 
-							<li class="w3_megamenu-fw"><a href="activities">促销活动<b
-									class="caret"></b></a></li>
+<%if(request.getSession().getAttribute("userid")!=null){ %>
 
-							<li class="w3_megamenu-fw"><a href="message">个人中心<b
+							<li class="w3_megamenu-fw"><a href="selectUserInforOrder?idUser=<%=request.getSession().getAttribute("userid")%>">个人中心<b
 									class="caret"></b></a></li>
+									<%} %>
 						</ul>
 					</div>
 
@@ -237,43 +248,7 @@
 			<!--end of nav-->
 
 
-			<!--快速订票-->
-			<div class="m-tickets-instantly">
-				<h4>快速订票</h4>
-				<form action="">
-					<div class="m-select-movie">
-						<select class="list_of_movies" name="" id="">
-							<option value="">选择电影</option>
-						</select>
-
-					</div>
-
-					<div class="m-select-movie">
-						<select class="list_of_movies" name="" id="">
-							<option value="">选择电影</option>
-						</select>
-					</div>
-
-					<div class="m-select-movie">
-						<select class="list_of_movies" name="" id="">
-							<option value="">选择日期</option>
-						</select>
-					</div>
-
-					<div class="m-select-movie">
-						<select class="list_of_movies" name="" id="">
-							<option value="">选择场次</option>
-						</select>
-					</div>
-					<div class="m-select-movie">
-						<input style="margin-top: 7px;" type="submit"
-							class="btn btn-primary" value="确定">
-					</div>
-				</form>
-
-				<div class="clearfix"></div>
-			</div>
-			<!--end of 快速订票-->
+			
 
 			<div class="events-section">
 				<!----->
@@ -281,13 +256,14 @@
 					<div class="callbacks_container">
 						<ul class="rslides" id="slider">
 							<c:forEach var="filmOnline" items="${filmOnline}">
-								<li><img style="height:300px;" src="resource/images/${filmOnline.f_cover_s}" alt="" />
+							
+								<li><img style="height:300px;" src="resource/images/${filmOnline.f_cover_b}" alt="" />
 									<div class="caption">
 										<h2
 											style="text-overflow: ellipsis; white-space: nowrap; overflow: hidden; heght: 60px; width: 90%">${filmOnline.f_introduce}</h2>
 
 										<p>${filmOnline.f_name}</p>
-										<a class="more" href="events-ticket-booking.html">马上订票</a>
+										<a class="more" href="selectfilmByfilmName?f_name=${filmOnline.f_name}">马上订票</a>
 									</div></li>
 							</c:forEach>
 
@@ -352,16 +328,15 @@
 
 									<c:forEach var="filmOnline" items="${filmOnline}">
 										<div class="col-md-4 event-grid">
-											<a href="event-single.html"><img style="height:150px;" src="resource/images/${filmOnline.f_cover_s}"
+											<a href="selectfilmByfilmName?f_name=${filmOnline.f_name}"><img style="height:150px;" src="resource/images/${filmOnline.f_cover_b}"
 												alt="" /></a>
 											<div class="event-info">
 												<a class="m-movie-link" href="#">${filmOnline.f_name}</a> <span>${filmOnline.f_director}</span>
 												<p>
-													<label>This weekend</label> 4 Jul - 5 Sep
 												</p>
 												<a class="e-green" href="#">${filmOnline.idClass}</a>
 												<div class="clearfix"></div>
-												<a class="buy" href="movie-select.html">购票</a>
+												<a class="buy" href="selectfilmByfilmName?f_name=${filmOnline.f_name}">购票</a>
 											</div>
 										</div>
 
@@ -380,7 +355,7 @@
 								
 								<c:forEach var="filmComing" items="${filmComing}">
 									<div class="col-md-4 event-grid">
-										<a href="event-single.html"><img style="height:150px;" src="resource/images/${filmComing.f_cover_s}"
+										<a href="event-single.html"><img style="height:150px;" src="resource/images/${filmComing.f_cover_b}"
 											alt="" /></a>
 										<div class="event-info">
 											<a class="m-movie-link" href="#">${filmComing.f_name}</a> <span>${filmComing.f_director}</span>

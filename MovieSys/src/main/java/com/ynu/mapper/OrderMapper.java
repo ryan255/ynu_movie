@@ -13,5 +13,6 @@ public interface OrderMapper {
 	public void insertOrder(Order order);
 	public Order selectOrderLast();
 	public Seat selectSeatId(Seat seat);
+	public void updateOrderState(Integer idOrder);
 	public void insertOrderSeat(OrderSeat orderSeat);
 }
